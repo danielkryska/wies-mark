@@ -1,0 +1,7 @@
+{
+  "name": "wies-mark",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
