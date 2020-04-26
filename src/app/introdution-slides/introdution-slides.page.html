@@ -1,0 +1,25 @@
+<ion-slides pager="false" [options]="slideOpts">
+  <ion-slide>
+    <div class="search-container">
+      <ion-toolbar>
+        <ion-searchbar
+          autocomplete="on"
+          autocorrect="on"
+          inputmode="text"
+          placeholder="Wpisz swoje miasto"
+          spellcheck="true"
+          debounce="500"
+          (ionChange)="searchForCity($event)"
+          (ionClear)="clearProposedCities()"
+        ></ion-searchbar>
+      </ion-toolbar>
+      <ion-list lines="none">
+        <ion-item 
+          *ngFor="let city of searchedCities" 
+          (click)="chooseCity(city)">
+          <span>{{ city.name | titlecase }}</span>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-slide>
+</ion-slides>

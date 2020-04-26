@@ -1,0 +1,88 @@
+<ion-content fullscreen>
+  <!-- Header -->
+  <ion-toolbar>
+    <ion-row>
+      <ion-col
+        size-xs="3" 
+        size-sm="2" 
+        size-md="2" 
+        size-lg="6" 
+        size-xl="4"
+      >
+        <button class="filters-category-btn">
+          <a href="javascript:void(0)">
+            Filtry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+            <small>i kategorie</small>
+          </a>
+        </button>
+      </ion-col>
+      <ion-col
+        size-xs="2" 
+        size-sm="2" 
+        size-md="2" 
+        size-lg="6" 
+        size-xl="4"
+      >
+        <button class="list-grid-btn" (click)="isGrid = !isGrid">
+          <a href="javascript:void(0)">
+            <ion-icon name="{{ isGrid ? 'grid-outline' : 'list-outline' }}"></ion-icon>
+          </a>
+        </button>
+      </ion-col>
+      <ion-col
+        size-xs="7" 
+        size-sm="7" 
+        size-md="7" 
+        size-lg="6" 
+        size-xl="4"
+      >
+        <ion-label><small>&nbsp;Sortowanie&nbsp;</small></ion-label>
+        <ion-select value="popularity" interface="action-sheet">
+          <ion-select-option value="popularity">Popularne</ion-select-option>
+          <ion-select-option value="price-lowest">Cena: od najniższej</ion-select-option>
+          <ion-select-option value="price-highest">Cena: od najwyższej</ion-select-option>
+          <ion-select-option value="date-latest">Najnowsze</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+
+  <!-- Products list -->
+  <ion-row>
+
+    <ion-col 
+      *ngFor="let product of products"
+      size-xs="12" 
+      size-sm="6" 
+      size-md="6" 
+      size-lg="6" 
+      size-xl="4"
+    >
+      <ion-card>
+        <ion-slides pager="true" [options]="{speed: 400}">
+          <ion-slide 
+            *ngFor="let photo of product.photos"
+            [style.background]="'url(' + photo.url + ')'"
+          >
+          </ion-slide>
+        </ion-slides>
+        <ion-card-header>
+          <ion-card-subtitle>{{ product.title }}</ion-card-subtitle>
+          <ion-card-title>
+            {{ product.price | currency:product.currency:'symbol-narrow':'1.2' }}
+            / {{ product.unit }}
+          </ion-card-title>
+        </ion-card-header>
+      </ion-card>
+
+      <div class="basket-floating-btn" (click)="product.inBasket = !product.inBasket">
+        <ion-icon name="{{ product.inBasket ? 'basket' : 'basket-outline' }}"></ion-icon>
+      </div>
+      <div class="favorite-floating-btn" (click)="product.isFavorite = !product.isFavorite">
+        <ion-icon name="{{ product.isFavorite ? 'star' : 'star-outline' }}"></ion-icon>
+      </div>
+    </ion-col>
+
+  </ion-row>
+  <div class="space"></div>
+</ion-content>

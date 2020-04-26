@@ -1,0 +1,17 @@
+.swiper-container {
+    height: 100vh;
+
+    ion-slide {
+        height: 100vh;
+        background: url('../../assets/introdution-slides-bg-1.jpg') #23ad51;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;    
+    
+        .search-container {
+            width: calc(100% - 3vw);
+            margin: 5vh auto;
+            border-radius: 2px;
+        }
+    }
+}
