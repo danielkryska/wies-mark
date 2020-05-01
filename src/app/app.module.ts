@@ -10,7 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { IonicStorageModule } from '@ionic/storage';
+import { SharedModule } from './shared/shared.module';
 
+// TODO AuthGuard that allow to go to market without choosing city
+// TODO ErrorInterceptor
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,7 +21,8 @@ import { IonicStorageModule } from '@ionic/storage';
     BrowserModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    SharedModule
   ],
   providers: [
     StatusBar,

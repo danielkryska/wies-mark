@@ -1,57 +1,38 @@
 <ion-content fullscreen>
-  <!-- Header -->
+  <!-- Filter + sort by -->
   <ion-toolbar>
-    <ion-row>
-      <ion-col
-        size-xs="3" 
-        size-sm="2" 
-        size-md="2" 
-        size-lg="6" 
-        size-xl="4"
-      >
-        <button class="filters-category-btn">
-          <a href="javascript:void(0)">
-            Filtry&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
-            <small>i kategorie</small>
-          </a>
-        </button>
-      </ion-col>
-      <ion-col
-        size-xs="2" 
-        size-sm="2" 
-        size-md="2" 
-        size-lg="6" 
-        size-xl="4"
-      >
-        <button class="list-grid-btn" (click)="isGrid = !isGrid">
-          <a href="javascript:void(0)">
-            <ion-icon name="{{ isGrid ? 'grid-outline' : 'list-outline' }}"></ion-icon>
-          </a>
-        </button>
-      </ion-col>
-      <ion-col
-        size-xs="7" 
-        size-sm="7" 
-        size-md="7" 
-        size-lg="6" 
-        size-xl="4"
-      >
-        <ion-label><small>&nbsp;Sortowanie&nbsp;</small></ion-label>
-        <ion-select value="popularity" interface="action-sheet">
-          <ion-select-option value="popularity">Popularne</ion-select-option>
-          <ion-select-option value="price-lowest">Cena: od najniższej</ion-select-option>
-          <ion-select-option value="price-highest">Cena: od najwyższej</ion-select-option>
-          <ion-select-option value="date-latest">Najnowsze</ion-select-option>
-        </ion-select>
-      </ion-col>
-    </ion-row>
+    <button class="header-btn" (click)="isGrid = !isGrid">
+      <a href="javascript:void(0)">
+        <ion-icon name="{{ isGrid ? 'grid' : 'list' }}"></ion-icon>
+      </a>
+    </button>
+    <button class="header-btn" (click)="openCategories()">
+      <a href="javascript:void(0)">Kategorie</a>
+    </button>
+    <button class="header-btn" (click)="openFilters()">
+      <a href="javascript:void(0)">Filtry</a>
+    </button>
+    <button class="header-btn" (click)="openSortBy()">
+      <a href="javascript:void(0)">Sortuj</a>
+    </button>
+    <!-- <ion-label><small>&nbsp;Sortowanie&nbsp;</small></ion-label>
+        <ion-select value="popularityOfProducts" interface="action-sheet" (ionChange)="sortProductsBy($event)">
+          <ion-select-option value="popularityOfProducts">Popularne produkty</ion-select-option>
+          <ion-select-option value="popularityOfSuppliers">Popularni rolnicy</ion-select-option>
+          <ion-select-option value="priceLowest">Cena: od najniższej</ion-select-option>
+          <ion-select-option value="priceHighest">Cena: od najwyższej</ion-select-option>
+          <ion-select-option value="dateLatest">Najnowsze</ion-select-option>
+        </ion-select> -->
   </ion-toolbar>
 
   <!-- Products list -->
+  <!-- TODO 4 products per screen (list as default) / 2 products per screen (grid) -->
+  <!-- TODO products as list or grid -->
+  <!-- TODO product icon should be more flexible -->
+  <!-- TODO Stars shouldn't have position absolute -->
   <ion-row>
-
     <ion-col 
-      *ngFor="let product of products"
+      *ngFor="let marketProduct of marketProducts"
       size-xs="12" 
       size-sm="6" 
       size-md="6" 
@@ -61,25 +42,42 @@
       <ion-card>
         <ion-slides pager="true" [options]="{speed: 400}">
           <ion-slide 
-            *ngFor="let photo of product.photos"
+            *ngFor="let photo of marketProduct.photos"
             [style.background]="'url(' + photo.url + ')'"
           >
           </ion-slide>
         </ion-slides>
         <ion-card-header>
-          <ion-card-subtitle>{{ product.title }}</ion-card-subtitle>
+          <span class="supplier">
+            {{ 
+              !!marketProduct.supplier.company 
+              ? marketProduct.supplier.company 
+              : marketProduct.supplier.name + ' ' + marketProduct.supplier.forename 
+            }}
+          </span>
+          <ion-card-subtitle>
+            <ion-row>
+              <ion-col>
+                {{ marketProduct.title }}
+              </ion-col>
+              <ion-col>
+                <bar-rating [(rate)]="marketProduct.averageOfRates" [max]="5" [readOnly]="true"></bar-rating>
+                ({{ marketProduct.opinionsCount }})
+              </ion-col>
+            </ion-row>
+          </ion-card-subtitle>
           <ion-card-title>
-            {{ product.price | currency:product.currency:'symbol-narrow':'1.2' }}
-            / {{ product.unit }}
+            {{ marketProduct.price | currency:marketProduct.currency:'symbol-narrow':'1.2' }}
+            / {{ marketProduct.unit }}
           </ion-card-title>
         </ion-card-header>
       </ion-card>
 
-      <div class="basket-floating-btn" (click)="product.inBasket = !product.inBasket">
-        <ion-icon name="{{ product.inBasket ? 'basket' : 'basket-outline' }}"></ion-icon>
+      <div class="basket-floating-btn" (click)="marketProduct.inBasket = !marketProduct.inBasket">
+        <ion-icon name="{{ marketProduct.inBasket ? 'basket' : 'basket-outline' }}"></ion-icon>
       </div>
-      <div class="favorite-floating-btn" (click)="product.isFavorite = !product.isFavorite">
-        <ion-icon name="{{ product.isFavorite ? 'star' : 'star-outline' }}"></ion-icon>
+      <div class="favorite-floating-btn" (click)="marketProduct.isFavorite = !marketProduct.isFavorite">
+        <ion-icon name="{{ marketProduct.isFavorite ? 'star' : 'star-outline' }}"></ion-icon>
       </div>
     </ion-col>
 

@@ -1,183 +1,49 @@
-import { RegionsHelper } from './../introdution-slides/introdution-slides.page';
-import { Component } from '@angular/core';
-import { ICity } from '../introdution-slides/introdution-slides.page';
-
-export interface IPhoto {
-  // TODO Photos metadata
-  url: string;
-}
-
-export interface ICategory {
-  // meta
-  _parentPath: string;
-
-  // data
-  name: string;
-}
-
-export interface IUser {
-  id: string;
-  nick: string;
-  name: string;
-  forename: string;
-  postCode: string;
-  city: ICity;
-  email: string;
-  phone: number;
-}
-
-export interface ISupplier extends IUser {
-  productsCategories: ICategory[];
-  averageOfRates: number;
-  // TODO upgrade supplier
-}
-
-export interface IOpinion {
-  user: Partial<IUser>;
-  rate: number;
-  creationDate: Date;
-  updateDate: Date;
-}
-
-export interface IProduct {
-  title: string;
-  price: number;
-  currency: string;
-  unit: string;
-  category: ICategory;
-  photos: IPhoto[];
-  isFavorite: boolean; // For this specific user
-  description: string;
-  location: ICity;
-  supplier: ISupplier;
-  composition?: ICategory[];
-  storageMethods?: any[];
-  opinions?: IOpinion[];
-  inBasket?: boolean;
-  // TODO Storage methods
-}
+import { ProductsFiltersComponent } from './products-filters/products-filters.component';
+import { IMarketProduct } from '@shared/models/product.model';
+import { ProductsService } from '@shared/services/products.service';
+import { ModalController } from '@ionic/angular';
+import { Component, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { untilDestroyed } from 'ngx-take-until-destroy';
 
 @Component({
   selector: 'app-market',
   templateUrl: 'market.page.html',
   styleUrls: ['market.page.scss']
 })
-export class MarketPage {
-  public isGrid = true;
-  public products: IProduct[] = [
-    {
-      title: 'Jajca',
-      price: 3.60,
-      unit: 'szt',
-      currency: 'PLN',
-      category: {
-        _parentPath: 'test/elo',
-        name: 'jajca'
-      },
-      photos: [
-        {url: '../../assets/introdution-slides-bg-1.jpg'},
-        {url: '../../assets/introdution-slides-bg-1.jpg'}
-      ],
-      isFavorite: true,
-      description: "jajca, jajca jak szalone",
-      location: RegionsHelper.CITIES[0],
-      supplier: {
-        id: 'dadadadawdad',
-        nick: 'Twoja stara',
-        name: 'Jasiu',
-        forename: 'Kowalski',
-        postCode: '32-890',
-        city: RegionsHelper.CITIES[0],
-        email: 'jasiu.jasiu@test.pl',
-        phone: 540908675,
-        productsCategories: [
-          {
-            _parentPath: '',
-            name: 'jajca'
-          },
-          {
-            _parentPath: 'mieso',
-            name: 'indyk'
-          }
-        ],
-        averageOfRates: 4.87
-      }
-    },
-    {
-      title: 'Jajca',
-      price: 3.60,
-      unit: 'szt',
-      currency: 'PLN',
-      category: {
-        _parentPath: 'test/elo',
-        name: 'jajca'
-      },
-      photos: [
-        {url: '../../assets/introdution-slides-bg-1.jpg'},
-        {url: '../../assets/introdution-slides-bg-1.jpg'}
-      ],
-      isFavorite: false,
-      description: "jajca, jajca jak szalone",
-      location: RegionsHelper.CITIES[0],
-      supplier: {
-        id: 'dadadadawdad',
-        nick: 'Twoja stara',
-        name: 'Jasiu',
-        forename: 'Kowalski',
-        postCode: '32-890',
-        city: RegionsHelper.CITIES[0],
-        email: 'jasiu.jasiu@test.pl',
-        phone: 540908675,
-        productsCategories: [
-          {
-            _parentPath: '',
-            name: 'jajca'
-          },
-          {
-            _parentPath: 'mieso',
-            name: 'indyk'
-          }
-        ],
-        averageOfRates: 4.87
-      }
-    },
-    {
-      title: 'Jajca',
-      price: 3.60,
-      currency: 'PLN',
-      unit: 'szt',
-      category: {
-        _parentPath: 'test/elo',
-        name: 'jajca'
-      },
-      photos: [
-        {url: '../../assets/introdution-slides-bg-1.jpg'},
-        {url: '../../assets/introdution-slides-bg-1.jpg'}
-      ],
-      isFavorite: true,
-      description: "jajca, jajca jak szalone",
-      location: RegionsHelper.CITIES[0],
-      supplier: {
-        id: 'dadadadawdad',
-        nick: 'Twoja stara',
-        name: 'Jasiu',
-        forename: 'Kowalski',
-        postCode: '32-890',
-        city: RegionsHelper.CITIES[0],
-        email: 'jasiu.jasiu@test.pl',
-        phone: 540908675,
-        productsCategories: [
-          {
-            _parentPath: '',
-            name: 'jajca'
-          },
-          {
-            _parentPath: 'mieso',
-            name: 'indyk'
-          }
-        ],
-        averageOfRates: 4.87
-      }
-    }
-  ];
+export class MarketPage implements OnDestroy {
+  public isGrid: boolean = true;
+  public marketProducts: IMarketProduct[];
+
+  private _productsSubscription: Subscription;
+
+  constructor(
+    private _productsService: ProductsService,
+    public _modalController: ModalController
+  ) {
+    this._productsSubscription = this._productsService.products$
+      .pipe(untilDestroyed(this))
+      .subscribe((marketProducts: IMarketProduct[]) => {
+        this.marketProducts = marketProducts;
+      });
+  }
+
+  public sortProductsBy = (e): void => this._productsService.sortType = e.target.value;
+
+  async openFilters(): Promise<void> {
+    const modal = await this._modalController.create({
+      component: ProductsFiltersComponent
+    });
+    return await modal.present();
+  }
+
+  async openCategories(): Promise<void> {
+
+  }
+
+  async openSortBy(): Promise<void> {
+
+  }
+
+  ngOnDestroy() {}
 }

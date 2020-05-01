@@ -1,0 +1,27 @@
+ion-content {
+    ion-toolbar {
+        padding: 10px;
+
+        .close-self-btn, .modal-title  {
+            background-color: transparent;
+            padding: 10px;
+            font-size: larger;
+
+            a {
+                text-decoration: none;
+                font-size: larger;
+            }
+        }
+
+        .close-self-btn {
+            top: 0;
+            right: 0;
+            position: absolute;
+        }
+    }
+
+    ion-footer {
+        bottom: 0;
+        position: fixed;
+    }
+}

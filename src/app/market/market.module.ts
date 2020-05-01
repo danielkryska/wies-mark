@@ -1,9 +1,10 @@
+import { ProductsFiltersComponent } from './products-filters/products-filters.component';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MarketPage } from './market.page';
-import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 import { MarketPageRoutingModule } from './market-routing.module';
 
@@ -12,9 +13,12 @@ import { MarketPageRoutingModule } from './market-routing.module';
     IonicModule,
     CommonModule,
     FormsModule,
-    ExploreContainerComponentModule,
-    MarketPageRoutingModule
+    MarketPageRoutingModule,
+    BarRatingModule
   ],
-  declarations: [MarketPage]
+  declarations: [
+    MarketPage,
+    ProductsFiltersComponent
+  ]
 })
 export class MarketPageModule {}

@@ -18,6 +18,10 @@
       "es2018",
       "dom"
     ],
+    "paths": {
+      "@shared/*": ["src/app/shared/*"],
+      "@environment": ["src/environments/environment"]
+    },
     "resolveJsonModule": true
   },
   "angularCompilerOptions": {

@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./introdution-slides/introdution-slides.module').then( m => m.IntrodutionSlidesPageModule)
+    loadChildren: () => import('./introduction-slides/introduction-slides.module').then( m => m.IntroductionSlidesPageModule)
   },
   {
     path: 'zakladki',
