@@ -1,0 +1,27 @@
+<p>search works!</p>
+<ion-content fullscreen>
+    <ion-toolbar>
+        <button class="header-btn" (click)="isGrid = !isGrid">
+          <a href="javascript:void(0)">
+            <ion-icon name="{{ isGrid ? 'grid' : 'list' }}"></ion-icon>
+          </a>
+        </button>
+        <button class="header-btn" (click)="openCategories()">
+          <a href="javascript:void(0)">Kategorie</a>
+        </button>
+        <button class="header-btn" (click)="openFilters()">
+          <a href="javascript:void(0)">Filtry</a>
+        </button>
+        <button class="header-btn" (click)="openSortBy()">
+          <a href="javascript:void(0)">Sortuj</a>
+        </button>
+        <!-- <ion-label><small>&nbsp;Sortowanie&nbsp;</small></ion-label>
+            <ion-select value="popularityOfProducts" interface="action-sheet" (ionChange)="sortProductsBy($event)">
+              <ion-select-option value="popularityOfProducts">Popularne produkty</ion-select-option>
+              <ion-select-option value="popularityOfSuppliers">Popularni rolnicy</ion-select-option>
+              <ion-select-option value="priceLowest">Cena: od najniższej</ion-select-option>
+              <ion-select-option value="priceHighest">Cena: od najwyższej</ion-select-option>
+              <ion-select-option value="dateLatest">Najnowsze</ion-select-option>
+            </ion-select> -->
+    </ion-toolbar>
+</ion-content>

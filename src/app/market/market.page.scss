@@ -49,35 +49,4 @@ ion-content {
     .space {
         height: 72px;
     }
-
-    ion-toolbar {
-        padding: 15px;
-
-        .header-btn {
-            background-color: transparent;
-            padding: 0px 10px 10px 10px;
-
-            a {
-                text-decoration: none;
-                font-size: larger;
-            }
-
-            ion-icon {
-                padding-top: 10px;
-                font-size: large;
-            }
-        }
-
-        ion-label {
-            position: absolute;
-            top: -5px;
-            left: 18px;
-            background-color: white;
-            z-index: 999;
-        }
-
-        ion-select {
-            border: 1px solid gray;
-        }
-    }
 }

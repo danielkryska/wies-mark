@@ -1,4 +1,3 @@
-import { ProductsFiltersComponent } from './products-filters/products-filters.component';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -17,8 +16,7 @@ import { MarketPageRoutingModule } from './market-routing.module';
     BarRatingModule
   ],
   declarations: [
-    MarketPage,
-    ProductsFiltersComponent
+    MarketPage
   ]
 })
 export class MarketPageModule {}

@@ -11,19 +11,27 @@ const routes: Routes = [
         path: 'jarmark',
         loadChildren: () => import('../market/market.module').then(m => m.MarketPageModule)
       },
-      {
-        path: 'koszyk',
-        loadChildren: () => import('../tab2/tab2.module').then(m => m.Tab2PageModule)
-      },
-      {
-        path: 'profil',
-        loadChildren: () => import('../tab3/tab3.module').then(m => m.Tab3PageModule)
+      { 
+        path: 'koszyk', 
+        loadChildren: () => import('../basket/basket.module').then(m => m.BasketModule)
       },
       {
         path: '',
         redirectTo: 'jarmark',
         pathMatch: 'full'
-      }
+      },
+      { 
+        path: 'szukaj',
+        loadChildren: () => import('../search/search.module').then(m => m.SearchModule)
+      },
+      { 
+        path: 'profil',
+        loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule)
+      },
+      { 
+        path: 'ulubione',
+        loadChildren: () => import('../favorites/favorites.module').then(m => m.FavoritesModule)
+      },
     ]
   },
   {
