@@ -6,7 +6,7 @@
             [routerLink]="['/zakladki/szukaj']" 
             [queryParams]="{selectedCategory: category.value}"
         >
-            <span (click)="selectedCategory.emit(category)">
+            <span>
                 {{ category.label }}
             </span>
         </a>

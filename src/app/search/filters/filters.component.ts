@@ -12,11 +12,8 @@ export class FiltersComponent {
 
   public filters: ((product: IMarketProduct) => boolean)[] = [];
 
-  constructor(
-    private _productsService: ProductsService,
-    private _modalController: ModalController
-  ) {}
+  constructor(private _modalController: ModalController) {}
 
-  applyFilters = () => this._productsService.filters = this.filters;
+  applyFilters = () => {};
   closeSelf = () => this._modalController.dismiss({dismissed: true});
 }

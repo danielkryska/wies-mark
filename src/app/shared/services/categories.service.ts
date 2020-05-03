@@ -7,9 +7,21 @@ import { environment } from '@environment';
 
 import * as _ from 'lodash';
 
+export const isBelongingTo = (source: ICategory, actual: ICategory): boolean => {
+  const isBelonging = isSearched(source, actual.value);
+  console.log(source, actual)
+  if (!isBelonging && !source.isLeaf && !!source.children) {
+    return source.children
+      .map((category: ICategory) => isBelongingTo(category, actual))
+      .some((isBelonging) => isBelonging);
+  }
+
+  return isBelonging;
+}
+
 export const findParentRecursively = (categories: ICategory[], categoryValue: string) => {
   const nodesCategories = categories.filter((category: ICategory) => !!category && !category.isLeaf);
-  const parent = categories.find((category: ICategory) => isParent(category, categoryValue));
+  const parent = categories.find((category: ICategory) => isSearched(category, categoryValue));
   return !!parent
     ? parent
     : findParentRecursively(
@@ -20,10 +32,11 @@ export const findParentRecursively = (categories: ICategory[], categoryValue: st
     );
 }
 
-const isParent = (category: ICategory, categoryValue: string) => !!category && (
+const isSearched = (category: ICategory, categoryValue: string) => !!category && (
   category.value === categoryValue
   || (
     !category.isLeaf
+    && !!category.children
     && category.children.some((childCategory: ICategory) => childCategory.value === categoryValue)
   )
 );

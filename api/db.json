@@ -196,10 +196,23 @@
            "price":4.6,
            "unit":"szt",
            "currency":"PLN",
-           "category":{
-              "_parentPath":"test/elo",
-              "name":"jajca"
-           },
+            "category":{
+                "label": "Owoce, warzywa",
+                "value": "owoce-warzywa",
+                "children": [
+                    {
+                        "label": "Owoce",
+                        "value": "owoce",
+                        "children": [
+                            {
+                                "label": "Jabłka i gruszki",
+                                "value": "jablka-i-gruszki",
+                                "isLeaf": true
+                            }
+                        ]
+                    }
+                ]
+            },
            "averageOfRates": 4.5,
            "photos":[
               {
@@ -225,9 +238,22 @@
          "unit":"szt",
          "currency":"PLN",
          "category":{
-            "_parentPath":"test/elo",
-            "name":"jajca"
-         },
+            "label": "Owoce, warzywa",
+            "value": "owoce-warzywa",
+            "children": [
+                {
+                    "label": "Warzywa",
+                    "value": "warzywa",
+                    "children": [
+                        {
+                            "label": "Sałata i rzodkiewka",
+                            "value": "salata-i-rzodkiewka",
+                            "isLeaf": true
+                        }
+                    ]
+                }
+            ]
+        },
          "photos":[
             {
                "url":"../../assets/introdution-slides-bg-1.jpg"
@@ -253,9 +279,22 @@
          "unit":"szt",
          "currency":"PLN",
          "category":{
-            "_parentPath":"test/elo",
-            "name":"jajca"
-         },
+            "label": "Owoce, warzywa",
+            "value": "owoce-warzywa",
+            "children": [
+                {
+                    "label": "Warzywa",
+                    "value": "warzywa",
+                    "children": [
+                        {
+                            "label": "Pomidory, ogórki i papryka",
+                            "value": "pomidory-ogorki-i-papryka",
+                            "isLeaf": true
+                        }
+                    ]
+                }
+            ]
+        },
          "photos":[
             {
                "url":"../../assets/introdution-slides-bg-1.jpg"

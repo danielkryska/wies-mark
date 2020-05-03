@@ -1,30 +1,68 @@
-<!-- TODO search with known category, from URL -->
+
 <!-- TODO search by category, by writing and choosing -->
 <!-- TODO footer categories-bar -->
+<ng-container *ngIf="!actualCategory" >
+  <ion-header no-border>
+    <ion-searchbar
+      autocomplete="on"
+      autocorrect="on"
+      inputmode="text"
+      placeholder="Wpisz swoje miasto"
+      spellcheck="true"
+      debounce="500"
+      
+    ></ion-searchbar>
+    <!-- (ionChange)="searchForCity($event)"
+      (ionClear)="clearProposedCities()" -->
+  </ion-header>
 
+  <ion-content>
+    <ion-list>
+      <ion-item>
 
-<ion-content fullscreen>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer no-border transparent>
     <ion-toolbar>
-        <button class="header-btn" (click)="isGrid = !isGrid">
-          <a href="javascript:void(0)">
-            <ion-icon name="{{ isGrid ? 'grid' : 'list' }}"></ion-icon>
-          </a>
-        </button>
-        <button class="header-btn" >
-          <a href="javascript:void(0)">Kategorie</a>
-        </button>
-        <button class="header-btn" (click)="openFilters()">
-          <a href="javascript:void(0)">Filtry</a>
-        </button>
-        <button class="header-btn" (click)="openSortBy()">
-          <a href="javascript:void(0)">Sortuj</a>
-        </button>
+      <app-categories-bar [categories]="categories">
+      </app-categories-bar>
     </ion-toolbar>
+  </ion-footer>
+</ng-container>
 
-    <app-products-section
-      title="Kategoria"
-      [products]="marketProducts"
-      sortBy="popularity"
-      filters="[]"
-    ></app-products-section>
-</ion-content>
+<!-- TODO search with known category, from URL -->
+<ng-container *ngIf="!!actualCategory" >
+  <ion-header>
+    <ion-toolbar>
+      <ion-row>
+        <ion-col>
+          <button class="header-btn" >
+            <a href="javascript:void(0)">Kategorie</a>
+          </button>    
+        </ion-col>
+        <ion-col>
+          <button class="header-btn" (click)="openFilters()">
+            <a href="javascript:void(0)">Filtry</a>
+          </button>
+        </ion-col>
+        <ion-col>
+          <button class="header-btn" (click)="openSortBy()">
+            <a href="javascript:void(0)">Sortuj</a>
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-toolbar>
+  </ion-header>
+  
+  
+  <ion-content fullscreen>
+      <app-products-section
+        title="Kategoria"
+        [products]="marketProducts"
+        sortBy="popularity"
+        filters="[]"
+      ></app-products-section>
+  </ion-content>
+</ng-container>

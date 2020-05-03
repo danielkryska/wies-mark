@@ -5,7 +5,7 @@
             <ion-label>{{ sortType.groupLabel }}</ion-label>
           </ion-item-divider>
         <ion-item *ngFor="let sortTypeValue of sortType.values" >
-            <ion-label (click)="chooseSortType(sortTypeValue.value)">{{ sortTypeValue.label }}</ion-label>
+            <ion-label (click)="closeSelf(sortTypeValue.value)">{{ sortTypeValue.label }}</ion-label>
         </ion-item>
     </ng-container>
 </ion-list>

@@ -1,4 +1,3 @@
-import { CategoriesService } from './../../services/categories.service';
 import { ICategory } from '@shared/models/category.model';
 import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 import { CategoriesComponent } from '@shared/components/categories/categories.component';
@@ -12,8 +11,6 @@ import { ModalController } from '@ionic/angular';
 })
 export class CategoriesBarComponent {
   @Input() categories: ICategory[] = [];
-
-  @Output() selectedCategory: EventEmitter<ICategory> = new EventEmitter<ICategory>();
 
   constructor(private _modalController: ModalController) {}
 

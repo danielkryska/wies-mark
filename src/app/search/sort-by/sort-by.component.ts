@@ -1,6 +1,6 @@
 import { untilDestroyed } from 'ngx-take-until-destroy';
 import { SortTypesService } from '@shared/services/sort-types.service';
-import { Component, Input, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy, Output, EventEmitter } from '@angular/core';
 import { ISortType } from '@shared/models/sort-type.model';
 import { ModalController } from '@ionic/angular';
 import { ProductsService } from '@shared/services/products.service';
@@ -14,7 +14,6 @@ export class SortByComponent implements OnDestroy {
   public sortTypes: ISortType[] = [];
 
   constructor(
-    private _productsService: ProductsService,
     private _sortTypesService: SortTypesService,
     private _modalController: ModalController
   ) {
@@ -23,11 +22,7 @@ export class SortByComponent implements OnDestroy {
       .subscribe((sortTypes: ISortType[]) => this.sortTypes = sortTypes);
   }
 
-  chooseSortType(value: string) {
-    this._productsService.sortType = value;
-    this.closeSelf();
-  }
-  closeSelf = () => this._modalController.dismiss({dismissed: true});
+  closeSelf = (data = null) => this._modalController.dismiss(data);
 
   ngOnDestroy() {}
 }
