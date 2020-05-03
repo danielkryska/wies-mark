@@ -1,7 +1,7 @@
 export interface ICategory {
-    // meta
-    _parentPath: string;
-
-    // data
-    name: string;
-  }
+    // TODO Add UID (hash of category content)
+    label: string;
+    value: string;
+    children?: ICategory[];
+    isLeaf: boolean;
+}

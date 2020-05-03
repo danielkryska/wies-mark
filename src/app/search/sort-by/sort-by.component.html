@@ -1,1 +1,17 @@
-<p>sort-by works!</p>
+<ion-list lines="none">
+    <ion-list-header><h3>Sortuj według</h3></ion-list-header>
+    <ng-container *ngFor="let sortType of sortTypes" >
+        <ion-item-divider>
+            <ion-label>{{ sortType.groupLabel }}</ion-label>
+          </ion-item-divider>
+        <ion-item *ngFor="let sortTypeValue of sortType.values" >
+            <ion-label (click)="chooseSortType(sortTypeValue.value)">{{ sortTypeValue.label }}</ion-label>
+        </ion-item>
+    </ng-container>
+</ion-list>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" (click)="closeSelf()">Cofnij</ion-button>
+  </ion-toolbar>
+</ion-footer>

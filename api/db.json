@@ -1,5 +1,196 @@
 {
-    "products": [
+    "sortTypes": [
+        {
+           "groupLabel":"Popularność",
+           "values":[
+              {
+                 "label":"Dostawcy",
+                 "value":"popularityOfSuppliers"
+              },
+              {
+                 "label":"Produkty",
+                 "value":"popularityOfProducts"
+              }
+           ]
+        },
+        {
+           "groupLabel":"Cena",
+           "values":[
+              {
+                 "label":"Od najniższej",
+                 "value":"priceHighest"
+              },
+              {
+                 "label":"Od najwyższej",
+                 "value":"priceLowest"
+              }
+           ]
+        },
+        {
+           "groupLabel":"Data dodania",
+           "values":[
+              {
+                 "label":"Najnowsze",
+                 "value":"dateLatest"
+              }
+           ]
+        }
+     ],
+   "categories": [
+    {
+        "label": "Owoce, warzywa",
+        "value": "owoce-warzywa",
+        "children": [
+            {
+                "label": "Owoce",
+                "value": "owoce",
+                "children": [
+                    {
+                        "label": "Cytrusy",
+                        "value": "cytrusy",
+                        "isLeaf": true
+                    },
+                    {
+                        "label": "Jabłka i gruszki",
+                        "value": "jablka-i-gruszki",
+                        "isLeaf": true
+                    }
+                ]
+            },
+            {
+                "label": "Warzywa",
+                "value": "warzywa",
+                "children": [
+                    {
+                        "label": "Pomidory, ogórki i papryka",
+                        "value": "pomidory-ogorki-i-papryka",
+                        "isLeaf": true
+                    },
+                    {
+                        "label": "Sałata i rzodkiewka",
+                        "value": "salata-i-rzodkiewka",
+                        "isLeaf": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "label": "Owoce, warzywa",
+        "value": "owoce-warzywa",
+        "children": [
+            {
+                "label": "Owoce",
+                "value": "owoce",
+                "children": [
+                    {
+                        "label": "Cytrusy",
+                        "value": "cytrusy",
+                        "isLeaf": true
+                    },
+                    {
+                        "label": "Jabłka i gruszki",
+                        "value": "jablka-i-gruszki",
+                        "isLeaf": true
+                    }
+                ]
+            },
+            {
+                "label": "Warzywa",
+                "value": "warzywa",
+                "children": [
+                    {
+                        "label": "Pomidory, ogórki i papryka",
+                        "value": "pomidory-ogorki-i-papryka",
+                        "isLeaf": true
+                    },
+                    {
+                        "label": "Sałata i rzodkiewka",
+                        "value": "salata-i-rzodkiewka",
+                        "isLeaf": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "label": "Owoce, warzywa",
+        "value": "owoce-warzywa",
+        "children": [
+            {
+                "label": "Owoce",
+                "value": "owoce",
+                "children": [
+                    {
+                        "label": "Cytrusy",
+                        "value": "cytrusy",
+                        "isLeaf": true
+                    },
+                    {
+                        "label": "Jabłka i gruszki",
+                        "value": "jablka-i-gruszki",
+                        "isLeaf": true
+                    }
+                ]
+            },
+            {
+                "label": "Warzywa",
+                "value": "warzywa",
+                "children": [
+                    {
+                        "label": "Pomidory, ogórki i papryka",
+                        "value": "pomidory-ogorki-i-papryka",
+                        "isLeaf": true
+                    },
+                    {
+                        "label": "Sałata i rzodkiewka",
+                        "value": "salata-i-rzodkiewka",
+                        "isLeaf": true
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "label": "Owoce, warzywa",
+        "value": "owoce-warzywa",
+        "children": [
+            {
+                "label": "Owoce",
+                "value": "owoce",
+                "children": [
+                    {
+                        "label": "Cytrusy",
+                        "value": "cytrusy",
+                        "isLeaf": true
+                    },
+                    {
+                        "label": "Jabłka i gruszki",
+                        "value": "jablka-i-gruszki",
+                        "isLeaf": true
+                    }
+                ]
+            },
+            {
+                "label": "Warzywa",
+                "value": "warzywa",
+                "children": [
+                    {
+                        "label": "Pomidory, ogórki i papryka",
+                        "value": "pomidory-ogorki-i-papryka",
+                        "isLeaf": true
+                    },
+                    {
+                        "label": "Sałata i rzodkiewka",
+                        "value": "salata-i-rzodkiewka",
+                        "isLeaf": true
+                    }
+                ]
+            }
+        ]
+    }
+   ],
+   "products": [
         {
            "title":"Jajca 1",
            "price":4.6,

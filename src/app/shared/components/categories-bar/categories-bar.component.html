@@ -1,1 +1,19 @@
-<p>categories-bar works!</p>
+<div class="container">
+    <div class="scroll" scrollX="true">
+        <a 
+            class="scroll-item"
+            *ngFor="let category of categories" 
+            [routerLink]="['/zakladki/szukaj']" 
+            [queryParams]="{selectedCategory: category.value}"
+        >
+            <span (click)="selectedCategory.emit(category)">
+                {{ category.label }}
+            </span>
+        </a>
+    </div>
+    <div class="all-categories">
+        <button class="all-categories-btn" (click)="openCategories()">
+            <a href="javascript:void(0)">Wszystkie kategorie</a>
+        </button>
+    </div>
+</div>

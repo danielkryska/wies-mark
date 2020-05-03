@@ -19,5 +19,4 @@ export class FiltersComponent {
 
   applyFilters = () => this._productsService.filters = this.filters;
   closeSelf = () => this._modalController.dismiss({dismissed: true});
-
 }

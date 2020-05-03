@@ -1,0 +1,12 @@
+ion-list {
+    padding: 0px !important;
+
+    ion-item-divider {
+        --ion-background-color: #e9ecf0 !important;
+        color: black;
+    }
+}
+
+ion-footer {
+    padding: 10px;
+}

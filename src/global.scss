@@ -28,6 +28,10 @@
 /* Ngx stars theme */
 @import '~ngx-bar-rating/themes/br-default-theme.css';
 
+a {
+    text-decoration: none;
+}
+
 /* Fix for slides component */
 .swiper-container {
     width: 100%;

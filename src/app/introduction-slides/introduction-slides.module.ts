@@ -4,16 +4,13 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { IntroductionSlidesPageRoutingModule } from './introduction-slides-routing.module';
-
 import { IntroductionSlidesPage } from './introduction-slides.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule,
-    IntroductionSlidesPageRoutingModule
+    IonicModule
   ],
   declarations: [IntroductionSlidesPage]
 })

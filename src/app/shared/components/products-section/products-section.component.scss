@@ -1,0 +1,44 @@
+.container {
+    .section-title {
+        margin: 16px 18px;
+    }
+
+    ion-list {
+        padding: 0px;
+        ion-avatar {
+            width: 85px;
+            height: 85px;
+        
+            img {
+                border-radius: 0px;
+            }
+        }
+        
+        bar-rating, span {
+            display: inline-block;
+        }
+        
+        ion-item:nth-child(odd) {
+            --ion-background-color: #e9ecf0 !important;
+        }
+
+        ion-item {
+            .floating-btn {
+                position: absolute;
+                font-size: 25px;
+            }
+
+            .basket-floating-btn {
+                color: green;
+                right: 10px;
+                top: 50px;
+            }
+
+            .favorite-floating-btn {
+                color: #EDB867;
+                top: 10px;
+                right: 10px;
+            }
+        }
+    }
+}
