@@ -3,12 +3,12 @@
         <h3>Wybierz kategorię</h3>
     </ion-list-header>
     <ion-list-header *ngIf="!!actualCategory" >
-        <a href="javascript:void(0)" (click)="searchCategory(actualCategory)">
+        <a href="javascript:void(0)" (click)="chooseParentCategory(actualCategory)">
             <h4>{{ actualCategory.label }}</h4>
         </a>
     </ion-list-header>
-    <ion-item *ngFor="let category of categoriesToDisplay" >
-        <a href="javascript:void(0)" (click)="chooseCategory(category)">
+    <ion-item *ngFor="let category of !!actualCategory && actualCategory.children || categories" >
+        <a href="javascript:void(0)" (click)="chooseSubCategory(category)">
             <ion-label>{{ category.label }}</ion-label>
         </a>
     </ion-item>
@@ -27,7 +27,7 @@
             <ion-button expand="block" (click)="closeSelf()">Cofnij</ion-button>
           </ion-col>
           <ion-col>
-            <ion-button expand="block" [disabled]="!actualCategory" (click)="searchCategory(actualCategory)">Wybierz</ion-button>
+            <ion-button expand="block" [disabled]="!actualCategory" (click)="goToCategory(actualCategory)">Wybierz</ion-button>
           </ion-col>
       </ion-row>
     </ion-toolbar>

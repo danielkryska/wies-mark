@@ -20,15 +20,14 @@ export interface IMarketProduct extends Partial<IProduct> {
 export interface IProduct {
     title: string;
     price: number;
-    currency: string;
     unit: string;
     category: ICategory;
     photos: IPhoto[];
+    isEcological: boolean;
     isFavorite: boolean; // For this specific user
-    description: string;
     supplier: IMarketSupplier;
-    composition?: ICategory[];
-    storageMethods?: any[];
+    currency: string;
+    description?: string;
     opinions?: IOpinion[];
     inBasket?: boolean;
     // TODO Storage methods

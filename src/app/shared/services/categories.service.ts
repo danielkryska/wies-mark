@@ -9,7 +9,6 @@ import * as _ from 'lodash';
 
 export const isBelongingTo = (source: ICategory, actual: ICategory): boolean => {
   const isBelonging = isSearched(source, actual.value);
-  console.log(source, actual)
   if (!isBelonging && !source.isLeaf && !!source.children) {
     return source.children
       .map((category: ICategory) => isBelongingTo(category, actual))
@@ -17,9 +16,9 @@ export const isBelongingTo = (source: ICategory, actual: ICategory): boolean => 
   }
 
   return isBelonging;
-}
+};
 
-export const findParentRecursively = (categories: ICategory[], categoryValue: string) => {
+export const findParentRecursively = (categories: ICategory[], categoryValue: string): ICategory => {
   const nodesCategories = categories.filter((category: ICategory) => !!category && !category.isLeaf);
   const parent = categories.find((category: ICategory) => isSearched(category, categoryValue));
   return !!parent
@@ -29,6 +28,33 @@ export const findParentRecursively = (categories: ICategory[], categoryValue: st
         .map((category: ICategory) => category.children)
         .reduce((accumulator, categories) => accumulator = [...accumulator, ...categories], []),
       categoryValue
+    );
+};
+
+export const findCategoryRecursively = (categories: ICategory[], categoryValue: string): ICategory => {
+  const searchedCategory = categories.find((category: ICategory) => !!category && category.value === categoryValue);
+  return !!searchedCategory
+    ? searchedCategory
+    : findCategoryRecursively(
+      categories
+        .map((category: ICategory) => category.children)
+        .reduce((accumulator, categories) => accumulator = [...accumulator, ...categories], []),
+      categoryValue
+    );
+}
+
+export const unpackCategories = (categories: ICategory[]) => {
+  return categories
+    .reduce(
+      (acc, category) => {
+        acc.push(category);
+        if (!category.isLeaf) {
+          acc.push(...unpackCategories(category.children));
+        }
+
+        return acc;
+      },
+      []
     );
 }
 
@@ -51,6 +77,27 @@ export class CategoriesService {
     return this._http
       .get<ICategory[]>(`${environment.API_URL}/categories`);
   }
+
+  get flatCategories$(): Observable<ICategory[]> {
+    return this.categories$
+      .pipe(
+        map((categories: ICategory[]) => unpackCategories(categories))
+      );
+  }
+
+  findCategoryBy = (categoryValue: string): Promise<ICategory | null> => this.categories$
+    .pipe(
+      map((categories) => {
+        const searchedCategory = findCategoryRecursively(categories, categoryValue);
+        if (!searchedCategory) {
+          // TODO Global error handling
+          throw new Error(`Parent couldn't be found, value: ${categoryValue}`);
+        }
+
+        return searchedCategory;
+      })
+    )
+    .toPromise()
 
   findParentCategoryBy = (categoryValue: string): Promise<ICategory | null> => this.categories$
     .pipe(

@@ -1,6 +1,9 @@
 <ion-header>
   <a routerLink="/zakladki/szukaj">
-    <ion-searchbar disabled="true"></ion-searchbar>
+    <ion-searchbar 
+      placeholder="Jakiego produktu szukasz?"
+      disabled="true"
+    ></ion-searchbar>
   </a>
   <app-categories-bar [categories]="categories"></app-categories-bar>
 </ion-header>

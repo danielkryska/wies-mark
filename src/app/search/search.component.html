@@ -1,26 +1,31 @@
 
 <!-- TODO search by category, by writing and choosing -->
-<!-- TODO footer categories-bar -->
 <ng-container *ngIf="!actualCategory" >
   <ion-header no-border>
     <ion-searchbar
+      #searchbar
       autocomplete="on"
       autocorrect="on"
       inputmode="text"
-      placeholder="Wpisz swoje miasto"
+      placeholder="Jakiego produktu szukasz?"
       spellcheck="true"
       debounce="500"
-      
+      (ionChange)="searchForCategory($event)"
+      (ionClear)="clearProposedCategories()" 
     ></ion-searchbar>
-    <!-- (ionChange)="searchForCity($event)"
-      (ionClear)="clearProposedCities()" -->
   </ion-header>
 
   <ion-content>
-    <ion-list>
-      <ion-item>
-
-      </ion-item>
+    <ion-list lines="none">
+      <a
+        *ngFor="let category of proposedCategories"
+        [routerLink]="['/zakladki/szukaj']" 
+        [queryParams]="{selectedCategory: category.value}"
+      >
+        <ion-item >
+          {{ category.label }}
+        </ion-item>
+      </a>
     </ion-list>
   </ion-content>
 
@@ -32,14 +37,14 @@
   </ion-footer>
 </ng-container>
 
-<!-- TODO search with known category, from URL -->
+<!-- search with known category, from URL -->
 <ng-container *ngIf="!!actualCategory" >
   <ion-header>
     <ion-toolbar>
       <ion-row>
         <ion-col>
           <button class="header-btn" >
-            <a href="javascript:void(0)">Kategorie</a>
+            <a href="javascript:void(0)" (click)="openCategories()">Kategorie</a>
           </button>    
         </ion-col>
         <ion-col>
@@ -56,10 +61,9 @@
     </ion-toolbar>
   </ion-header>
   
-  
   <ion-content fullscreen>
       <app-products-section
-        title="Kategoria"
+        [title]="'Produkty z kategori: ' + actualCategory.label"
         [products]="marketProducts"
         sortBy="popularity"
         filters="[]"
