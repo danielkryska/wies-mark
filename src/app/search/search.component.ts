@@ -62,6 +62,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         ) {
           this.parentCategory = null;
           this.actualCategory = null;
+          this.proposedCategories = [];
           return;
         }
 
