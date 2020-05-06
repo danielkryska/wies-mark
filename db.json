@@ -140,10 +140,10 @@
            "averageOfRates": 4.5,
            "photos":[
               {
-                 "url":"../../assets/introdution-slides-bg-1.jpg"
+                 "url":"assets/introdution-slides-bg-1.jpg"
               },
               {
-                 "url":"../../assets/introdution-slides-bg-1.jpg"
+                 "url":"assets/introdution-slides-bg-1.jpg"
               }
            ],
            "isFavorite":true,
@@ -180,10 +180,10 @@
         },
          "photos":[
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             },
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             }
          ],
          "averageOfRates": 3.5,
@@ -221,10 +221,10 @@
         },
          "photos":[
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             },
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             }
          ],
          "isFavorite":true,
