@@ -1,4 +1,4 @@
-import { map, reduce } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -37,6 +37,7 @@ export const findCategoryRecursively = (categories: ICategory[], categoryValue: 
     ? searchedCategory
     : findCategoryRecursively(
       categories
+        .filter((category: ICategory) => !!category && !category.isLeaf)
         .map((category: ICategory) => category.children)
         .reduce((accumulator, categories) => accumulator = [...accumulator, ...categories], []),
       categoryValue

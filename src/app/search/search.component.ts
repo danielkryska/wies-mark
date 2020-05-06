@@ -53,7 +53,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       .pipe(untilDestroyed(this))
       .subscribe(async (params) => {
         const categoryValue = params.get('selectedCategory');
-        
+
         if (
           !!categoryValue
           && !!this.actualCategory
@@ -88,7 +88,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     const searchValue: string = input.target.value;
     !!searchValue && searchValue.trim() !== ''
       ? this.proposedCategories = this._flatCategories
-        .filter((category: ICategory) => category.label.toLocaleLowerCase().indexOf(searchValue) > -1)
+        .filter((category: ICategory) => category.label.toLocaleLowerCase().indexOf(searchValue.toLowerCase()) > -1)
           .slice(0, 10)
       : this.clearProposedCategories();
   }
