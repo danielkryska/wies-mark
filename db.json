@@ -38,158 +38,82 @@
      ],
    "categories": [
     {
-        "label": "Owoce, warzywa",
-        "value": "owoce-warzywa",
-        "children": [
-            {
-                "label": "Owoce",
-                "value": "owoce",
-                "children": [
-                    {
-                        "label": "Cytrusy",
-                        "value": "cytrusy",
-                        "isLeaf": true
-                    },
-                    {
-                        "label": "Jabłka i gruszki",
-                        "value": "jablka-i-gruszki",
-                        "isLeaf": true
-                    }
-                ]
-            },
-            {
-                "label": "Warzywa",
-                "value": "warzywa",
-                "children": [
-                    {
-                        "label": "Pomidory, ogórki i papryka",
-                        "value": "pomidory-ogorki-i-papryka",
-                        "isLeaf": true
-                    },
-                    {
-                        "label": "Sałata i rzodkiewka",
-                        "value": "salata-i-rzodkiewka",
-                        "isLeaf": true
-                    }
-                ]
-            }
-        ]
+      "label": "Owoce, warzywa",
+      "value": "owoce-warzywa",
+      "children": [
+        {
+          "label": "Owoce",
+          "value": "owoce",
+          "isLeaf": true
+        },
+        {
+          "label": "Warzywa",
+          "value": "warzywa",
+          "isLeaf": true
+        },
+        {
+          "label": "Sałatki",
+          "value": "salatki",
+          "isLeaf": true
+        },
+        {
+          "label": "Zioła",
+          "value": "ziola",
+          "isLeaf": true
+        },
+        {
+          "label": "Grzyby",
+          "value": "grzyby",
+          "isLeaf": true
+        },
+        {
+          "label": "Orzechy i ziarniste",
+          "value": "orzechy-i-ziarniste",
+          "isLeaf": true
+        },
+        {
+          "label": "Owoce suszone i bakalie na wagę",
+          "value": "owoce-suszone-i-bakalie-na-wage",
+          "isLeaf": true
+        }
+      ]
     },
     {
-        "label": "Owoce, warzywa",
-        "value": "owoce-warzywa",
-        "children": [
-            {
-                "label": "Owoce",
-                "value": "owoce",
-                "children": [
-                    {
-                        "label": "Cytrusy",
-                        "value": "cytrusy",
-                        "isLeaf": true
-                    },
-                    {
-                        "label": "Jabłka i gruszki",
-                        "value": "jablka-i-gruszki",
-                        "isLeaf": true
-                    }
-                ]
-            },
-            {
-                "label": "Warzywa",
-                "value": "warzywa",
-                "children": [
-                    {
-                        "label": "Pomidory, ogórki i papryka",
-                        "value": "pomidory-ogorki-i-papryka",
-                        "isLeaf": true
-                    },
-                    {
-                        "label": "Sałata i rzodkiewka",
-                        "value": "salata-i-rzodkiewka",
-                        "isLeaf": true
-                    }
-                ]
-            }
-        ]
+      "label": "Nabiał i jaja",
+      "value": "nabial-i-jaja",
+      "isLeaf": true
     },
     {
-        "label": "Owoce, warzywa",
-        "value": "owoce-warzywa",
-        "children": [
-            {
-                "label": "Owoce",
-                "value": "owoce",
-                "children": [
-                    {
-                        "label": "Cytrusy",
-                        "value": "cytrusy",
-                        "isLeaf": true
-                    },
-                    {
-                        "label": "Jabłka i gruszki",
-                        "value": "jablka-i-gruszki",
-                        "isLeaf": true
-                    }
-                ]
-            },
-            {
-                "label": "Warzywa",
-                "value": "warzywa",
-                "children": [
-                    {
-                        "label": "Pomidory, ogórki i papryka",
-                        "value": "pomidory-ogorki-i-papryka",
-                        "isLeaf": true
-                    },
-                    {
-                        "label": "Sałata i rzodkiewka",
-                        "value": "salata-i-rzodkiewka",
-                        "isLeaf": true
-                    }
-                ]
-            }
-        ]
+      "label": "Pieczywo, cukiernia",
+      "value": "pieczywo-cukiernia",
+      "isLeaf": true
     },
     {
-        "label": "Owoce, warzywa",
-        "value": "owoce-warzywa",
-        "children": [
-            {
-                "label": "Owoce",
-                "value": "owoce",
-                "children": [
-                    {
-                        "label": "Cytrusy",
-                        "value": "cytrusy",
-                        "isLeaf": true
-                    },
-                    {
-                        "label": "Jabłka i gruszki",
-                        "value": "jablka-i-gruszki",
-                        "isLeaf": true
-                    }
-                ]
-            },
-            {
-                "label": "Warzywa",
-                "value": "warzywa",
-                "children": [
-                    {
-                        "label": "Pomidory, ogórki i papryka",
-                        "value": "pomidory-ogorki-i-papryka",
-                        "isLeaf": true
-                    },
-                    {
-                        "label": "Sałata i rzodkiewka",
-                        "value": "salata-i-rzodkiewka",
-                        "isLeaf": true
-                    }
-                ]
-            }
-        ]
+      "label": "Mięso, ryby, garmaż",
+      "value": "mieso-ryby-garmaz",
+      "isLeaf": true
+    },
+    {
+      "label": "Przetwory",
+      "value": "przetwory",
+      "isLeaf": true
+    },
+    {
+      "label": "Wyroby pszczelarskie",
+      "value": "pszczoly",
+      "isLeaf": true
+    },
+    {
+      "label": "Kwiaty cięte, doniczkowe, sadzonki",
+      "value": "kwiaty",
+      "isLeaf": true
+    },
+    {
+      "label": "Inne",
+      "value": "inne",
+      "isLeaf": true
     }
-   ],
+  ],
    "products": [
         {
            "title":"Jajca 1",
