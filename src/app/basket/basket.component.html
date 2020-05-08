@@ -63,6 +63,19 @@
             </ion-label>
         </ion-item>
 
+        <ng-container *ngIf="isSummary">
+            <ion-item>
+                <a href="javascript:void(0)">
+                    <small>Wyślij wiadomość (opcjonalne)</small>
+                </a>
+            </ion-item>
+            <ion-item>
+                <a href="javascript:void(0)">
+                    <small>Wybierz typ płatności</small>
+                </a>
+            </ion-item>
+        </ng-container>
+
         <ion-item>
             <a
                 *ngIf="isSummary"  
