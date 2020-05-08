@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 export class ProductsService {
   constructor(private _http: HttpClient) {}
 
-  public getProducts = (
+  public getProducts$ = (
     filters: ((product: IMarketProduct) => boolean)[] = [],
     sortType: string = DEFAULT_SORT_TYPE
   ): Observable<IMarketProduct[]> => this._http

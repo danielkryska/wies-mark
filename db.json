@@ -237,6 +237,133 @@
             "opinionsCount": 90,
             "averageOfRates": 3.9
          }
+      },
+
+      {
+         "title":"Jajca 7",
+         "price":3.9,
+         "unit":"szt",
+         "currency":"PLN",
+         "category":{
+            "label": "Owoce, warzywa",
+            "value": "owoce-warzywa",
+            "children": [
+                {
+                    "label": "Warzywa",
+                    "value": "warzywa",
+                    "children": [
+                        {
+                            "label": "Pomidory, ogórki i papryka",
+                            "value": "pomidory-ogorki-i-papryka",
+                            "isLeaf": true
+                        }
+                    ]
+                }
+            ]
+        },
+         "photos":[
+            {
+               "url":"../../assets/introdution-slides-bg-1.jpg"
+            },
+            {
+               "url":"../../assets/introdution-slides-bg-1.jpg"
+            }
+         ],
+         "isFavorite":true,
+         "inBasket": true,
+         "opinionsCount": 12,
+         "averageOfRates": 3.7,
+         "supplier":{
+            "id":"dadadadawdad",
+            "name":"Dziadek",
+            "forename":"Mietek",
+            "opinionsCount": 90,
+            "averageOfRates": 3.9
+         }
+      },
+      {
+         "title":"Dorodne winogrona",
+         "price":3.9,
+         "unit":"szt",
+         "currency":"PLN",
+         "category":{
+            "label": "Owoce, warzywa",
+            "value": "owoce-warzywa",
+            "children": [
+                {
+                    "label": "Warzywa",
+                    "value": "warzywa",
+                    "children": [
+                        {
+                            "label": "Pomidory, ogórki i papryka",
+                            "value": "pomidory-ogorki-i-papryka",
+                            "isLeaf": true
+                        }
+                    ]
+                }
+            ]
+        },
+         "photos":[
+            {
+               "url":"../../assets/introdution-slides-bg-1.jpg"
+            },
+            {
+               "url":"../../assets/introdution-slides-bg-1.jpg"
+            }
+         ],
+         "inBasket": true,
+         "isFavorite":true,
+         "opinionsCount": 12,
+         "averageOfRates": 3.7,
+         "supplier":{
+            "id":"dadadadawdad",
+            "name":"Jolo",
+            "forename":"Mordo",
+            "opinionsCount": 90,
+            "averageOfRates": 3.9
+         }
+      },
+      {
+         "title":"Cytryny",
+         "price":3.9,
+         "unit":"szt",
+         "currency":"PLN",
+         "category":{
+            "label": "Owoce, warzywa",
+            "value": "owoce-warzywa",
+            "children": [
+                {
+                    "label": "Warzywa",
+                    "value": "warzywa",
+                    "children": [
+                        {
+                            "label": "Pomidory, ogórki i papryka",
+                            "value": "pomidory-ogorki-i-papryka",
+                            "isLeaf": true
+                        }
+                    ]
+                }
+            ]
+        },
+         "photos":[
+            {
+               "url":"../../assets/introdution-slides-bg-1.jpg"
+            },
+            {
+               "url":"../../assets/introdution-slides-bg-1.jpg"
+            }
+         ],
+         "inBasket": true,
+         "isFavorite":true,
+         "opinionsCount": 12,
+         "averageOfRates": 3.7,
+         "supplier":{
+            "id":"dadadadawdad",
+            "name":"Jolo",
+            "forename":"Mordo",
+            "opinionsCount": 90,
+            "averageOfRates": 3.9
+         }
       }
      ],
      "cities": []

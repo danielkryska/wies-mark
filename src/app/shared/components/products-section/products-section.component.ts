@@ -8,12 +8,7 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class ProductsSectionComponent {
   @Input() title: string;
-
-  // IMPORTANT!! Somehow fetching data from service don't propagate changes
-  // in view, if you found solution, just encapsulate this component to fetch
-  // it's data by it self and remove this input
   @Input() products: IMarketProduct[] = [];
 
-  @Input() sortBy: string;
-  @Input() filters: any[] = [];
+  @Input() isChecklist: boolean;
 }

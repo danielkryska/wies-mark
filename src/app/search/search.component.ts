@@ -39,7 +39,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this._productsService.getProducts()
+    this._productsService.getProducts$()
       .pipe(untilDestroyed(this))
       .subscribe((marketProducts: IMarketProduct[]) => {
         this.marketProducts = marketProducts;
@@ -70,7 +70,7 @@ export class SearchComponent implements OnInit, OnDestroy {
           this.parentCategory = await this._categoriesService.findParentCategoryBy(categoryValue);
           this.actualCategory = await this._categoriesService.findCategoryBy(categoryValue);
           const filterBy = (product: IMarketProduct) => isBelongingTo(product.category, this.actualCategory);
-          this._productsService.getProducts([filterBy], DEFAULT_SORT_TYPE)
+          this._productsService.getProducts$([filterBy], DEFAULT_SORT_TYPE)
             .pipe(untilDestroyed(this))
             .subscribe((marketProducts: IMarketProduct[]) => {
               this.marketProducts = marketProducts;
@@ -129,7 +129,7 @@ export class SearchComponent implements OnInit, OnDestroy {
       .then((data) => {
         this.actualSortType = data.data;
         const filterBy = (product: IMarketProduct) => isBelongingTo(product.category, this.actualCategory);
-        this._productsService.getProducts(!!this.actualCategory ? [filterBy] : [], this.actualSortType)
+        this._productsService.getProducts$(!!this.actualCategory ? [filterBy] : [], this.actualSortType)
           .pipe(untilDestroyed(this))
           .subscribe((marketProducts: IMarketProduct[]) => {
             this.marketProducts = marketProducts;

@@ -13,11 +13,7 @@
                 border-radius: 0px;
             }
         }
-        
-        bar-rating, span {
-            display: inline-block;
-        }
-        
+
         ion-item:nth-child(odd) {
             --ion-background-color: rgba(0, 0, 0, 0.03) !important;
         }

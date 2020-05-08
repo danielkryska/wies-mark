@@ -23,7 +23,7 @@ export class MarketPage implements OnDestroy {
     private _categoriesService: CategoriesService,
     public _modalController: ModalController
   ) {
-    this._productsService.getProducts()
+    this._productsService.getProducts$()
       .pipe(untilDestroyed(this))
       .subscribe((marketProducts: IMarketProduct[]) => {
         this.marketProducts = marketProducts;
@@ -36,7 +36,7 @@ export class MarketPage implements OnDestroy {
       });
   }
 
-  public sortProductsBy = (e): void => this._productsService.getProducts([], e.target.value)
+  public sortProductsBy = (e): void => this._productsService.getProducts$([], e.target.value)
     .pipe(untilDestroyed(this))
     .subscribe((marketProducts: IMarketProduct[]) => {
       this.marketProducts = marketProducts;
