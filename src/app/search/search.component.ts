@@ -19,7 +19,7 @@ import { Location } from '@angular/common';
 })
 export class SearchComponent implements OnInit, OnDestroy {
   @ViewChild('searchbar') searchbar: IonSearchbar;
-  
+
   public marketProducts: IMarketProduct[];
 
   public actualSortType: string;

@@ -146,11 +146,12 @@
                  "url":"../../assets/introdution-slides-bg-1.jpg"
               }
            ],
+           "inBasket": true,
            "isFavorite":true,
            "opinionsCount": 2,
            "supplier":{
               "id":"dadadadawdad",
-              "name":"Jasiu",
+              "name":"Ziutek",
               "forename":"Kowalski",
               "opinionsCount": 12,
               "averageOfRates": 4.0
@@ -188,11 +189,12 @@
          ],
          "averageOfRates": 3.5,
          "isFavorite":true,
+         "inBasket": true,
          "opinionsCount": 70,
          "supplier":{
             "id":"dadadadawdad",
-            "name":"Jasiu",
-            "forename":"Kowalski",
+            "name":"Alojzy",
+            "forename":"Banan",
             "opinionsCount": 300,
             "averageOfRates": 4.5
          }

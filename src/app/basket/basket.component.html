@@ -58,6 +58,14 @@
             </ion-label>
         </ion-item>
 
+        <ion-item>
+            <a 
+                [routerLink]="['/zakladki/szukaj']" 
+                [queryParams]="{supplier: supplier.key}"
+            >
+                <small>Inne produkty sprzedającego</small>
+            </a>
+        </ion-item>
     </ion-list>
 </ion-content>
 

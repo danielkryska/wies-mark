@@ -115,256 +115,216 @@
     }
   ],
    "products": [
-        {
-           "title":"Jajca 1",
-           "price":4.6,
-           "unit":"szt",
-           "currency":"PLN",
-            "category":{
-                "label": "Owoce, warzywa",
-                "value": "owoce-warzywa",
-                "children": [
-                    {
-                        "label": "Owoce",
-                        "value": "owoce",
-                        "children": [
-                            {
-                                "label": "Jabłka i gruszki",
-                                "value": "jablka-i-gruszki",
-                                "isLeaf": true
-                            }
-                        ]
-                    }
-                ]
+      {
+         "title":"Jajca 1",
+         "price":4.6,
+         "unit":"szt",
+         "currency":"PLN",
+          "category":{
+              "label": "Owoce, warzywa",
+              "value": "owoce-warzywa",
+              "children": [
+                  {
+                      "label": "Owoce",
+                      "value": "owoce",
+                      "children": [
+                          {
+                              "label": "Jabłka i gruszki",
+                              "value": "jablka-i-gruszki",
+                              "isLeaf": true
+                          }
+                      ]
+                  }
+              ]
+          },
+         "averageOfRates": 4.5,
+         "photos":[
+            {
+               "url":"../../assets/introdution-slides-bg-1.jpg"
             },
-           "averageOfRates": 4.5,
-           "photos":[
+            {
+               "url":"../../assets/introdution-slides-bg-1.jpg"
+            }
+         ],
+         "inBasket": true,
+         "isFavorite":true,
+         "opinionsCount": 2,
+         "supplier":{
+            "id":"dadadadawdad",
+            "name":"Ziutek",
+            "forename":"Kowalski",
+            "opinionsCount": 12,
+            "averageOfRates": 4.0
+         }
+      },
+      {
+       "title":"Jajca 5",
+       "price":3.0,
+       "unit":"szt",
+       "currency":"PLN",
+       "category":{
+          "label": "Owoce, warzywa",
+          "value": "owoce-warzywa",
+          "children": [
               {
-                 "url":"assets/introdution-slides-bg-1.jpg"
-              },
-              {
-                 "url":"assets/introdution-slides-bg-1.jpg"
+                  "label": "Warzywa",
+                  "value": "warzywa",
+                  "children": [
+                      {
+                          "label": "Sałata i rzodkiewka",
+                          "value": "salata-i-rzodkiewka",
+                          "isLeaf": true
+                      }
+                  ]
               }
-           ],
-           "isFavorite":true,
-           "opinionsCount": 2,
-           "supplier":{
-              "id":"dadadadawdad",
-              "name":"Jasiu",
-              "forename":"Kowalski",
-              "opinionsCount": 12,
-              "averageOfRates": 4.0
-           }
-        },
-        {
-         "title":"Jajca 5",
-         "price":3.0,
-         "unit":"szt",
-         "currency":"PLN",
-         "category":{
-            "label": "Owoce, warzywa",
-            "value": "owoce-warzywa",
-            "children": [
-                {
-                    "label": "Warzywa",
-                    "value": "warzywa",
-                    "children": [
-                        {
-                            "label": "Sałata i rzodkiewka",
-                            "value": "salata-i-rzodkiewka",
-                            "isLeaf": true
-                        }
-                    ]
-                }
-            ]
-        },
-         "photos":[
-            {
-               "url":"assets/introdution-slides-bg-1.jpg"
-            },
-            {
-               "url":"assets/introdution-slides-bg-1.jpg"
-            }
-         ],
-         "averageOfRates": 3.5,
-         "isFavorite":true,
-         "opinionsCount": 70,
-         "supplier":{
-            "id":"dadadadawdad",
-            "name":"Jasiu",
-            "forename":"Kowalski",
-            "opinionsCount": 300,
-            "averageOfRates": 4.5
-         }
+          ]
       },
-      {
-         "title":"Jajca 7",
-         "price":3.9,
-         "unit":"szt",
-         "currency":"PLN",
-         "category":{
-            "label": "Owoce, warzywa",
-            "value": "owoce-warzywa",
-            "children": [
-                {
-                    "label": "Warzywa",
-                    "value": "warzywa",
-                    "children": [
-                        {
-                            "label": "Pomidory, ogórki i papryka",
-                            "value": "pomidory-ogorki-i-papryka",
-                            "isLeaf": true
-                        }
-                    ]
-                }
-            ]
-        },
-         "photos":[
-            {
-               "url":"assets/introdution-slides-bg-1.jpg"
-            },
-            {
-               "url":"assets/introdution-slides-bg-1.jpg"
-            }
-         ],
-         "isFavorite":true,
-         "opinionsCount": 12,
-         "averageOfRates": 3.7,
-         "supplier":{
-            "id":"dadadadawdad",
-            "name":"Jasiu",
-            "forename":"Kowalski",
-            "opinionsCount": 90,
-            "averageOfRates": 3.9
-         }
+       "photos":[
+          {
+             "url":"../../assets/introdution-slides-bg-1.jpg"
+          },
+          {
+             "url":"../../assets/introdution-slides-bg-1.jpg"
+          }
+       ],
+       "averageOfRates": 3.5,
+       "isFavorite":true,
+       "inBasket": true,
+       "opinionsCount": 70,
+       "supplier":{
+          "id":"dadadadawdad",
+          "name":"Alojzy",
+          "forename":"Banan",
+          "opinionsCount": 300,
+          "averageOfRates": 4.5
+       }
+    },
+    {
+       "title":"Jajca 7",
+       "price":3.9,
+       "unit":"szt",
+       "currency":"PLN",
+       "category":{
+          "label": "Owoce, warzywa",
+          "value": "owoce-warzywa",
+          "children": [
+              {
+                  "label": "Warzywa",
+                  "value": "warzywa",
+                  "children": [
+                      {
+                          "label": "Pomidory, ogórki i papryka",
+                          "value": "pomidory-ogorki-i-papryka",
+                          "isLeaf": true
+                      }
+                  ]
+              }
+          ]
       },
-
-      {
-         "title":"Jajca 7",
-         "price":3.9,
-         "unit":"szt",
-         "currency":"PLN",
-         "category":{
-            "label": "Owoce, warzywa",
-            "value": "owoce-warzywa",
-            "children": [
-                {
-                    "label": "Warzywa",
-                    "value": "warzywa",
-                    "children": [
-                        {
-                            "label": "Pomidory, ogórki i papryka",
-                            "value": "pomidory-ogorki-i-papryka",
-                            "isLeaf": true
-                        }
-                    ]
-                }
-            ]
-        },
-         "photos":[
-            {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
-            },
-            {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
-            }
-         ],
-         "isFavorite":true,
-         "inBasket": true,
-         "opinionsCount": 12,
-         "averageOfRates": 3.7,
-         "supplier":{
-            "id":"dadadadawdad",
-            "name":"Dziadek",
-            "forename":"Mietek",
-            "opinionsCount": 90,
-            "averageOfRates": 3.9
-         }
+       "photos":[
+          {
+             "url":"../../assets/introdution-slides-bg-1.jpg"
+          },
+          {
+             "url":"../../assets/introdution-slides-bg-1.jpg"
+          }
+       ],
+       "isFavorite":true,
+       "inBasket": true,
+       "opinionsCount": 12,
+       "averageOfRates": 3.7,
+       "supplier":{
+          "id":"dadadadawdad",
+          "name":"Dziadek",
+          "forename":"Mietek",
+          "opinionsCount": 90,
+          "averageOfRates": 3.9
+       }
+    },
+    {
+       "title":"Dorodne winogrona",
+       "price":3.9,
+       "unit":"szt",
+       "currency":"PLN",
+       "category":{
+          "label": "Owoce, warzywa",
+          "value": "owoce-warzywa",
+          "children": [
+              {
+                  "label": "Warzywa",
+                  "value": "warzywa",
+                  "children": [
+                      {
+                          "label": "Pomidory, ogórki i papryka",
+                          "value": "pomidory-ogorki-i-papryka",
+                          "isLeaf": true
+                      }
+                  ]
+              }
+          ]
       },
-      {
-         "title":"Dorodne winogrona",
-         "price":3.9,
-         "unit":"szt",
-         "currency":"PLN",
-         "category":{
-            "label": "Owoce, warzywa",
-            "value": "owoce-warzywa",
-            "children": [
-                {
-                    "label": "Warzywa",
-                    "value": "warzywa",
-                    "children": [
-                        {
-                            "label": "Pomidory, ogórki i papryka",
-                            "value": "pomidory-ogorki-i-papryka",
-                            "isLeaf": true
-                        }
-                    ]
-                }
-            ]
-        },
-         "photos":[
-            {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
-            },
-            {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
-            }
-         ],
-         "inBasket": true,
-         "isFavorite":true,
-         "opinionsCount": 12,
-         "averageOfRates": 3.7,
-         "supplier":{
-            "id":"dadadadawdad",
-            "name":"Jolo",
-            "forename":"Mordo",
-            "opinionsCount": 90,
-            "averageOfRates": 3.9
-         }
+       "photos":[
+          {
+             "url":"../../assets/introdution-slides-bg-1.jpg"
+          },
+          {
+             "url":"../../assets/introdution-slides-bg-1.jpg"
+          }
+       ],
+       "inBasket": true,
+       "isFavorite":true,
+       "opinionsCount": 12,
+       "averageOfRates": 3.7,
+       "supplier":{
+          "id":"dadadadawdad",
+          "name":"Jolo",
+          "forename":"Mordo",
+          "opinionsCount": 90,
+          "averageOfRates": 3.9
+       }
+    },
+    {
+       "title":"Cytryny",
+       "price":3.9,
+       "unit":"szt",
+       "currency":"PLN",
+       "category":{
+          "label": "Owoce, warzywa",
+          "value": "owoce-warzywa",
+          "children": [
+              {
+                  "label": "Warzywa",
+                  "value": "warzywa",
+                  "children": [
+                      {
+                          "label": "Pomidory, ogórki i papryka",
+                          "value": "pomidory-ogorki-i-papryka",
+                          "isLeaf": true
+                      }
+                  ]
+              }
+          ]
       },
-      {
-         "title":"Cytryny",
-         "price":3.9,
-         "unit":"szt",
-         "currency":"PLN",
-         "category":{
-            "label": "Owoce, warzywa",
-            "value": "owoce-warzywa",
-            "children": [
-                {
-                    "label": "Warzywa",
-                    "value": "warzywa",
-                    "children": [
-                        {
-                            "label": "Pomidory, ogórki i papryka",
-                            "value": "pomidory-ogorki-i-papryka",
-                            "isLeaf": true
-                        }
-                    ]
-                }
-            ]
-        },
-         "photos":[
-            {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
-            },
-            {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
-            }
-         ],
-         "inBasket": true,
-         "isFavorite":true,
-         "opinionsCount": 12,
-         "averageOfRates": 3.7,
-         "supplier":{
-            "id":"dadadadawdad",
-            "name":"Jolo",
-            "forename":"Mordo",
-            "opinionsCount": 90,
-            "averageOfRates": 3.9
-         }
-      }
+       "photos":[
+          {
+             "url":"../../assets/introdution-slides-bg-1.jpg"
+          },
+          {
+             "url":"../../assets/introdution-slides-bg-1.jpg"
+          }
+       ],
+       "inBasket": true,
+       "isFavorite":true,
+       "opinionsCount": 12,
+       "averageOfRates": 3.7,
+       "supplier":{
+          "id":"dadadadawdad",
+          "name":"Jolo",
+          "forename":"Mordo",
+          "opinionsCount": 90,
+          "averageOfRates": 3.9
+       }
+    }
      ],
      "cities": []
 }
