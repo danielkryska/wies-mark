@@ -11,6 +11,7 @@ import * as _ from 'lodash';
   styleUrls: ['./basket.component.scss']
 })
 export class BasketComponent implements OnInit, OnDestroy {
+  public isSummary = false;
   public suppliersProducts: {[supplierName: string]: IMarketProduct[]} = {};
   public productsMultiplications: {[productID: string]: number} = {};
   public paymentSum: number;

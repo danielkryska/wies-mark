@@ -18,6 +18,7 @@
         <ion-item class="supplier">
             <ion-label><p><small>{{ supplier.key }}</small></p></ion-label>
             <ion-checkbox 
+                *ngIf="!isSummary" 
                 checked 
                 slot="start"
                 [ngModel]="isSupplierChecked(supplier.key)"
@@ -28,6 +29,7 @@
         <!-- Basket product -->
         <ion-item *ngFor="let product of supplier.value" >
             <ion-checkbox 
+                *ngIf="!isSummary" 
                 checked 
                 slot="start"
                 [ngModel]="!!product.inBasket"
@@ -38,7 +40,7 @@
             </ion-avatar>
             <ion-label>
                 <h3>{{ product.title }}</h3>
-                <div class="multiply">
+                <div *ngIf="!isSummary" class="multiply">
                     <ion-row>
                         <ion-col size="3">
                             <ion-button (click)="decreaseProductsType(product)">-</ion-button>
@@ -53,13 +55,23 @@
                 </div>
                 <h2>
                     {{ product.price | currency:product.currency:'symbol-narrow':'1.2' }}
-                    / {{ product.unit }}
+                    / {{ product.unit }} 
+                    <span 
+                        *ngIf="isSummary && productsMultiplications[product.title + product.supplier.name] > 1"
+                    >x {{ productsMultiplications[product.title + product.supplier.name] }}</span>
                 </h2>
             </ion-label>
         </ion-item>
 
         <ion-item>
+            <a
+                *ngIf="isSummary"  
+                href="javascript:void(0)"
+            >
+                <small>Wybierz typ dostawy</small>
+            </a>
             <a 
+                *ngIf="!isSummary" 
                 [routerLink]="['/zakladki/szukaj']" 
                 [queryParams]="{supplier: supplier.key}"
             >
@@ -76,8 +88,8 @@
                 <p>{{ paymentSum | currency:'PLN':'symbol-narrow':'1.2' }}</p>
             </ion-col>
             <ion-col size-xs="8">
-                <ion-button expand="block">
-                    Podsumowanie
+                <ion-button expand="block" (click)="isSummary = true">
+                    {{ isSummary ? 'Wyślij zamówienie' : 'Podsumowanie' }}
                 </ion-button>
             </ion-col>
         </ion-row>
