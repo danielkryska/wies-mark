@@ -1,17 +1,11 @@
-export interface IRegion {
-    name: string;
-    cities: ICity[];
-}
-
 export interface ICity {
+    // City informations
     id: number;
-    name: string;
     fullName: string;
-    county: string;
-    region: string;
+    url: string;
+
+    // Map informations
     lon: number;
     lat: number;
     zoom: number;
-    url: string;
-    districts: any[];
 }

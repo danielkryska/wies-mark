@@ -1,7 +1,10 @@
 export interface ICategory {
-    // TODO Add UID (hash of category content)
+    ID: string;
     label: string;
     value: string;
-    children?: ICategory[];
+}
+
+export interface ICategoryTree extends ICategory {
+    children?: ICategoryTree[];
     isLeaf: boolean;
 }

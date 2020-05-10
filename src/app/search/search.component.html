@@ -1,6 +1,4 @@
-
-<!-- TODO search by category, by writing and choosing -->
-<ng-container *ngIf="!actualCategory" >
+<ng-container *ngIf="!actualCategoryTree; else filterSearch">
   <ion-header no-border>
     <ion-searchbar
       #searchbar
@@ -10,7 +8,7 @@
       placeholder="Jakiego produktu szukasz?"
       spellcheck="true"
       debounce="500"
-      (ionChange)="searchForCategory($event)"
+      (ionChange)="searchForCategory($event.target.value)"
       (ionClear)="clearProposedCategories()" 
     ></ion-searchbar>
   </ion-header>
@@ -31,14 +29,12 @@
 
   <ion-footer no-border transparent>
     <ion-toolbar>
-      <app-categories-bar [categories]="categories">
-      </app-categories-bar>
+      <app-categories-bar></app-categories-bar>
     </ion-toolbar>
   </ion-footer>
 </ng-container>
 
-<!-- search with known category, from URL -->
-<ng-container *ngIf="!!actualCategory" >
+<ng-container #filterSearch>
   <ion-header>
     <ion-toolbar>
       <ion-row>
@@ -62,11 +58,12 @@
   </ion-header>
   
   <ion-content fullscreen>
+      <!-- TODO Add return to search -->
+      <ion-toolbar>restrub</ion-toolbar>
       <app-products-section
-        [title]="'Produkty z kategori: ' + actualCategory.label"
-        [products]="marketProducts"
-        sortBy="popularity"
-        filters="[]"
+        [title]="'Produkty z kategorii: ' + actualCategoryTree.label"
+        [products]="products"
       ></app-products-section>
+      <!-- TODO Pagination -->
   </ion-content>
 </ng-container>

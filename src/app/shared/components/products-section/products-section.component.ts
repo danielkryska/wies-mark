@@ -1,5 +1,5 @@
-import { IMarketProduct } from '@shared/models/product.model';
-import { Component, Input, Output } from '@angular/core';
+import { IProduct } from '@shared/models/product.model';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-products-section',
@@ -8,7 +8,5 @@ import { Component, Input, Output } from '@angular/core';
 })
 export class ProductsSectionComponent {
   @Input() title: string;
-  @Input() products: IMarketProduct[] = [];
-
-  @Input() isChecklist: boolean;
+  @Input() products: IProduct[] = [];
 }

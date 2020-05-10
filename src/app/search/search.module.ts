@@ -1,3 +1,4 @@
+import { SearchService } from './services/search.service';
 import { SharedModule } from '@shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -20,6 +21,9 @@ import { IonicModule } from '@ionic/angular';
     CommonModule,
     SearchRoutingModule,
     SharedModule
+  ],
+  providers: [
+    SearchService
   ]
 })
 export class SearchModule { }

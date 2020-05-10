@@ -2,12 +2,12 @@
     <div class="scroll" scrollX="true">
         <a 
             class="scroll-item"
-            *ngFor="let category of categories" 
+            *ngFor="let categoryTree of categoriesTrees" 
             [routerLink]="['/zakladki/szukaj']" 
-            [queryParams]="{selectedCategory: category.value}"
+            [queryParams]="{selectedCategory: categoryTree.value}"
         >
             <span>
-                {{ category.label }}
+                {{ categoryTree.label }}
             </span>
         </a>
     </div>

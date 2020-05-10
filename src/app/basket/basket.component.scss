@@ -1,3 +1,4 @@
+
 .empty-basket-message {
     width: 300px;
     margin: 30vh auto;
@@ -13,18 +14,6 @@ ion-list {
     padding: 0px;
     margin-bottom: 40px;
     border-bottom: 1px solid lightgray;
-    ion-avatar {
-        width: 85px;
-        height: 85px;
-    
-        img {
-            border-radius: 0px;
-        }
-    }
-
-    ion-item:nth-child(odd) {
-        --ion-background-color: rgba(0, 0, 0, 0.03) !important;
-    }
 
     ion-item {
         a {
@@ -35,21 +24,14 @@ ion-list {
         }
     }
 
-    .supplier {
+    .supplier, .supplier-action-btn {
         border-top: 1px solid lightgray;
         border-bottom: 1px solid lightgray;
+        --ion-background-color: rgba(0, 0, 0, 0.03) !important;
     }
 
-    .multiply {
-        ion-col {
-            p {
-                margin-top: 0px;
-                border: 1px solid gray;
-                padding: 7px 0px;
-                font-size: medium;
-                border-radius: 2px;
-            }
-        }
+    app-basket-product:nth-child(odd) {
+        --ion-background-color: rgba(0, 0, 0, 0.03) !important;
     }
 }
 

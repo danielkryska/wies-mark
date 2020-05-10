@@ -7,10 +7,6 @@ const routes: Routes = [
     redirectTo: 'zakladki',
     pathMatch: 'full'
   },
-  // {
-  //   path: '',
-  //   loadChildren: () => import('./introduction-slides/introduction-slides.module').then( m => m.IntroductionSlidesPageModule)
-  // },
   {
     path: 'zakladki',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)

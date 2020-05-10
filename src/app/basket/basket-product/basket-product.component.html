@@ -1,0 +1,35 @@
+<ion-item>
+    <ion-checkbox 
+        *ngIf="!isSummary" 
+        checked 
+        slot="start"
+        [ngModel]="!!product.inBasket"
+        (ionChange)="toggle.emit($event.target.checked)"    
+    ></ion-checkbox>
+    <ion-avatar slot="start">
+        <img src="{{ product.photos[0].url }}">
+    </ion-avatar>
+    <ion-label>
+        <h3>{{ product.title }}</h3>
+        <div *ngIf="!isSummary" class="multiply">
+            <ion-row>
+                <ion-col size="3">
+                    <ion-button (click)="removeSame()" [disabled]="isProductMinimumStack">-</ion-button>
+                </ion-col>
+                <ion-col size="4">
+                    <p>{{ productMultiplication }}</p>  
+                </ion-col>
+                <ion-col size="3">
+                    <ion-button (click)="addSame()">+</ion-button>
+                </ion-col>
+            </ion-row>
+        </div>
+        <h2>
+            {{ product.price | currency:product.currency:'symbol-narrow':'1.2' }}
+            / {{ product.unit }} 
+            <span 
+                *ngIf="isSummary && productMultiplication > 1"
+            >x {{ productMultiplication }}</span>
+        </h2>
+    </ion-label>
+</ion-item>

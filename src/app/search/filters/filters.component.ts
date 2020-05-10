@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { IMarketProduct } from '@shared/models/product.model';
-import { ProductsService } from '@shared/services/products.service';
+import { SearchService } from './../services/search.service';
+import { Component } from '@angular/core';
+import { IProduct } from '@shared/models/product.model';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -10,9 +10,12 @@ import { ModalController } from '@ionic/angular';
 })
 export class FiltersComponent {
 
-  public filters: ((product: IMarketProduct) => boolean)[] = [];
+  public filters: Partial<IProduct> = {};
 
-  constructor(private _modalController: ModalController) {}
+  constructor(
+    private _searchService: SearchService,
+    private _modalController: ModalController
+  ) {}
 
   applyFilters = () => {};
   closeSelf = () => this._modalController.dismiss({dismissed: true});

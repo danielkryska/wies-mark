@@ -8,17 +8,17 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        path: '',
+        redirectTo: 'jarmark',
+        pathMatch: 'full'
+      },
+      {
         path: 'jarmark',
         loadChildren: () => import('../market/market.module').then(m => m.MarketPageModule)
       },
       { 
         path: 'koszyk', 
         loadChildren: () => import('../basket/basket.module').then(m => m.BasketModule)
-      },
-      {
-        path: '',
-        redirectTo: 'jarmark',
-        pathMatch: 'full'
       },
       { 
         path: 'szukaj',
@@ -29,8 +29,8 @@ const routes: Routes = [
         loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule)
       },
       { 
-        path: 'ulubione',
-        loadChildren: () => import('../favorites/favorites.module').then(m => m.FavoritesModule)
+        path: 'wiadomosci',
+        loadChildren: () => import('../messages/messages.module').then(m => m.MessagesModule)
       },
     ]
   },

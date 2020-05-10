@@ -1,11 +1,17 @@
 export const DEFAULT_SORT_TYPE = 'popularityOfProducts';
 
-export interface ISortType {
+export interface ISortTypeGroup {
     groupLabel: string;
-    values: ISortTypeValue[];
+    values: ISortType[];
 }
 
-export interface ISortTypeValue {
+export interface ISortType {
     label: string;
-    value: string;
+    value: ISortTypeValue;
 }
+
+export type ISortTypeValue = 'popularityOfSuppliers' 
+    | 'popularityOfProducts'
+    | 'priceLowest'
+    | 'priceHighest'
+    | 'dateLatest';

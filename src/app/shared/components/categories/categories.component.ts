@@ -1,8 +1,10 @@
+import { ICategoryTree } from './../../models/category.model';
+import { hasChildren } from './../../utils/categories.util';
 import { ICategory } from '@shared/models/category.model';
-import { Component, OnDestroy, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { findParentRecursively } from '@shared/services/categories.service';
+import { CategoriesService } from '@shared/services/categories.service';
 
 @Component({
   selector: 'app-categories',
@@ -10,33 +12,36 @@ import { findParentRecursively } from '@shared/services/categories.service';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent {
-  @Input() actualCategory: ICategory;
-  @Input() categories: ICategory[] = [];
-
+  @Input() actualCategoryTree: ICategoryTree;
   public categoriesToDisplay: ICategory[];
 
   constructor(
+    private _categoriesService: CategoriesService,
     private _router: Router,
     private _modalController: ModalController
   ) {}
 
-  chooseSubCategory(category: ICategory) {
-    if (category.isLeaf || !category.children || category.children.length === 0) {
-      this.goToCategory(category);
+  get categoriesTrees(): ICategoryTree[] {
+    return this._categoriesService.categoriesTrees;
+  }
+
+  chooseChild(category: ICategoryTree) {
+    if (hasChildren(category)) {
+      this.goTo(category);
+      return false;
     }
 
-    this.actualCategory = category;
+    this.actualCategoryTree = category;
     this.categoriesToDisplay = category.children;
   }
 
-  chooseParentCategory = (category: ICategory) => {
-    const parentCategory = findParentRecursively(this.categories, category.value);
-    this.actualCategory = this.actualCategory === parentCategory
-      ? null
-      : parentCategory;
+  chooseParent(category: ICategoryTree) {
+    const parentCategory = this._categoriesService.findParentCategoryTreeBy(category.value);
+    const isTreeRoot = this.actualCategoryTree === parentCategory;
+    this.actualCategoryTree = isTreeRoot ? null : parentCategory;
   }
 
-  goToCategory(category: ICategory) {
+  goTo(category: ICategoryTree) {
     this.closeSelf();
     this._router.navigate(
       ['zakladki/szukaj'],

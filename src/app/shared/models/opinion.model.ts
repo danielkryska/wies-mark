@@ -1,8 +1,8 @@
-import { IUser } from './user.model';
+import { IPublicUser } from './user.model';
 
 export interface IOpinion {
-    user: Partial<IUser>;
+    user: IPublicUser;
     rate: number;
     creationDate: Date;
-    updateDate: Date;
+    updateDate?: Date;
 }

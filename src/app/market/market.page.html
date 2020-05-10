@@ -1,18 +1,16 @@
 <ion-header>
-  <a routerLink="/zakladki/szukaj">
+  <a routerLink="/szukaj">
     <ion-searchbar 
       placeholder="Jakiego produktu szukasz?"
       disabled="true"
     ></ion-searchbar>
   </a>
-  <app-categories-bar [categories]="categories"></app-categories-bar>
+  <app-categories-bar></app-categories-bar>
 </ion-header>
 <ion-content>
   <app-products-section
-    *ngIf="!!marketProducts && marketProducts.length > 1" 
+    *ngIf="!!products && products.length > 1" 
     title="Popularne"
-    [products]="marketProducts"
-    sortBy="popularity"
-    filters="[]"
+    [products]="products"
   ></app-products-section>
 </ion-content>

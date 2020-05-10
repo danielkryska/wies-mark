@@ -1,13 +1,9 @@
 import { IUser, IPublicUser } from './user.model';
 import { ICategory } from './category.model';
 
-export interface IMarketSupplier extends Partial<ISupplier> {
-    id: string;
-    name: string;
-    forename: string;
+export interface IPublicSupplier extends IPublicUser {
     averageOfRates: number;
     opinionsCount: number;
-    company?: string;
 }
 
 export interface ISupplier extends IUser {

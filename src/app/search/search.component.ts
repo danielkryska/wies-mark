@@ -1,16 +1,16 @@
+import { ICategoryTree } from './../shared/models/category.model';
+import { SearchService } from './services/search.service';
 import { CategoriesComponent } from '@shared/components/categories/categories.component';
-import { DEFAULT_SORT_TYPE } from './../shared/models/sort-type.model';
-import { CategoriesService, isBelongingTo } from '@shared/services/categories.service';
+import { DEFAULT_SORT_TYPE, ISortTypeValue } from './../shared/models/sort-type.model';
+import { CategoriesService } from '@shared/services/categories.service';
 import { ICategory } from '@shared/models/category.model';
 import { SortByComponent } from './sort-by/sort-by.component';
 import { FiltersComponent } from './filters/filters.component';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ProductsService } from '@shared/services/products.service';
 import { ModalController, IonSearchbar } from '@ionic/angular';
-import { IMarketProduct } from '@shared/models/product.model';
 import { untilDestroyed } from 'ngx-take-until-destroy';
-import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { IProduct } from '@shared/models/product.model';
 
 @Component({
   selector: 'app-search',
@@ -20,87 +20,47 @@ import { Location } from '@angular/common';
 export class SearchComponent implements OnInit, OnDestroy {
   @ViewChild('searchbar') searchbar: IonSearchbar;
 
-  public marketProducts: IMarketProduct[];
+  public products: IProduct[];
 
-  public actualSortType: string;
-  public parentCategory: ICategory;
-  public actualCategory: ICategory;
-  public categories: ICategory[] = [];
+  public parentCategoryTree: ICategoryTree;
+  public actualCategoryTree: ICategoryTree;
 
-  public proposedCategories: ICategory[] =[];
-  private _flatCategories: ICategory[] = [];
+  public proposedCategories: ICategory[] = [];
 
   constructor(
-    private _productsService: ProductsService,
+    private _searchService: SearchService,
     private _categoriesService: CategoriesService,
     private _modalController: ModalController,
-    private _activatedRoute: ActivatedRoute,
-    private _location: Location
+    private _activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this._productsService.getProducts$()
+    this._searchService.products$
       .pipe(untilDestroyed(this))
-      .subscribe((marketProducts: IMarketProduct[]) => {
-        this.marketProducts = marketProducts;
+      .subscribe((products: IProduct[]) => this.products = products);
+
+    // TODO queryParams to params /:filters/:sortType
+    this._activatedRoute.paramMap
+      .pipe(untilDestroyed(this))
+      .subscribe((params) => {
+        this._updateFiltersBy(params);
+        this._updateSortTypeBy(params);
       });
-
-    this._categoriesService.categories$
-      .pipe(untilDestroyed(this))
-      .subscribe((categories: ICategory[]) => this.categories = categories);
-
-    this._activatedRoute.queryParamMap
-      .pipe(untilDestroyed(this))
-      .subscribe(async (params) => {
-        const categoryValue = params.get('selectedCategory');
-
-        if (
-          !!categoryValue
-          && !!this.actualCategory
-          && this.actualCategory.value === categoryValue
-          || !categoryValue
-        ) {
-          this.parentCategory = null;
-          this.actualCategory = null;
-          this.proposedCategories = [];
-          return;
-        }
-
-        if (!!categoryValue) {
-          this.parentCategory = await this._categoriesService.findParentCategoryBy(categoryValue);
-          this.actualCategory = await this._categoriesService.findCategoryBy(categoryValue);
-          const filterBy = (product: IMarketProduct) => isBelongingTo(product.category, this.actualCategory);
-          this._productsService.getProducts$([filterBy], DEFAULT_SORT_TYPE)
-            .pipe(untilDestroyed(this))
-            .subscribe((marketProducts: IMarketProduct[]) => {
-              this.marketProducts = marketProducts;
-            });
-
-          this._location.replaceState('zakladki/szukaj');
-        }
-      });
-
-    this._categoriesService.flatCategories$
-      .pipe(untilDestroyed(this))
-      .subscribe((categories: ICategory[]) => this._flatCategories = categories);
   }
 
-  searchForCategory(input: any): void {
-    const searchValue: string = input.target.value;
-    !!searchValue && searchValue.trim() !== ''
-      ? this.proposedCategories = this._flatCategories
-        .filter((category: ICategory) => category.label.toLocaleLowerCase().indexOf(searchValue.toLowerCase()) > -1)
-          .slice(0, 10)
-      : this.clearProposedCategories();
+  get categoriesTrees(): ICategoryTree[] {
+    return this._categoriesService.categoriesTrees;
   }
 
-  ionViewDidEnter() {
-    setTimeout(() => {
-      this.searchbar.setFocus();
-    });
+  searchForCategory(searchValue: string): void {
+    const isEmptyValue = !searchValue || searchValue.trim() === '';
+    isEmptyValue
+      ? this.clearProposedCategories()
+      : this.proposedCategories = this._categoriesService.getCategoriesBy(searchValue);
   }
 
-  clearProposedCategories = (): void => this.proposedCategories = [] as undefined;
+  ionViewDidEnter = () => setTimeout(() => this.searchbar.setFocus());
+  clearProposedCategories = () => this.proposedCategories = [];
 
   async openFilters(): Promise<void> {
     const modal = await this._modalController.create({
@@ -113,8 +73,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     const modal = await this._modalController.create({
       component: CategoriesComponent,
       componentProps: {
-        actualCategory: this.parentCategory,
-        categories: this.categories
+        actualCategoryTree: this.parentCategoryTree,
+        categories: this.categoriesTrees
       }
     });
     return await modal.present();
@@ -125,19 +85,37 @@ export class SearchComponent implements OnInit, OnDestroy {
       component: SortByComponent
     });
 
-    modal.onDidDismiss()
-      .then((data) => {
-        this.actualSortType = data.data;
-        const filterBy = (product: IMarketProduct) => isBelongingTo(product.category, this.actualCategory);
-        this._productsService.getProducts$(!!this.actualCategory ? [filterBy] : [], this.actualSortType)
-          .pipe(untilDestroyed(this))
-          .subscribe((marketProducts: IMarketProduct[]) => {
-            this.marketProducts = marketProducts;
-          });
-      });
+    const data = await modal.onDidDismiss();
+    this._searchService.sortType = data.data;
 
     return await modal.present();
   }
 
   ngOnDestroy() {}
+
+  protected _updateSortTypeBy(params: ParamMap) {
+    const sortType: ISortTypeValue | null = !!params.get('sortType')
+      ? params.get('sortType') as ISortTypeValue
+      : DEFAULT_SORT_TYPE;
+    this._searchService.sortType = sortType;
+  }
+
+  protected _updateFiltersBy(params: ParamMap) {
+    const filters: Partial<IProduct> = !!params.get('filters')
+      ? JSON.parse(params.get('filters'))
+      : {};
+    this._searchService.filters = filters;
+
+    if (filters.category) {
+      this._updateCategoryBy(filters.category);
+    }
+  }
+
+  protected _updateCategoryBy(categoryValue: string) {
+    const parentCategoryTree = this._categoriesService.findParentCategoryTreeBy(categoryValue);
+    const categoryTree = this._categoriesService.findCategoryTreeBy(categoryValue);
+    const rootCategory = null;
+    this.parentCategoryTree = !!parentCategoryTree ? parentCategoryTree : categoryTree;
+    this.actualCategoryTree = !!parentCategoryTree ? categoryTree : rootCategory;
+  }
 }
