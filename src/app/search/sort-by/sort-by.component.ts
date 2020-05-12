@@ -1,6 +1,5 @@
 import { SortTypesService } from '@shared/services/sort-types.service';
-import { Component, OnInit } from '@angular/core';
-import { ISortTypeGroup } from '@shared/models/sort-type.model';
+import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
 @Component({
@@ -8,17 +7,15 @@ import { ModalController } from '@ionic/angular';
   templateUrl: './sort-by.component.html',
   styleUrls: ['./sort-by.component.scss']
 })
-export class SortByComponent implements OnInit {
-  public sortTypes: ISortTypeGroup[] = [];
+export class SortByComponent {
+  get sortTypes() {
+    return this._sortTypesService.sortTypes;
+  }
 
   constructor(
     private _sortTypesService: SortTypesService,
     private _modalController: ModalController
   ) {}
-
-  ngOnInit() {
-    this.sortTypes = this._sortTypesService.sortTypes;
-  }
 
   closeSelf = (data = null) => this._modalController.dismiss(data);
 }

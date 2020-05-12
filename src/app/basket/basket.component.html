@@ -1,3 +1,87 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-label>
+            <b>Moj koszyk</b>
+        </ion-label>
+    </ion-toolbar>
+</ion-header>
+
+<ng-container *ngIf="hasProducts; else emptyBasket">
+    <ion-content >
+    
+        <ion-toolbar *ngIf="isSummary" >
+            <a href="javascript:void(0)" (click)="isSummary = false">
+                <ion-icon name="arrow-back-outline"></ion-icon> Wroc do koszyka
+            </a>
+        </ion-toolbar>
+        <!-- TODO Extract supplier -->
+        <ion-list 
+            *ngFor="let supplier of suppliersProducts | keyvalue"
+            lines="none"
+        >
+            <ion-item class="supplier">
+                <ion-label><p><small>{{ supplier.key }}</small></p></ion-label>
+                <ion-checkbox 
+                    *ngIf="!isSummary" 
+                    checked 
+                    slot="start"
+                    [ngModel]="isSupplierChecked(supplier.key)"
+                    (ionChange)="toggleSupplierProducts(supplier.key, $event)"
+                ></ion-checkbox>
+            </ion-item>
+    
+            <app-basket-product
+                *ngFor="let product of supplier.value"
+                [product]="product"
+                [isSummary]="isSummary"
+                (toggle)="toggleProduct(product, $event)"
+                (removeSameProduct)="paymentSum = paymentSum - product.price"
+                (addSameProduct)="paymentSum = paymentSum + product.price"
+            ></app-basket-product>
+    
+            <ng-container *ngIf="isSummary; else otherOfSupplier">
+                <ion-item class="supplier-action-btn">
+                    <a routerLink="/zakladki/wiadomosci">
+                        <small>Wyślij wiadomość (opcjonalne)</small>
+                    </a>
+                </ion-item>
+                <ion-item class="supplier-action-btn">
+                    <a routerLink="/zakladki/wiadomosci">
+                        <small>Wybierz typ dostawy</small>
+                    </a>
+                </ion-item>
+            </ng-container>
+    
+            <ng-template #otherOfSupplier>
+                <ion-item class="supplier-action-btn">
+                    <a
+                        [routerLink]="['/zakladki/szukaj']" 
+                        [queryParams]="{supplier: supplier.key}"
+                    >
+                        <small>Inne produkty sprzedającego</small>
+                    </a>
+                </ion-item>
+            </ng-template>
+        </ion-list>
+    </ion-content>
+</ng-container>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col size-xs="4">
+                <p>{{ paymentSum | currency:'PLN':'symbol-narrow':'1.2' }}</p>
+            </ion-col>
+            <ion-col size-xs="8">
+                <ion-button *ngIf="isSummary; else toSummary" (click)="order()">Złóż zamówienie</ion-button>
+                <ng-template #toSummary>
+                    <ion-button expand="block" (click)="isSummary = true" [disabled]="paymentSum === 0">Podsumowanie</ion-button>
+                </ng-template>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>
+
 <ng-template #emptyBasket>
     <ion-content>
         <div class="empty-basket-message">
@@ -11,70 +95,3 @@
         </div>
     </ion-content>
 </ng-template>
-
-<ion-content *ngIf="hasProducts; else emptyBasket">
-    <ion-list 
-        *ngFor="let supplier of suppliersProducts | keyvalue"
-        lines="none"
-    >
-        <ion-item class="supplier">
-            <ion-label><p><small>{{ supplier.key }}</small></p></ion-label>
-            <ion-checkbox 
-                *ngIf="!isSummary" 
-                checked 
-                slot="start"
-                [ngModel]="isSupplierChecked(supplier.key)"
-                (ionChange)="toggleSupplierProducts(supplier.key, $event)"
-            ></ion-checkbox>
-        </ion-item>
-
-        <app-basket-product
-            *ngFor="let product of supplier.value"
-            [product]="product"
-            [isSummary]="isSummary"
-            (toggle)="toggleProduct(product, $event)"
-            (removeSameProduct)="paymentSum = paymentSum - product.price"
-            (addSameProduct)="paymentSum = paymentSum + product.price"
-        ></app-basket-product>
-
-        <ng-template *ngIf="isSummary; else otherOfSupplier">
-            <ion-item class="supplier-action-btn">
-                <a routerLink="zakladki/wiadomosci">
-                    <small>Wyślij wiadomość (opcjonalne)</small>
-                </a>
-            </ion-item>
-            <ion-item class="supplier-action-btn">
-                <a href="javascript:void(0)">
-                    <small>Wybierz typ dostawy</small>
-                </a>
-            </ion-item>
-        </ng-template>
-
-        <ng-template #otherOfSupplier>
-            <ion-item class="supplier-action-btn">
-                <a
-                    [routerLink]="['/zakladki/szukaj']" 
-                    [queryParams]="{supplier: supplier.key}"
-                >
-                    <small>Inne produkty sprzedającego</small>
-                </a>
-            </ion-item>
-        </ng-template>
-    </ion-list>
-</ion-content>
-
-<ion-footer>
-    <ion-toolbar>
-        <ion-row>
-            <ion-col size-xs="4">
-                <p>{{ paymentSum | currency:'PLN':'symbol-narrow':'1.2' }}</p>
-            </ion-col>
-            <ion-col size-xs="8">
-                <ion-button *ngIf="isSummary; else toSummary" (click)="order()">Złóż zamówienie</ion-button>
-                <ng-template #toSummary>
-                    <ion-button expand="block" (click)="isSummary = true">Podsumowanie</ion-button>
-                </ng-template>
-            </ion-col>
-        </ion-row>
-    </ion-toolbar>
-</ion-footer>

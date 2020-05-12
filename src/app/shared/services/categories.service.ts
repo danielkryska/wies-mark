@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ICategory, ICategoryTree } from '@shared/models/category.model';
@@ -12,17 +11,15 @@ export class CategoriesService {
   public categoriesTrees: ICategoryTree[] = [];
   public categories: ICategory[] = [];
 
-  constructor(private _http: HttpClient) {
-    this.categoriesTrees$
+  constructor(private _http: HttpClient) {}
+
+  // TODO replace with PWA
+  loadCategoriesTrees(): void {
+    this._http.get<ICategoryTree[]>(`${environment.API_URL}/categories`)
       .subscribe((categoriesTrees: ICategoryTree[]) => {
         this.categoriesTrees = categoriesTrees;
         this.categories = flattenCategories(...categoriesTrees);
-      });
-  }
-
-  get categoriesTrees$(): Observable<ICategoryTree[]> {
-    return this._http
-      .get<ICategoryTree[]>(`${environment.API_URL}/categories`);
+      });;
   }
 
   getCategoriesBy = (categoryValue: string): ICategory[] | [] => this.categories

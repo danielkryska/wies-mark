@@ -1,3 +1,5 @@
+import { SortTypesService } from '@shared/services/sort-types.service';
+import { CategoriesService } from '@shared/services/categories.service';
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
@@ -12,8 +14,14 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,
+
+    private _categoriesService: CategoriesService,
+    private _sortTypesService: SortTypesService
   ) {
+    this._categoriesService.loadCategoriesTrees();
+    this._sortTypesService.loadSortTypes();
+
     this.initializeApp();
   }
 

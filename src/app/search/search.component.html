@@ -34,7 +34,7 @@
   </ion-footer>
 </ng-container>
 
-<ng-container #filterSearch>
+<ng-template #filterSearch>
   <ion-header>
     <ion-toolbar>
       <ion-row>
@@ -59,11 +59,12 @@
   
   <ion-content fullscreen>
       <!-- TODO Add return to search -->
-      <ion-toolbar>restrub</ion-toolbar>
+      <ion-item>TEDA</ion-item>
       <app-products-section
+        *ngIf="!!products && products.length > 0" 
         [title]="'Produkty z kategorii: ' + actualCategoryTree.label"
         [products]="products"
       ></app-products-section>
       <!-- TODO Pagination -->
   </ion-content>
-</ng-container>
+</ng-template>
