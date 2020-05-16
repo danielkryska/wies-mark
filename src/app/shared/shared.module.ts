@@ -11,6 +11,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { CategoriesBarComponent } from './components/categories-bar/categories-bar.component';
 import { IonicModule } from '@ionic/angular';
 import { ProductsSectionComponent } from './components/products-section/products-section.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { MessageComponent } from './components/message/message.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const SERVICES = [
   CitiesService,
@@ -21,7 +24,9 @@ const SERVICES = [
 const COMPONENTS = [
   CategoriesBarComponent,
   CategoriesComponent,
-  ProductsSectionComponent
+  ProductsSectionComponent,
+  ModalComponent,
+  MessageComponent
 ];
 
 @NgModule({
@@ -33,7 +38,9 @@ const COMPONENTS = [
     CommonModule,
     HttpClientModule,
     BarRatingModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [...COMPONENTS]
 })

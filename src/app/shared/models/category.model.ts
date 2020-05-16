@@ -6,5 +6,5 @@ export interface ICategory {
 
 export interface ICategoryTree extends ICategory {
     children?: ICategoryTree[];
-    isLeaf: boolean;
+    isLeaf?: boolean;
 }

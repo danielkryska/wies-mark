@@ -1,4 +1,69 @@
 {
+   "messages": [
+      {
+         "user": {
+            "id": "dadadawdad",
+            "name": "Krzywy Wieslaw"
+         },
+         "title": "Twoje jaja nie spelniaja norm krzywosci",
+         "messages": [
+            {
+               "creationDate": 1355121900,
+               "content": "Twoje jaja nie spelniaja norm krzywosci"
+            },
+            {
+               "creationDate": 1355128900,
+               "readDate": 1355481900,
+               "content": "Twoje bardziej",
+               "isResponse": true
+            },
+            {
+               "creationDate": 1355501900,
+               "content": "Nieprawda"
+            }
+         ]
+      },
+      {
+         "user": {
+            "id": "dadadawdad",
+            "name": "Bananowiec"
+         },
+         "title": "Idz na drzewo wyginac banany",
+         "messages": [
+            {
+               "creationDate": 1355101900,
+               "content": "Co ci z twoich bananow",
+               "isResponse": true
+            }
+         ]
+      }
+   ],
+   "deliveryTypes": [
+      {
+         "label": "Dostawa do domu",
+         "value": "home-delivery",
+         "price": 30,
+         "currency": "PLN"
+      },
+      {
+         "label": "Odbior w punkcie stacjonarnym",
+         "value": "stationary-pickup-point",
+         "price": 0,
+         "currency": "PLN"
+      },
+      {
+         "label": "Mobilny punkt odbioru",
+         "value": "mobile-pickup-point",
+         "price": 2,
+         "currency": "PLN"
+      },
+      {
+         "label": "Odbior wlasny",
+         "value": "self-pickup",
+         "price": 0,
+         "currency": "PLN"
+      }
+   ],
     "sortTypes": [
         {
            "groupLabel":"Popularność",

@@ -1,5 +1,5 @@
 import { ICategoryTree } from './../shared/models/category.model';
-import { SearchService } from './services/search.service';
+import { SearchService } from '../shared/services/search.service';
 import { CategoriesComponent } from '@shared/components/categories/categories.component';
 import { DEFAULT_SORT_TYPE, ISortTypeValue } from './../shared/models/sort-type.model';
 import { CategoriesService } from '@shared/services/categories.service';
@@ -23,7 +23,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   public products: IProduct[];
 
   public parentCategoryTree: ICategoryTree;
-  public actualCategoryTree: ICategoryTree;
+  public actualCategoryTree: ICategoryTree = {ID: '', label: 'test', value: 'test'};
 
   public proposedCategories: ICategory[] = [];
 
@@ -59,7 +59,11 @@ export class SearchComponent implements OnInit, OnDestroy {
       : this.proposedCategories = this._categoriesService.getCategoriesBy(searchValue);
   }
 
-  ionViewDidEnter = () => setTimeout(() => this.searchbar.setFocus());
+  ionViewDidEnter = () => setTimeout(() => {
+    if (this.searchbar) {
+      this.searchbar.setFocus();
+    }
+  });
   clearProposedCategories = () => this.proposedCategories = [];
 
   async openFilters(): Promise<void> {
@@ -85,8 +89,8 @@ export class SearchComponent implements OnInit, OnDestroy {
       component: SortByComponent
     });
 
-    const data = await modal.onDidDismiss();
-    this._searchService.sortType = data.data;
+    modal.onDidDismiss()
+      .then(data => !!data.data ? this._searchService.sortType = data.data : null);
 
     return await modal.present();
   }

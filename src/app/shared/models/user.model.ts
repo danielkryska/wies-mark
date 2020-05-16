@@ -2,6 +2,8 @@ import { ICity } from './city.model';
 
 export interface IPublicUser extends Partial<IUser> {
     id: string;
+
+    // TODO name and forenam replace with nick
     name: string;
     forename: string;
 }

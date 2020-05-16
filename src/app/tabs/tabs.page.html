@@ -18,9 +18,14 @@
     </ion-tab-button>
 
     <ion-tab-button tab="wiadomosci">
-      <ion-icon name="chatbox-outline"></ion-icon>
+      <ion-icon name="chatbox-outline">
+      </ion-icon>
       <ion-label>Wiadomości</ion-label>
-      <ion-badge color="success"></ion-badge>
+      <ion-badge 
+        *ngIf="hasNewReceivedMessage"
+        color="success"
+      >
+      </ion-badge>
     </ion-tab-button>
 
     <ion-tab-button tab="profil">

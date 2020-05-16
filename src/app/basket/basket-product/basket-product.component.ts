@@ -1,5 +1,6 @@
+import { BasketService } from './../services/basket.service';
 import { IProduct } from '@shared/models/product.model';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-basket-product',
@@ -7,24 +8,37 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./basket-product.component.scss']
 })
 export class BasketProductComponent {
-  public productMultiplication = 1;
-
   @Input() product: IProduct;
-  @Input() isSummary: boolean;
 
-  @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
-  @Output() removeSameProduct: EventEmitter<void> = new EventEmitter<void>();
-  @Output() addSameProduct: EventEmitter<void> = new EventEmitter<void>();
+  public multiplication = 1;
 
-  addSame = () => {
-    this.productMultiplication += 1;
-    this.addSameProduct.emit();
-  }
-  removeSame = () => {
-    this.productMultiplication -= 1;
-    this.removeSameProduct.emit();
+  get isSummary() {
+    return this._basketService.isSummary;
   }
   get isProductMinimumStack() {
-    return this.productMultiplication === 1;
+    return this.multiplication === 1;
+  }
+
+  constructor(private _basketService: BasketService) {}
+
+  add = () => {
+    this.multiplication += 1;
+    if (this.product.inBasket) {
+      this._basketService.paymentSum += this.product.price;
+    }
+  }
+  remove = () => {
+    this.multiplication -= 1;
+    if (this.product.inBasket) {
+      this._basketService.paymentSum -= this.product.price;
+    }
+  }
+  toggle = (inBasket: boolean) => {
+    if (this.product.inBasket !== inBasket || !inBasket) {
+      this.product.inBasket = inBasket;
+      this._basketService.paymentSum += inBasket
+        ? this.product.price * this.multiplication
+        : -this.product.price * this.multiplication;
+    }
   }
 }

@@ -1,68 +1,20 @@
 <ion-header>
-    <ion-toolbar>
-        <ion-label>
-            <b>Moj koszyk</b>
-        </ion-label>
-    </ion-toolbar>
+    <ion-title><p>Moj koszyk</p></ion-title>
 </ion-header>
 
-<ng-container *ngIf="hasProducts; else emptyBasket">
+<ng-container *ngIf="anyProduct; else emptyBasket">
     <ion-content >
-    
         <ion-toolbar *ngIf="isSummary" >
-            <a href="javascript:void(0)" (click)="isSummary = false">
+            <a href="javascript:void(0)" (click)="isSummary = false;">
                 <ion-icon name="arrow-back-outline"></ion-icon> Wroc do koszyka
             </a>
         </ion-toolbar>
-        <!-- TODO Extract supplier -->
-        <ion-list 
-            *ngFor="let supplier of suppliersProducts | keyvalue"
-            lines="none"
-        >
-            <ion-item class="supplier">
-                <ion-label><p><small>{{ supplier.key }}</small></p></ion-label>
-                <ion-checkbox 
-                    *ngIf="!isSummary" 
-                    checked 
-                    slot="start"
-                    [ngModel]="isSupplierChecked(supplier.key)"
-                    (ionChange)="toggleSupplierProducts(supplier.key, $event)"
-                ></ion-checkbox>
-            </ion-item>
-    
-            <app-basket-product
-                *ngFor="let product of supplier.value"
-                [product]="product"
-                [isSummary]="isSummary"
-                (toggle)="toggleProduct(product, $event)"
-                (removeSameProduct)="paymentSum = paymentSum - product.price"
-                (addSameProduct)="paymentSum = paymentSum + product.price"
-            ></app-basket-product>
-    
-            <ng-container *ngIf="isSummary; else otherOfSupplier">
-                <ion-item class="supplier-action-btn">
-                    <a routerLink="/zakladki/wiadomosci">
-                        <small>Wyślij wiadomość (opcjonalne)</small>
-                    </a>
-                </ion-item>
-                <ion-item class="supplier-action-btn">
-                    <a routerLink="/zakladki/wiadomosci">
-                        <small>Wybierz typ dostawy</small>
-                    </a>
-                </ion-item>
-            </ng-container>
-    
-            <ng-template #otherOfSupplier>
-                <ion-item class="supplier-action-btn">
-                    <a
-                        [routerLink]="['/zakladki/szukaj']" 
-                        [queryParams]="{supplier: supplier.key}"
-                    >
-                        <small>Inne produkty sprzedającego</small>
-                    </a>
-                </ion-item>
-            </ng-template>
-        </ion-list>
+        <ng-container *ngFor="let supplier of suppliers">
+            <app-supplier-products
+                *ngIf="hasProductsInBasket(supplier) && isSummary || !isSummary" 
+                [supplierName]="supplier"
+            ></app-supplier-products>
+        </ng-container>
     </ion-content>
 </ng-container>
 
@@ -73,9 +25,22 @@
                 <p>{{ paymentSum | currency:'PLN':'symbol-narrow':'1.2' }}</p>
             </ion-col>
             <ion-col size-xs="8">
-                <ion-button *ngIf="isSummary; else toSummary" (click)="order()">Złóż zamówienie</ion-button>
+                <ion-button 
+                    *ngIf="isSummary; else toSummary"
+                    expand="block"
+                    (click)="order()" 
+                    [disabled]="!hasAllDeliveryTypes"
+                >
+                    Złóż zamówienie
+                </ion-button>
                 <ng-template #toSummary>
-                    <ion-button expand="block" (click)="isSummary = true" [disabled]="paymentSum === 0">Podsumowanie</ion-button>
+                    <ion-button 
+                        expand="block" 
+                        (click)="isSummary = true" 
+                        [disabled]="paymentSum === 0"
+                    >
+                        Podsumowanie
+                    </ion-button>
                 </ng-template>
             </ion-col>
         </ion-row>

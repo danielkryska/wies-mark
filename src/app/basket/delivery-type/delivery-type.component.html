@@ -1,1 +1,14 @@
-<p>delivery-type works!</p>
+<app-modal
+    headerTitle="Wybierz sposob dostawy"
+    cancelBtnName="Wroc do koszyka"
+    (cancel)="closeSelf()"
+>
+    <ion-list lines="none">
+        <ion-item *ngFor="let deliveryType of deliveryTypes" (click)="closeSelf(deliveryType)">
+            <ion-label>
+                <span>{{ deliveryType.label }}</span>
+                <p>{{ deliveryType.price | currency:deliveryType.currency:'symbol-narrow':'1.2' }}</p>
+            </ion-label>
+        </ion-item>
+    </ion-list>
+</app-modal>

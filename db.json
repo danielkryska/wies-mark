@@ -1,143 +1,208 @@
 {
-    "sortTypes": [
-        {
-           "groupLabel":"Popularność",
-           "values":[
-              {
-                 "label":"Dostawcy",
-                 "value":"popularityOfSuppliers"
-              },
-              {
-                 "label":"Produkty",
-                 "value":"popularityOfProducts"
-              }
-           ]
-        },
-        {
-           "groupLabel":"Cena",
-           "values":[
-              {
-                 "label":"Od najniższej",
-                 "value":"priceHighest"
-              },
-              {
-                 "label":"Od najwyższej",
-                 "value":"priceLowest"
-              }
-           ]
-        },
-        {
-           "groupLabel":"Data dodania",
-           "values":[
-              {
-                 "label":"Najnowsze",
-                 "value":"dateLatest"
-              }
-           ]
-        }
-     ],
-   "categories": [
-    {
-      "label": "Owoce, warzywa",
-      "value": "owoce-warzywa",
-      "children": [
-        {
-          "label": "Owoce",
-          "value": "owoce",
-          "isLeaf": true
-        },
-        {
-          "label": "Warzywa",
-          "value": "warzywa",
-          "isLeaf": true
-        },
-        {
-          "label": "Sałatki",
-          "value": "salatki",
-          "isLeaf": true
-        },
-        {
-          "label": "Zioła",
-          "value": "ziola",
-          "isLeaf": true
-        },
-        {
-          "label": "Grzyby",
-          "value": "grzyby",
-          "isLeaf": true
-        },
-        {
-          "label": "Orzechy i ziarniste",
-          "value": "orzechy-i-ziarniste",
-          "isLeaf": true
-        },
-        {
-          "label": "Owoce suszone i bakalie na wagę",
-          "value": "owoce-suszone-i-bakalie-na-wage",
-          "isLeaf": true
-        }
-      ]
-    },
-    {
-      "label": "Nabiał i jaja",
-      "value": "nabial-i-jaja",
-      "isLeaf": true
-    },
-    {
-      "label": "Pieczywo, cukiernia",
-      "value": "pieczywo-cukiernia",
-      "isLeaf": true
-    },
-    {
-      "label": "Mięso, ryby, garmaż",
-      "value": "mieso-ryby-garmaz",
-      "isLeaf": true
-    },
-    {
-      "label": "Przetwory",
-      "value": "przetwory",
-      "isLeaf": true
-    },
-    {
-      "label": "Wyroby pszczelarskie",
-      "value": "pszczoly",
-      "isLeaf": true
-    },
-    {
-      "label": "Kwiaty cięte, doniczkowe, sadzonki",
-      "value": "kwiaty",
-      "isLeaf": true
-    },
-    {
-      "label": "Inne",
-      "value": "inne",
-      "isLeaf": true
-    }
-  ],
-   "products": [
+   "messages":[
+      {
+         "user":{
+            "id":"dadadawdad",
+            "name":"Krzywy Wieslaw"
+         },
+         "title":"Twoje jaja nie spelniaja norm krzywosci",
+         "messages":[
+            {
+               "creationDate":1355121900,
+               "content":"Twoje jaja nie spelniaja norm krzywosci"
+            },
+            {
+               "creationDate":1355128900,
+               "readDate":1355481900,
+               "content":"Twoje bardziej",
+               "isResponse":true
+            },
+            {
+               "creationDate":1355501900,
+               "content":"Nieprawda"
+            }
+         ]
+      },
+      {
+         "user":{
+            "id":"dadadawdad",
+            "name":"Bananowiec"
+         },
+         "title":"Idz na drzewo wyginac banany",
+         "messages":[
+            {
+               "creationDate":1355101900,
+               "content":"Co ci z twoich bananow",
+               "isResponse":true
+            }
+         ]
+      }
+   ],
+   "deliveryTypes":[
+      {
+         "label":"Dostawa do domu",
+         "value":"home-delivery",
+         "price":30,
+         "currency":"PLN"
+      },
+      {
+         "label":"Odbior w punkcie stacjonarnym",
+         "value":"stationary-pickup-point",
+         "price":0,
+         "currency":"PLN"
+      },
+      {
+         "label":"Mobilny punkt odbioru",
+         "value":"mobile-pickup-point",
+         "price":2,
+         "currency":"PLN"
+      },
+      {
+         "label":"Odbior wlasny",
+         "value":"self-pickup",
+         "price":0,
+         "currency":"PLN"
+      }
+   ],
+   "sortTypes":[
+      {
+         "groupLabel":"Popularność",
+         "values":[
+            {
+               "label":"Dostawcy",
+               "value":"popularityOfSuppliers"
+            },
+            {
+               "label":"Produkty",
+               "value":"popularityOfProducts"
+            }
+         ]
+      },
+      {
+         "groupLabel":"Cena",
+         "values":[
+            {
+               "label":"Od najniższej",
+               "value":"priceHighest"
+            },
+            {
+               "label":"Od najwyższej",
+               "value":"priceLowest"
+            }
+         ]
+      },
+      {
+         "groupLabel":"Data dodania",
+         "values":[
+            {
+               "label":"Najnowsze",
+               "value":"dateLatest"
+            }
+         ]
+      }
+   ],
+   "categories":[
+      {
+         "label":"Owoce, warzywa",
+         "value":"owoce-warzywa",
+         "children":[
+            {
+               "label":"Owoce",
+               "value":"owoce",
+               "isLeaf":true
+            },
+            {
+               "label":"Warzywa",
+               "value":"warzywa",
+               "isLeaf":true
+            },
+            {
+               "label":"Sałatki",
+               "value":"salatki",
+               "isLeaf":true
+            },
+            {
+               "label":"Zioła",
+               "value":"ziola",
+               "isLeaf":true
+            },
+            {
+               "label":"Grzyby",
+               "value":"grzyby",
+               "isLeaf":true
+            },
+            {
+               "label":"Orzechy i ziarniste",
+               "value":"orzechy-i-ziarniste",
+               "isLeaf":true
+            },
+            {
+               "label":"Owoce suszone i bakalie na wagę",
+               "value":"owoce-suszone-i-bakalie-na-wage",
+               "isLeaf":true
+            }
+         ]
+      },
+      {
+         "label":"Nabiał i jaja",
+         "value":"nabial-i-jaja",
+         "isLeaf":true
+      },
+      {
+         "label":"Pieczywo, cukiernia",
+         "value":"pieczywo-cukiernia",
+         "isLeaf":true
+      },
+      {
+         "label":"Mięso, ryby, garmaż",
+         "value":"mieso-ryby-garmaz",
+         "isLeaf":true
+      },
+      {
+         "label":"Przetwory",
+         "value":"przetwory",
+         "isLeaf":true
+      },
+      {
+         "label":"Wyroby pszczelarskie",
+         "value":"pszczoly",
+         "isLeaf":true
+      },
+      {
+         "label":"Kwiaty cięte, doniczkowe, sadzonki",
+         "value":"kwiaty",
+         "isLeaf":true
+      },
+      {
+         "label":"Inne",
+         "value":"inne",
+         "isLeaf":true
+      }
+   ],
+   "products":[
       {
          "title":"Jajca 1",
          "price":4.6,
          "unit":"szt",
          "currency":"PLN",
-          "category":{
-              "label": "Owoce, warzywa",
-              "value": "owoce-warzywa",
-              "children": [
-                  {
-                      "label": "Owoce",
-                      "value": "owoce",
-                      "children": [
-                          {
-                              "label": "Jabłka i gruszki",
-                              "value": "jablka-i-gruszki",
-                              "isLeaf": true
-                          }
-                      ]
-                  }
-              ]
-          },
-         "averageOfRates": 4.5,
+         "category":{
+            "label":"Owoce, warzywa",
+            "value":"owoce-warzywa",
+            "children":[
+               {
+                  "label":"Owoce",
+                  "value":"owoce",
+                  "children":[
+                     {
+                        "label":"Jabłka i gruszki",
+                        "value":"jablka-i-gruszki",
+                        "isLeaf":true
+                     }
+                  ]
+               }
+            ]
+         },
+         "averageOfRates":4.5,
          "photos":[
             {
                "url":"assets/introdution-slides-bg-1.jpg"
@@ -146,185 +211,103 @@
                "url":"assets/introdution-slides-bg-1.jpg"
             }
          ],
-         "inBasket": true,
+         "inBasket":true,
          "isFavorite":true,
-         "opinionsCount": 2,
+         "opinionsCount":2,
          "supplier":{
             "id":"dadadadawdad",
             "name":"Ziutek",
             "forename":"Kowalski",
-            "opinionsCount": 12,
-            "averageOfRates": 4.0
+            "opinionsCount":12,
+            "averageOfRates":4.0
          }
       },
       {
-       "title":"Jajca 5",
-       "price":3.0,
-       "unit":"szt",
-       "currency":"PLN",
-       "category":{
-          "label": "Owoce, warzywa",
-          "value": "owoce-warzywa",
-          "children": [
-              {
-                  "label": "Warzywa",
-                  "value": "warzywa",
-                  "children": [
-                      {
-                          "label": "Sałata i rzodkiewka",
-                          "value": "salata-i-rzodkiewka",
-                          "isLeaf": true
-                      }
+         "title":"Jajca 5",
+         "price":3.0,
+         "unit":"szt",
+         "currency":"PLN",
+         "category":{
+            "label":"Owoce, warzywa",
+            "value":"owoce-warzywa",
+            "children":[
+               {
+                  "label":"Warzywa",
+                  "value":"warzywa",
+                  "children":[
+                     {
+                        "label":"Sałata i rzodkiewka",
+                        "value":"salata-i-rzodkiewka",
+                        "isLeaf":true
+                     }
                   ]
-              }
-          ]
+               }
+            ]
+         },
+         "photos":[
+            {
+               "url":"assets/introdution-slides-bg-1.jpg"
+            },
+            {
+               "url":"assets/introdution-slides-bg-1.jpg"
+            }
+         ],
+         "averageOfRates":3.5,
+         "isFavorite":true,
+         "inBasket":true,
+         "opinionsCount":70,
+         "supplier":{
+            "id":"dadadadawdad",
+            "name":"Alojzy",
+            "forename":"Banan",
+            "opinionsCount":300,
+            "averageOfRates":4.5
+         }
       },
-       "photos":[
-          {
-             "url":"assets/introdution-slides-bg-1.jpg"
-          },
-          {
-             "url":"assets/introdution-slides-bg-1.jpg"
-          }
-       ],
-       "averageOfRates": 3.5,
-       "isFavorite":true,
-       "inBasket": true,
-       "opinionsCount": 70,
-       "supplier":{
-          "id":"dadadadawdad",
-          "name":"Alojzy",
-          "forename":"Banan",
-          "opinionsCount": 300,
-          "averageOfRates": 4.5
-       }
-    },
-    {
-       "title":"Jajca 7",
-       "price":3.9,
-       "unit":"szt",
-       "currency":"PLN",
-       "category":{
-          "label": "Owoce, warzywa",
-          "value": "owoce-warzywa",
-          "children": [
-              {
-                  "label": "Warzywa",
-                  "value": "warzywa",
-                  "children": [
-                      {
-                          "label": "Pomidory, ogórki i papryka",
-                          "value": "pomidory-ogorki-i-papryka",
-                          "isLeaf": true
-                      }
+      {
+         "title":"Jajca 7",
+         "price":3.9,
+         "unit":"szt",
+         "currency":"PLN",
+         "category":{
+            "label":"Owoce, warzywa",
+            "value":"owoce-warzywa",
+            "children":[
+               {
+                  "label":"Warzywa",
+                  "value":"warzywa",
+                  "children":[
+                     {
+                        "label":"Pomidory, ogórki i papryka",
+                        "value":"pomidory-ogorki-i-papryka",
+                        "isLeaf":true
+                     }
                   ]
-              }
-          ]
-      },
-       "photos":[
-          {
-             "url":"assets/introdution-slides-bg-1.jpg"
-          },
-          {
-             "url":"assets/introdution-slides-bg-1.jpg"
-          }
-       ],
-       "isFavorite":true,
-       "inBasket": true,
-       "opinionsCount": 12,
-       "averageOfRates": 3.7,
-       "supplier":{
-          "id":"dadadadawdad",
-          "name":"Dziadek",
-          "forename":"Mietek",
-          "opinionsCount": 90,
-          "averageOfRates": 3.9
-       }
-    },
-    {
-       "title":"Dorodne winogrona",
-       "price":3.9,
-       "unit":"szt",
-       "currency":"PLN",
-       "category":{
-          "label": "Owoce, warzywa",
-          "value": "owoce-warzywa",
-          "children": [
-              {
-                  "label": "Warzywa",
-                  "value": "warzywa",
-                  "children": [
-                      {
-                          "label": "Pomidory, ogórki i papryka",
-                          "value": "pomidory-ogorki-i-papryka",
-                          "isLeaf": true
-                      }
-                  ]
-              }
-          ]
-      },
-       "photos":[
-          {
-             "url":"assets/introdution-slides-bg-1.jpg"
-          },
-          {
-             "url":"assets/introdution-slides-bg-1.jpg"
-          }
-       ],
-       "inBasket": true,
-       "isFavorite":true,
-       "opinionsCount": 12,
-       "averageOfRates": 3.7,
-       "supplier":{
-          "id":"dadadadawdad",
-          "name":"Jolo",
-          "forename":"Mordo",
-          "opinionsCount": 90,
-          "averageOfRates": 3.9
-       }
-    },
-    {
-       "title":"Cytryny",
-       "price":3.9,
-       "unit":"szt",
-       "currency":"PLN",
-       "category":{
-          "label": "Owoce, warzywa",
-          "value": "owoce-warzywa",
-          "children": [
-              {
-                  "label": "Warzywa",
-                  "value": "warzywa",
-                  "children": [
-                      {
-                          "label": "Pomidory, ogórki i papryka",
-                          "value": "pomidory-ogorki-i-papryka",
-                          "isLeaf": true
-                      }
-                  ]
-              }
-          ]
-      },
-       "photos":[
-          {
-             "url":"assets/introdution-slides-bg-1.jpg"
-          },
-          {
-             "url":"assets/introdution-slides-bg-1.jpg"
-          }
-       ],
-       "inBasket": true,
-       "isFavorite":true,
-       "opinionsCount": 12,
-       "averageOfRates": 3.7,
-       "supplier":{
-          "id":"dadadadawdad",
-          "name":"Jolo",
-          "forename":"Mordo",
-          "opinionsCount": 90,
-          "averageOfRates": 3.9
-       }
-    }
-     ],
-     "cities": []
+               }
+            ]
+         },
+         "photos":[
+            {
+               "url":"assets/introdution-slides-bg-1.jpg"
+            },
+            {
+               "url":"assets/introdution-slides-bg-1.jpg"
+            }
+         ],
+         "isFavorite":true,
+         "inBasket":true,
+         "opinionsCount":12,
+         "averageOfRates":3.7,
+         "supplier":{
+            "id":"dadadadawdad",
+            "name":"Dziadek",
+            "forename":"Mietek",
+            "opinionsCount":90,
+            "averageOfRates":3.9
+         }
+      }
+   ],
+   "cities":[
+
+   ]
 }

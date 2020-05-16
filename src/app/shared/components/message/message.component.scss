@@ -1,0 +1,39 @@
+ion-header {
+    padding: 15px;
+
+    ion-icon {
+        font-size: x-large;
+    }
+}
+
+.message {
+    width: 90%;
+    min-width: 300px;
+    margin-bottom: 5px;
+
+    border: 1px solid lightgray;
+    border-radius: 2px;
+
+    --ion-background-color: rgba(0, 0, 0, 0.03);
+}
+
+.user-message {
+    float: right;
+    --ion-background-color: transparent;
+}
+
+ion-footer {
+    padding: 0px 15px;
+    ion-textarea {
+        background: rgba(0, 0, 0, 0.03);
+        width: 100%;
+        border-radius: 2px;
+        margin: 5px auto;
+    }
+
+    ion-col:nth-child(2) {
+        text-align: center;
+        font-size: x-large;
+        padding-top: 65px;
+    }
+}

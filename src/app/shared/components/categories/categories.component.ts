@@ -26,7 +26,7 @@ export class CategoriesComponent {
   }
 
   chooseChild(category: ICategoryTree) {
-    if (hasChildren(category)) {
+    if (!hasChildren(category)) {
       this.goTo(category);
       return false;
     }
@@ -43,6 +43,7 @@ export class CategoriesComponent {
 
   goTo(category: ICategoryTree) {
     this.closeSelf();
+    // TODO Add filters to filters service
     this._router.navigate(
       ['zakladki/szukaj'],
       {

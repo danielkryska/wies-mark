@@ -1,4 +1,4 @@
-import { SearchService } from './services/search.service';
+import { SearchService } from '../shared/services/search.service';
 import { SharedModule } from '@shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';

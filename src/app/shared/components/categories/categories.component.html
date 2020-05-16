@@ -1,28 +1,21 @@
-<ion-list lines="none">
-    <ion-list-header>
-        <h3>Wybierz kategorię</h3>
-    </ion-list-header>
-    <ion-list-header *ngIf="!!actualCategoryTree" >
-        <a href="javascript:void(0)" (click)="chooseParent(actualCategoryTree)">
-            <h4>{{ actualCategoryTree.label }}</h4>
-        </a>
-    </ion-list-header>
-    <ion-item *ngFor="let category of !!actualCategoryTree && actualCategoryTree.children || categoriesTrees" >
-        <a href="javascript:void(0)" (click)="chooseChild(category)">
-            <ion-label>{{ category.label }}</ion-label>
-        </a>
-    </ion-item>
-</ion-list>
-
-<ion-footer>
-    <ion-toolbar>
-      <ion-row>
-          <ion-col>
-            <ion-button expand="block" (click)="closeSelf()">Cofnij</ion-button>
-          </ion-col>
-          <ion-col>
-            <ion-button expand="block" [disabled]="!actualCategoryTree" (click)="goTo(actualCategoryTree)">Wybierz</ion-button>
-          </ion-col>
-      </ion-row>
-    </ion-toolbar>
-</ion-footer>
+<app-modal
+    headerTitle="Wybierz kategorie"
+    applyBtnName="Wybierz"
+    cancelBtnName="Cofnij"
+    [isApplyBtnDisabled]="!actualCategoryTree"
+    (cancel)="closeSelf()"
+    (apply)="goTo(actualCategoryTree)"
+>
+    <ion-list lines="none">
+        <ion-list-header *ngIf="!!actualCategoryTree" >
+            <a href="javascript:void(0)" (click)="chooseParent(actualCategoryTree)">
+                <h4>{{ actualCategoryTree.label }}</h4>
+            </a>
+        </ion-list-header>
+        <ion-item *ngFor="let category of !!actualCategoryTree && actualCategoryTree.children || categoriesTrees" >
+            <a href="javascript:void(0)" (click)="chooseChild(category)">
+                <ion-label>{{ category.label }}</ion-label>
+            </a>
+        </ion-item>
+    </ion-list>
+</app-modal>

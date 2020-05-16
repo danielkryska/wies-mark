@@ -1,17 +1,17 @@
-<ion-list lines="none">
+<app-modal
+  headerTitle="Sortuj wedlug"
+  cancelBtnName="Cofnij"
+  (cancel)="closeSelf()"
+>
+  <ion-list lines="none">
     <ion-list-header><h3>Sortuj według</h3></ion-list-header>
     <ng-container *ngFor="let sortType of sortTypes" >
         <ion-item-divider>
-            <ion-label>{{ sortType.groupLabel }}</ion-label>
-          </ion-item-divider>
+          <ion-label>{{ sortType.groupLabel }}</ion-label>
+        </ion-item-divider>
         <ion-item *ngFor="let sortTypeValue of sortType.values" >
-            <ion-label (click)="closeSelf(sortTypeValue.value)">{{ sortTypeValue.label }}</ion-label>
+          <ion-label (click)="closeSelf(sortTypeValue.value)">{{ sortTypeValue.label }}</ion-label>
         </ion-item>
     </ng-container>
-</ion-list>
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-button expand="block" (click)="closeSelf()">Cofnij</ion-button>
-  </ion-toolbar>
-</ion-footer>
+  </ion-list>
+</app-modal>

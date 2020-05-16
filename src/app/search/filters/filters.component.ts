@@ -1,4 +1,4 @@
-import { SearchService } from './../services/search.service';
+import { SearchService } from '../../shared/services/search.service';
 import { Component } from '@angular/core';
 import { IProduct } from '@shared/models/product.model';
 import { ModalController } from '@ionic/angular';

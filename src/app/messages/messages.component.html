@@ -6,37 +6,24 @@
     </ion-toolbar>
 </ion-header>
 
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+        <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+</ion-fab>
+
 <ion-content fullScreen>
     <ion-list lines="full">
-        <a href="javascript:void(0)">
-            <ion-item>
-                <ion-badge slot="start" color="success">9</ion-badge>
-                <ion-label>
-                    <b>Jasiu Wiesiu</b>
-                    <p><small><i>Ostatnia wiadomosc z: 16:45</i></small></p>
-                    <p><small><b>Lorem ipsum ddadddddddddodaodaododod adadaoidad</b></small></p>
-                </ion-label>
-            </ion-item>
-        </a>
-        <a href="javascript:void(0)">
-            <ion-item>
-                <ion-badge color="success" slot="start">3</ion-badge>
-                <ion-label>
-                    <b>Jasiu Wiesiu</b>
-                    <p><small><i>Ostatnia wiadomosc z: 16:45</i></small></p>
-                    <p><small><b>Lorem ipsum ddadddddddddodaodaododod adadaoidad</b></small></p>
-                </ion-label>
-            </ion-item>
-        </a>
-        <a href="javascript:void(0)">
-            <ion-item>
-                <ion-badge slot="start" color="medium">0</ion-badge>
-                <ion-label>
-                    <p><b>Jasiu Wiesiu</b></p>
-                    <p><small><i>Ostatnia wiadomosc z: 15.04.2013, 16:45</i></small></p>
-                    <p><small><b>Lorem ipsum ddadddddddddodaodaododod adadaoidad</b></small></p>
-                </ion-label>
-            </ion-item>
-        </a>
+        <ion-item *ngFor="let messagesGroup of messagesGroups" (click)="openMessage(messagesGroup)">
+            <ion-badge slot="start" color="{{ unreadCount(messagesGroup) === 0 ? 'light' : 'success' }}">
+                {{ unreadCount(messagesGroup) > 9 ? '+9' : unreadCount(messagesGroup) }}
+            </ion-badge>
+            <ion-label>
+                <b>{{ messagesGroup.title }}</b>
+                <p><small><b>od uzytkownika: {{ messagesGroup.user.name }}</b></small></p>
+                <p><small>Ostatnia wiadomosc z: {{ lastMessageTimeInMs(messagesGroup) | date:'M/d/yy, hh:mm:ss' }}</small></p>
+                <p><small><i>{{ lastMessage(messagesGroup).content }}</i></small></p>
+            </ion-label>
+        </ion-item>
     </ion-list>
 </ion-content>

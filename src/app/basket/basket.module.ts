@@ -1,3 +1,5 @@
+import { BasketService } from './services/basket.service';
+import { SharedModule } from '@shared/shared.module';
 import { DeliveryTypesService } from './services/delivery-types.service';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
@@ -8,22 +10,25 @@ import { BasketComponent } from './basket.component';
 import { FormsModule } from '@angular/forms';
 import { BasketProductComponent } from './basket-product/basket-product.component';
 import { DeliveryTypeComponent } from './delivery-type/delivery-type.component';
+import { SupplierProductsComponent } from './supplier-products/supplier-products.component';
 
 
 @NgModule({
   declarations: [
     BasketComponent, 
     BasketProductComponent, 
-    DeliveryTypeComponent
+    DeliveryTypeComponent, SupplierProductsComponent
   ],
   imports: [
     IonicModule,
     CommonModule,
     BasketRoutingModule,
-    FormsModule
+    FormsModule,
+    SharedModule
   ],
   providers: [
-    DeliveryTypesService
+    DeliveryTypesService,
+    BasketService
   ]
 })
 export class BasketModule { }
