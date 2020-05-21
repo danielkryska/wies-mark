@@ -1,58 +1,42 @@
-import { MessageComponent } from '@shared/components/message/message.component';
-import { ModalController } from '@ionic/angular';
 import { IMessagesGroup } from '@shared/models/message.model';
-import { IUser } from '@shared/models/user.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environment';
 
 @Injectable({ providedIn: 'root' })
 export class MessagesService {
-  public messagesGroups: IMessagesGroup[] = [];
+  public conversations: IMessagesGroup[] = [];
 
   get hasNewReceived() {
-    return this.messagesGroups
-      .some(messagesGroup => messagesGroup.messages
+    return this.conversations
+      .some(conversation => conversation.messages
         .some(message => !message.readDate && message.isResponse)
       );
   }
-
-  constructor(
-    private _http: HttpClient,
-    private _modalController: ModalController
-  ) {
-    // TODO Load group messages and load message pages
-    this.loadMessages();
+  get hasUserVisitedMessages() {
+    return this.conversations
+      .some(conversation => !conversation.viewDate);
   }
 
+  constructor(private _http: HttpClient) {
+    // TODO Load group messages and load message pages
+    this.getMessagesGroups$()
+      .subscribe((conversations) => this.conversations = conversations);
+  }
+
+  public getMessagesGroups$ = () => this._http.get<IMessagesGroup[]>(`${environment.API_URL}/messages`);
   // TODO API /messages/:messageID/:page
-  public get$ = (messageID: string, page = 0) => this._http.get<IMessagesGroup[]>(`${environment.API_URL}/messages`);
+  public getMessagesPage$ = (groupMessageID: string, page = 0) => this._http.get<IMessagesGroup[]>(`${environment.API_URL}/messages`);
 
-  public loadMessages = () => this.get$(null)
-    .subscribe(messagesGroups => this.messagesGroups = messagesGroups)
-
-  public lastMessage = (messagesGroup: IMessagesGroup) => !!messagesGroup.messages[0] && messagesGroup.messages[0];
-  public lastMessageTimeInMs = (messagesGroup: IMessagesGroup) => this.lastMessage(messagesGroup).creationDate * 1000;
-  public unreadCount = (messagesGroup: IMessagesGroup): number => messagesGroup.messages
-    .filter(message => !message.readDate && message.isResponse)
-    .length
-
-  public addMessage = (message: string, messagesGroup: IMessagesGroup) => messagesGroup.messages
+  public addMessage = (message: string, conversation: IMessagesGroup) => {
+    conversation.messages
     .push({
       creationDate: (new Date()).getTime(),
       content: message
-    })
-
-  public async openMessage(messagesGroup: IMessagesGroup | null) {
-    const modal = await this._modalController.create({
-      component: MessageComponent,
-      componentProps: { messagesGroup }
     });
 
-    messagesGroup.messages
-      .filter(message => !message.readDate)
-      .forEach(message => message.readDate = (new Date()).getTime());
-
-    return await modal.present();
+    if (!this.conversations.some(existingConversation => existingConversation.user.name === conversation.user.name)) {
+      this.conversations.unshift(conversation);
+    }
   }
 }

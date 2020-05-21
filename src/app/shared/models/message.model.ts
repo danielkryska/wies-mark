@@ -1,8 +1,9 @@
 import { IPublicUser } from './user.model';
 export interface IMessagesGroup {
     user: IPublicUser;
-    title: string;
     messages: IMessage[];
+
+    viewDate?: number;
 }
 
 export interface IMessage {
@@ -11,6 +12,7 @@ export interface IMessage {
     readDate?: number;
 
     isResponse?: boolean;
+    isOffer?: boolean;
 
     content: string;
 }

@@ -19,7 +19,7 @@
 
     <ng-container *ngIf="isSummary; else otherOfSupplier">
         <ion-item class="supplier-action-btn">
-            <a routerLink="/zakladki/wiadomosci">
+            <a href="javascript:void(0)" (click)="openMessageDialog()">
                 <small>Wyślij wiadomość (opcjonalne)</small>
             </a>
         </ion-item>

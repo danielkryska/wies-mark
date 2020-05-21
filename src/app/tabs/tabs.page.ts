@@ -7,8 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['tabs.page.scss']
 })
 export class TabsPage {
-  get hasNewReceivedMessage() {
-    return this._messagesService.hasNewReceived;
+  get hasUserVisitedMessages() {
+    return this._messagesService.hasUserVisitedMessages;
   }
 
   constructor(private _messagesService: MessagesService) {}

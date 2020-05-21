@@ -6,23 +6,16 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button>
-        <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-</ion-fab>
-
 <ion-content fullScreen>
     <ion-list lines="full">
-        <ion-item *ngFor="let messagesGroup of messagesGroups" (click)="openMessage(messagesGroup)">
-            <ion-badge slot="start" color="{{ unreadCount(messagesGroup) === 0 ? 'light' : 'success' }}">
-                {{ unreadCount(messagesGroup) > 9 ? '+9' : unreadCount(messagesGroup) }}
+        <ion-item *ngFor="let conversation of conversations" (click)="openMessage(conversation)">
+            <ion-badge slot="start" color="{{ unreadCount(conversation) === 0 ? 'light' : 'success' }}">
+                {{ unreadCount(conversation) > 9 ? '+9' : unreadCount(conversation) }}
             </ion-badge>
             <ion-label>
-                <b>{{ messagesGroup.title }}</b>
-                <p><small><b>od uzytkownika: {{ messagesGroup.user.name }}</b></small></p>
-                <p><small>Ostatnia wiadomosc z: {{ lastMessageTimeInMs(messagesGroup) | date:'M/d/yy, hh:mm:ss' }}</small></p>
-                <p><small><i>{{ lastMessage(messagesGroup).content }}</i></small></p>
+                <b>{{ conversation.user.name }}</b>
+                <p><small>Ostatnia wiadomosc z: {{ lastMessageTimeInMs(conversation) | date:'M/d/yy, hh:mm:ss' }}</small></p>
+                <p><small><b>{{ lastMessage(conversation).content }}</b></small></p>
             </ion-label>
         </ion-item>
     </ion-list>

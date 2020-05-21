@@ -42,9 +42,23 @@ export class BasketComponent {
         if (this._summaryBasket.isSummary) {
           this._summaryBasket.isSummary = false;
         }
+
+        if (this._router.url === '/zakladki/koszyk' && !!this._basketService.suppliersProducts) {
+          Object.keys(this._basketService.suppliersProducts)
+            .forEach(supplierName => {
+              this._basketService.suppliersProducts[supplierName]
+                .filter(product => !product.inBasket)
+                .forEach(product => _.remove(this._basketService.suppliersProducts[supplierName], product));
+            });
+
+          Object.keys(this._basketService.suppliersProducts)
+            .filter(supplierName => this._basketService.suppliersProducts[supplierName].length === 0)
+            .forEach(supplierName => delete(this._basketService.suppliersProducts[supplierName]));
+        }
       });
   }
 
   order = () => this._summaryBasket.order();
-  hasProductsInBasket = (supplierName: string) => !!this._basketService.suppliersProducts[supplierName];
+  hasProductsInBasket = (supplierName: string) => this._basketService.suppliersProducts[supplierName]
+    .some(product => product.inBasket)
 }

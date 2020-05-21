@@ -3,9 +3,9 @@
       {
          "user": {
             "id": "dadadawdad",
-            "name": "Krzywy Wieslaw"
+            "name": "Ziutek"
          },
-         "title": "Twoje jaja nie spelniaja norm krzywosci",
+         "viewDate": 1355501900,
          "messages": [
             {
                "creationDate": 1355121900,
@@ -28,12 +28,25 @@
             "id": "dadadawdad",
             "name": "Bananowiec"
          },
-         "title": "Idz na drzewo wyginac banany",
          "messages": [
             {
                "creationDate": 1355101900,
                "content": "Co ci z twoich bananow",
                "isResponse": true
+            }
+         ]
+      },
+      {
+         "user": {
+            "id": "dadadadddddwdad",
+            "name": "Kupujący"
+         },
+         "messages": [
+            {
+               "creationDate": 1355101900,
+               "content": "Oferta....",
+               "isResponse": true,
+               "isOffer": true
             }
          ]
       }
