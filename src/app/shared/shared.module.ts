@@ -1,9 +1,6 @@
 import { RouterModule } from '@angular/router';
-import { SortTypesService } from './services/sort-types.service';
 import { BarRatingModule } from 'ngx-bar-rating';
 import { CategoriesComponent } from './components/categories/categories.component';
-import { ProductsService } from './services/products.service';
-import { CitiesService } from './services/cities.service';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,12 +12,6 @@ import { ModalComponent } from './components/modal/modal.component';
 import { MessageComponent } from './components/message/message.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-const SERVICES = [
-  CitiesService,
-  ProductsService,
-  SortTypesService
-];
-
 const COMPONENTS = [
   CategoriesBarComponent,
   CategoriesComponent,
@@ -31,7 +22,6 @@ const COMPONENTS = [
 
 @NgModule({
   declarations: [...COMPONENTS],
-  providers: [...SERVICES],
   entryComponents: [...COMPONENTS],
   imports: [
     IonicModule,
@@ -44,4 +34,4 @@ const COMPONENTS = [
   ],
   exports: [...COMPONENTS]
 })
-export class SharedModule { }
+export class SharedModule {}

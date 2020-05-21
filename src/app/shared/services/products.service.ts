@@ -1,15 +1,14 @@
 import { IProduct } from './../models/product.model';
-import { DEFAULT_SORT_TYPE } from './../models/sort-type.model';
 import { environment } from '@environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import * as _ from 'lodash';
 import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 
-@Injectable({
-  providedIn: 'root'
-})
+import * as _ from 'lodash';
+
+@Injectable({ providedIn: 'root' })
 export class ProductsService {
   constructor(private _http: HttpClient) {}
 
@@ -20,9 +19,12 @@ export class ProductsService {
   // TODO add items per page and max limit of returning products
   public getBy$ = (
     filters: Partial<IProduct>,
-    sortType: string = DEFAULT_SORT_TYPE
+    sortType: string = null
   ): Observable<IProduct[]> => this.products$
+    .pipe(
+      map((products: IProduct[]) => _.filter(products, filters))
+    )
 
-  // TODO Replace mock
+  // TODO to filter service and replace mock
   public countBy$ = (filters: Partial<IProduct>): Observable<number> => of(5);
 }

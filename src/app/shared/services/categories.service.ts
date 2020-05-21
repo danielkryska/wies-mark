@@ -4,22 +4,21 @@ import { ICategory, ICategoryTree } from '@shared/models/category.model';
 import { environment } from '@environment';
 import { flattenCategories, findCategoryInTree, findParentCategoryInTree } from '@shared/utils/categories.util';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class CategoriesService {
   public categoriesTrees: ICategoryTree[] = [];
   public categories: ICategory[] = [];
 
-  constructor(private _http: HttpClient) {}
-
-  // TODO replace with PWA
-  loadCategoriesTrees(): void {
-    this._http.get<ICategoryTree[]>(`${environment.API_URL}/categories`)
+  constructor(private _http: HttpClient) {
+    this.trees$
       .subscribe((categoriesTrees: ICategoryTree[]) => {
         this.categoriesTrees = categoriesTrees;
         this.categories = flattenCategories(...categoriesTrees);
-      });;
+      });
+  }
+
+  public get trees$() {
+    return this._http.get<ICategoryTree[]>(`${environment.API_URL}/categories`);
   }
 
   getCategoriesBy = (categoryValue: string): ICategory[] | [] => this.categories

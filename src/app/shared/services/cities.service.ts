@@ -4,9 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ICity } from '@shared/models/city.model';
 import { environment } from '@environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class CitiesService {
   constructor(private _http: HttpClient) {}
 

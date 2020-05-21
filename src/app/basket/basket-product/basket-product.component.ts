@@ -1,4 +1,5 @@
-import { BasketService } from './../services/basket.service';
+import { SummaryService } from '@shared/services/summary.service';
+import { BasketService } from '../../shared/services/basket.service';
 import { IProduct } from '@shared/models/product.model';
 import { Component, Input } from '@angular/core';
 
@@ -13,13 +14,16 @@ export class BasketProductComponent {
   public multiplication = 1;
 
   get isSummary() {
-    return this._basketService.isSummary;
+    return this._summaryService.isSummary;
   }
   get isProductMinimumStack() {
     return this.multiplication === 1;
   }
 
-  constructor(private _basketService: BasketService) {}
+  constructor(
+    private _basketService: BasketService,
+    private _summaryService: SummaryService 
+  ) {}
 
   add = () => {
     this.multiplication += 1;

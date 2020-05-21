@@ -1,5 +1,5 @@
-import { ICategoryTree } from './../shared/models/category.model';
-import { SearchService } from '../shared/services/search.service';
+import { ICategoryTree } from '@shared/models/category.model';
+import { SearchService } from '@shared/services/search.service';
 import { CategoriesComponent } from '@shared/components/categories/categories.component';
 import { DEFAULT_SORT_TYPE, ISortTypeValue } from './../shared/models/sort-type.model';
 import { CategoriesService } from '@shared/services/categories.service';

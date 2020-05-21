@@ -9,9 +9,7 @@
                 <h3>{{ product.title }}</h3>
                 <p><small>od 
                     {{ 
-                        !!product.supplier.company 
-                            ? product.supplier.company 
-                            : product.supplier.name + ' ' + product.supplier.forename 
+                        product.supplier.name + ' ' + product.supplier.forename 
                     }}
                 </small></p>
                 <h2>
@@ -20,10 +18,16 @@
                 </h2>
             </ion-label>
 
-            <div class="floating-btn basket-floating-btn" (click)="product.inBasket = !product.inBasket">
+            <div 
+                class="floating-btn basket-floating-btn" 
+                (click)="toggleInBasket(product)"
+            >
               <ion-icon name="{{ product.inBasket ? 'basket' : 'basket-outline' }}"></ion-icon>
             </div>
-            <div class="floating-btn favorite-floating-btn" (click)="product.isFavorite = !product.isFavorite">
+            <div 
+                class="floating-btn favorite-floating-btn" 
+                (click)="product.isFavorite = !product.isFavorite"
+            >
               <ion-icon name="{{ product.isFavorite ? 'star' : 'star-outline' }}"></ion-icon>
             </div>
         </ion-item>

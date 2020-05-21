@@ -1,6 +1,4 @@
-import { BasketService } from './services/basket.service';
 import { SharedModule } from '@shared/shared.module';
-import { DeliveryTypesService } from './services/delivery-types.service';
 import { IonicModule } from '@ionic/angular';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -15,9 +13,10 @@ import { SupplierProductsComponent } from './supplier-products/supplier-products
 
 @NgModule({
   declarations: [
-    BasketComponent, 
-    BasketProductComponent, 
-    DeliveryTypeComponent, SupplierProductsComponent
+    BasketComponent,
+    BasketProductComponent,
+    DeliveryTypeComponent,
+    SupplierProductsComponent
   ],
   imports: [
     IonicModule,
@@ -25,10 +24,6 @@ import { SupplierProductsComponent } from './supplier-products/supplier-products
     BasketRoutingModule,
     FormsModule,
     SharedModule
-  ],
-  providers: [
-    DeliveryTypesService,
-    BasketService
   ]
 })
 export class BasketModule { }

@@ -6,9 +6,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '@environment';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class MessagesService {
   public messagesGroups: IMessagesGroup[] = [];
 
@@ -23,11 +21,12 @@ export class MessagesService {
     private _http: HttpClient,
     private _modalController: ModalController
   ) {
+    // TODO Load group messages and load message pages
     this.loadMessages();
   }
 
-  // TODO API /messages/:userID/:page
-  public get$ = (user: IUser) => this._http.get<IMessagesGroup[]>(`${environment.API_URL}/messages`);
+  // TODO API /messages/:messageID/:page
+  public get$ = (messageID: string, page = 0) => this._http.get<IMessagesGroup[]>(`${environment.API_URL}/messages`);
 
   public loadMessages = () => this.get$(null)
     .subscribe(messagesGroups => this.messagesGroups = messagesGroups)

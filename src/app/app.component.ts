@@ -1,3 +1,4 @@
+import { BasketService } from '@shared/services/basket.service';
 import { SortTypesService } from '@shared/services/sort-types.service';
 import { CategoriesService } from '@shared/services/categories.service';
 import { Component } from '@angular/core';
@@ -14,14 +15,8 @@ export class AppComponent {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
-
-    private _categoriesService: CategoriesService,
-    private _sortTypesService: SortTypesService
+    private statusBar: StatusBar
   ) {
-    this._categoriesService.loadCategoriesTrees();
-    this._sortTypesService.loadSortTypes();
-
     this.initializeApp();
   }
 

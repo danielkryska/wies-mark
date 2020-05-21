@@ -4,16 +4,13 @@ import { Injectable } from '@angular/core';
 import { IProduct } from '@shared/models/product.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({ providedIn: 'root' })
 export class SearchService {
   public products$: Observable<IProduct[]>;
+  private _productsSubject$: BehaviorSubject<IProduct[]>;
 
   private _filters: Partial<IProduct> = {};
   private _sortType: ISortTypeValue = DEFAULT_SORT_TYPE;
-
-  private _productsSubject$: BehaviorSubject<IProduct[]>;
 
   constructor(private _productsService: ProductsService) {
     this._productsSubject$ = new BehaviorSubject<IProduct[]>([]);
@@ -32,5 +29,6 @@ export class SearchService {
       .subscribe((products: IProduct[]) => this._productsSubject$.next(products));
   }
 
+  // TODO to filter service
   countBy$ = (filters: Partial<IProduct>): Observable<number> => this._productsService.countBy$(filters);
 }

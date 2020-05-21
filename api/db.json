@@ -211,8 +211,8 @@
                  "url":"../../assets/introdution-slides-bg-1.jpg"
               }
            ],
-           "inBasket": true,
-           "isFavorite":true,
+           "inBasket": false,
+           "isFavorite":false,
            "opinionsCount": 2,
            "supplier":{
               "id":"dadadadawdad",
@@ -253,8 +253,8 @@
             }
          ],
          "averageOfRates": 3.5,
-         "isFavorite":true,
-         "inBasket": true,
+         "isFavorite":false,
+         "inBasket": false,
          "opinionsCount": 70,
          "supplier":{
             "id":"dadadadawdad",
@@ -294,7 +294,7 @@
                "url":"../../assets/introdution-slides-bg-1.jpg"
             }
          ],
-         "isFavorite":true,
+         "isFavorite":false,
          "inBasket": true,
          "opinionsCount": 12,
          "averageOfRates": 3.7,
@@ -336,8 +336,8 @@
                "url":"../../assets/introdution-slides-bg-1.jpg"
             }
          ],
-         "inBasket": true,
-         "isFavorite":true,
+         "inBasket": false,
+         "isFavorite":false,
          "opinionsCount": 12,
          "averageOfRates": 3.7,
          "supplier":{
@@ -379,7 +379,7 @@
             }
          ],
          "inBasket": true,
-         "isFavorite":true,
+         "isFavorite":false,
          "opinionsCount": 12,
          "averageOfRates": 3.7,
          "supplier":{

@@ -1,5 +1,5 @@
-import { ICategoryTree } from './../../models/category.model';
-import { hasChildren } from './../../utils/categories.util';
+import { ICategoryTree } from '../../models/category.model';
+import { hasChildren } from '../../utils/categories.util';
 import { ICategory } from '@shared/models/category.model';
 import { Component, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';

@@ -1,6 +1,6 @@
-import { DeliveryTypesService, IDeliveryType } from './../services/delivery-types.service';
 import { ModalController } from '@ionic/angular';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { IDeliveryType, DeliveryTypesService } from '@shared/services/delivery-types.service';
 
 @Component({
   selector: 'app-delivery-type',
@@ -10,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class DeliveryTypeComponent {
   @Input()
   set supplierName(supplierName: string) {
-    this._deliveryTypesService.getDeliveryTypesBy(supplierName)
+    this._deliveryTypesService.deliveryTypesBy$(supplierName)
       .subscribe((deliverTypes: IDeliveryType[]) => this.deliveryTypes = deliverTypes);
   }
 
