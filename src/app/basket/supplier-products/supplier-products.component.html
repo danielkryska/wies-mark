@@ -1,19 +1,20 @@
 <ion-list lines="none">
     <ion-item class="supplier">
-        <ion-label><p><small>{{ supplierName }}</small></p></ion-label>
+        <ion-label><p><small>{{ supplier.name }}</small></p></ion-label>
         <ion-checkbox 
             *ngIf="!isSummary" 
             checked 
             slot="start"
-            [ngModel]="hasProducts"
+            [ngModel]="anyProductInBasket"
             (ionChange)="toggleProducts($event.target.checked)"
         ></ion-checkbox>
     </ion-item>
 
-    <ng-container *ngFor="let product of products">
+    <ng-container *ngFor="let product of supplier.products">
         <app-basket-product
-            *ngIf="product.inBasket && isSummary || !isSummary"
+            *ngIf="product.product.inBasket && isSummary || !isSummary"
             [product]="product"
+            [isSummary]="isSummary"
         ></app-basket-product>
     </ng-container>
 
@@ -23,10 +24,10 @@
                 <small>Wyślij wiadomość (opcjonalne)</small>
             </a>
         </ion-item>
-        <ion-item *ngIf="!!deliveryType" class="supplier-action-btn">
+        <ion-item *ngIf="!!supplier.deliveryType" class="supplier-action-btn">
             <ion-label>
-                <span>{{ deliveryType.label }}</span>
-                <p>{{ deliveryType.price | currency:deliveryType.currency:'symbol-narrow':'1.2' }}</p>
+                <span>{{ supplier.deliveryType.label }}</span>
+                <p>{{ supplier.deliveryType.price | currency:supplier.deliveryType.currency:'symbol-narrow':'1.2' }}</p>
             </ion-label>
         </ion-item>
         <ion-item class="supplier-action-btn" (click)="chooseDeliveryType()">
@@ -38,11 +39,7 @@
 
     <ng-template #otherOfSupplier>
         <ion-item class="supplier-action-btn">
-            <!-- TODO navigate to search and set filters by service -->
-            <a
-                [routerLink]="['/zakladki/szukaj']" 
-                [queryParams]="{supplier: supplierName}"
-            >
+            <a href="javascript:void(0)" (click)="searchForSupplierProducts()">
                 <small>Inne produkty sprzedającego</small>
             </a>
         </ion-item>

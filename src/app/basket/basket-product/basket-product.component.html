@@ -3,21 +3,21 @@
         *ngIf="!isSummary" 
         checked 
         slot="start"
-        [ngModel]="product.inBasket"
-        (ionChange)="toggle($event.target.checked)"    
+        [(ngModel)]="product.product.inBasket"
+        [checked]="product.product.inBasket"  
     ></ion-checkbox>
-    <ion-avatar slot="start">
-        <img src="{{ product.photos[0].url }}">
-    </ion-avatar>
+    <ion-thumbnail slot="start">
+        <ion-img [src]="product.product.photos[0].url"></ion-img>
+    </ion-thumbnail>
     <ion-label>
-        <h3>{{ product.title }}</h3>
+        <h3>{{ product.product.title }}</h3>
         <div *ngIf="!isSummary" class="multiply">
             <ion-row>
                 <ion-col size="3">
                     <ion-button (click)="remove()" [disabled]="isProductMinimumStack">-</ion-button>
                 </ion-col>
                 <ion-col size="4">
-                    <p>{{ multiplication }}</p>  
+                    <p>{{ product.multiplication }}</p>  
                 </ion-col>
                 <ion-col size="3">
                     <ion-button (click)="add()">+</ion-button>
@@ -25,11 +25,11 @@
             </ion-row>
         </div>
         <h2>
-            {{ product.price | currency:product.currency:'symbol-narrow':'1.2' }}
-            / {{ product.unit }} 
+            {{ product.product.price | currency:product.product.currency:'symbol-narrow':'1.2' }}
+            / {{ product.product.unit }} 
             <span 
-                *ngIf="isSummary && multiplication > 1"
-            >x {{ multiplication }}</span>
+                *ngIf="isSummary && product.multiplication > 1"
+            >x {{ product.multiplication }}</span>
         </h2>
     </ion-label>
 </ion-item>

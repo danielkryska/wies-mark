@@ -14,11 +14,7 @@ import { USER_CITY_FIELD } from '@shared/models/user.model';
 export class IntroductionSlidesPage {
   public searchedCities: ICity[] = [];
 
-  constructor(
-    private _storage: Storage,
-    private _router: Router,
-    private _citiesService: CitiesService
-  ) {
+  constructor(private _storage: Storage, private _router: Router, private _citiesService: CitiesService) {
     this._redirectOnKnownCity();
   }
 
@@ -37,11 +33,10 @@ export class IntroductionSlidesPage {
   //   this._router.navigateByUrl('/zakladki/jarmark');
   // }
 
-  protected _redirectOnKnownCity = () => this._storage.get(USER_CITY_FIELD)
-    .then((userLocationValue: string | null) => {
+  protected _redirectOnKnownCity = () =>
+    this._storage.get(USER_CITY_FIELD).then((userLocationValue: string | null) => {
       if (!!userLocationValue) {
         this._router.navigateByUrl('/zakladki/jarmark');
       }
-    })
+    });
 }
-

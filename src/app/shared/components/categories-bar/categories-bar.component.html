@@ -3,8 +3,7 @@
         <a 
             class="scroll-item"
             *ngFor="let categoryTree of categoriesTrees" 
-            [routerLink]="['/zakladki/szukaj']" 
-            [queryParams]="{selectedCategory: categoryTree.value}"
+            (click)="searchIn(categoryTree)"
         >
             <span>
                 {{ categoryTree.label }}

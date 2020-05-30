@@ -8,20 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { CategoriesBarComponent } from './components/categories-bar/categories-bar.component';
 import { IonicModule } from '@ionic/angular';
 import { ProductsSectionComponent } from './components/products-section/products-section.component';
-import { ModalComponent } from './components/modal/modal.component';
 import { MessageComponent } from './components/message/message.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AutosizeModule } from 'ngx-autosize';
+import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 
-const COMPONENTS = [
-  CategoriesBarComponent,
-  CategoriesComponent,
-  ProductsSectionComponent,
-  ModalComponent,
-  MessageComponent
-];
+const COMPONENTS = [CategoriesBarComponent, CategoriesComponent, ProductsSectionComponent, MessageComponent];
 
 @NgModule({
-  declarations: [...COMPONENTS],
+  declarations: [...COMPONENTS, CategoriesListComponent],
   entryComponents: [...COMPONENTS],
   imports: [
     IonicModule,
@@ -30,8 +25,9 @@ const COMPONENTS = [
     BarRatingModule,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AutosizeModule,
   ],
-  exports: [...COMPONENTS]
+  exports: [...COMPONENTS],
 })
 export class SharedModule {}

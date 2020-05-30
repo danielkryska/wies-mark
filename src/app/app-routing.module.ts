@@ -5,17 +5,15 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'zakladki',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'zakladki',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  }
+    loadChildren: () => import('./tabs/tabs.module').then((m) => m.TabsPageModule),
+  },
 ];
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
-  exports: [RouterModule]
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

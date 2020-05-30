@@ -1,62 +1,60 @@
 <ion-header>
-    <ion-title><p>Moj koszyk</p></ion-title>
+  <ion-toolbar>
+    <ion-buttons *ngIf="isSummary" slot="start">
+      <ion-back-button [defaultHref]="''" (click)="isSummary = false"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <p>{{ isSummary ? 'Podsumowanie' : 'Mój koszyk' }}</p>
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 <ng-container *ngIf="anyProduct; else emptyBasket">
-    <ion-content >
-        <ion-toolbar *ngIf="isSummary" >
-            <a href="javascript:void(0)" (click)="isSummary = false;">
-                <ion-icon name="arrow-back-outline"></ion-icon> Wroc do koszyka
-            </a>
-        </ion-toolbar>
-        <ng-container *ngFor="let supplier of suppliers">
-            <app-supplier-products
-                *ngIf="hasProductsInBasket(supplier) && isSummary || !isSummary" 
-                [supplierName]="supplier"
-            ></app-supplier-products>
-        </ng-container>
-    </ion-content>
+  <ion-content>
+    <ng-container *ngFor="let supplier of suppliers">
+      <app-supplier-products
+        *ngIf="(anyProductOF(supplier) && isSummary) || !isSummary"
+        [supplier]="supplier"
+        [isSummary]="isSummary"
+      ></app-supplier-products>
+    </ng-container>
+  </ion-content>
 </ng-container>
+<ng-template #emptyBasket>
+  <ion-content>
+    <div class="empty-basket-message">
+      <ion-icon name="basket"></ion-icon>
+      <p>Twój koszyk jest pusty</p>
+      <small>
+        <a routerLink="/zakladki/jarmark"><b>Odwiedź jarmark</b></a>
+        <span> lub </span>
+        <a routerLink="/zakladki/szukaj"><b>Znajdź produkt</b></a>
+      </small>
+    </div>
+  </ion-content>
+</ng-template>
 
 <ion-footer>
-    <ion-toolbar>
-        <ion-row>
-            <ion-col size-xs="4">
-                <p>{{ paymentSum | currency:'PLN':'symbol-narrow':'1.2' }}</p>
-            </ion-col>
-            <ion-col size-xs="8">
-                <ion-button 
-                    *ngIf="isSummary; else toSummary"
-                    expand="block"
-                    (click)="order()" 
-                    [disabled]="!hasAllDeliveryTypes"
-                >
-                    Złóż zamówienie
-                </ion-button>
-                <ng-template #toSummary>
-                    <ion-button 
-                        expand="block" 
-                        (click)="isSummary = true" 
-                        [disabled]="paymentSum === 0"
-                    >
-                        Podsumowanie
-                    </ion-button>
-                </ng-template>
-            </ion-col>
-        </ion-row>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size-xs="4">
+        <p>{{ payment | currency: 'PLN':'symbol-narrow':'1.2' }}</p>
+      </ion-col>
+      <ion-col size-xs="8">
+        <ion-button
+          *ngIf="isSummary; else toSummary"
+          expand="block"
+          (click)="order()"
+          [disabled]="!allSuppliersHasSetDeliveries"
+        >
+          Złóż zamówienie
+        </ion-button>
+        <ng-template #toSummary>
+          <ion-button expand="block" (click)="isSummary = true" [disabled]="payment === 0">
+            Podsumowanie
+          </ion-button>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
 </ion-footer>
-
-<ng-template #emptyBasket>
-    <ion-content>
-        <div class="empty-basket-message">
-            <ion-icon name="basket"></ion-icon>
-            <p>Twój koszyk jest pusty</p>
-            <small>
-                <a routerLink="/zakladki/jarmark"><b>Odwiedź jarmark</b></a>
-                <span> lub </span>
-                <a routerLink="/zakladki/szukaj"><b>Znajdź produkt</b></a>
-            </small>
-        </div>
-    </ion-content>
-</ng-template>

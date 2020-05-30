@@ -1,8 +1,13 @@
-<app-modal
-  headerTitle="Sortuj wedlug"
-  cancelBtnName="Cofnij"
-  (cancel)="closeSelf()"
->
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-back-button [defaultHref]="''" (click)="closeSelf()"></ion-back-button>
+      </ion-buttons>
+      <ion-title>Sortuj wedlug</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
   <ion-list lines="none">
     <ion-list-header><h3>Sortuj według</h3></ion-list-header>
     <ng-container *ngFor="let sortType of sortTypes" >
@@ -14,4 +19,10 @@
         </ion-item>
     </ng-container>
   </ion-list>
-</app-modal>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button expand="block" (click)="closeSelf()">Cofnij</ion-button>
+  </ion-toolbar>
+</ion-footer>

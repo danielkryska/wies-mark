@@ -1,64 +1,86 @@
+import { OrderHistoryService } from '@shared/services/order-history.service';
 import { Router } from '@angular/router';
-import { SummaryService } from '@shared/services/summary.service';
-import { BasketService } from '@shared/services/basket.service';
+import { BasketService, IBasketSupplier, IBasketProduct } from '@shared/services/basket.service';
 import { Component } from '@angular/core';
 
 import * as _ from 'lodash';
+import { MessagesService } from '@shared/services/messages.service';
 
 @Component({
   selector: 'app-basket',
   templateUrl: './basket.component.html',
-  styleUrls: ['./basket.component.scss']
+  styleUrls: ['./basket.component.scss'],
 })
 export class BasketComponent {
   get suppliers() {
-    return this._basketService.suppliers;
-  }
-  get anyProduct() {
-    return this._basketService.anyProduct;
+    return this._basketService.basketSuppliers;
   }
   get isSummary() {
-    return this._summaryBasket.isSummary;
+    return this._basketService.isSummary;
   }
   set isSummary(isSummary: boolean) {
-    this._summaryBasket.isSummary = isSummary;
+    this._basketService.isSummary = isSummary;
   }
-  get paymentSum() {
-    return this._summaryBasket.isSummary
-      ? this._basketService.paymentSum + this._summaryBasket.deliveryPaymentSum
-      : this._basketService.paymentSum;
+  get payment() {
+    return this._basketService.payment;
   }
-  get hasAllDeliveryTypes() {
-    return this._summaryBasket.hasAllDeliveryTypes;
+  get allSuppliersHasSetDeliveries() {
+    return this._basketService.allSuppliersHasSetDeliveries;
+  }
+  get anyProduct() {
+    return this.suppliers.some((supplier) => supplier.products.length > 0);
   }
 
   constructor(
     private _basketService: BasketService,
-    private _summaryBasket: SummaryService,
+    private _messagesService: MessagesService,
+    private _orderHistoryService: OrderHistoryService,
     private _router: Router
   ) {
-    this._router.events
-      .subscribe(() => {
-        if (this._summaryBasket.isSummary) {
-          this._summaryBasket.isSummary = false;
-        }
-
-        if (this._router.url === '/zakladki/koszyk' && !!this._basketService.suppliersProducts) {
-          Object.keys(this._basketService.suppliersProducts)
-            .forEach(supplierName => {
-              this._basketService.suppliersProducts[supplierName]
-                .filter(product => !product.inBasket)
-                .forEach(product => _.remove(this._basketService.suppliersProducts[supplierName], product));
-            });
-
-          Object.keys(this._basketService.suppliersProducts)
-            .filter(supplierName => this._basketService.suppliersProducts[supplierName].length === 0)
-            .forEach(supplierName => delete(this._basketService.suppliersProducts[supplierName]));
-        }
-      });
+    this._router.events.subscribe(() => {
+      this._basketService.isSummary = false;
+      if (this._router.url === '/zakladki/koszyk') {
+        this._basketService.removeOutOfBasket();
+      }
+    });
   }
 
-  order = () => this._summaryBasket.order();
-  hasProductsInBasket = (supplierName: string) => this._basketService.suppliersProducts[supplierName]
-    .some(product => product.inBasket)
+  anyProductOF = (supplier: IBasketSupplier) => supplier.products.some((product) => product.product.inBasket);
+
+  order = () => {
+    this._basketService.removeOutOfBasket();
+    this._basketService.basketSuppliers.forEach((basketSupplier) => {
+      const conversation = this._messagesService.getConversationBy(basketSupplier.name);
+      this._messagesService.addMessage(this._orderAsMessage(basketSupplier), conversation);
+    });
+    this._orderHistoryService.add(
+      ...this._basketService.productsInBasket.map((basketProduct) => basketProduct.product)
+    );
+    this._basketService.order();
+    this._basketService.clear();
+  };
+
+  protected _orderAsMessage(supplier: IBasketSupplier) {
+    let message = `
+      Zamówienie
+
+      Sposób dostawy:
+      ${supplier.deliveryType.label}, ${supplier.deliveryType.price} ${supplier.deliveryType.currency}
+    `;
+    let sum = supplier.deliveryType.price;
+    supplier.products.forEach((product: IBasketProduct) => {
+      message += `
+          ${product.product.title} x ${product.multiplication}, ${product.product.price * product.multiplication} ${
+        product.product.currency
+      }
+        `;
+      sum += product.product.price * product.multiplication;
+    });
+    message += `
+      Podsumowanie: ${sum} ${supplier.products[0].product.currency}
+    `;
+
+    // TODO create addOrder method to messages service\
+    return message;
+  }
 }

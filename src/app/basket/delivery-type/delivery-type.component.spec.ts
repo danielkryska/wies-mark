@@ -8,9 +8,8 @@ describe('DeliveryTypeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DeliveryTypeComponent ]
-    })
-    .compileComponents();
+      declarations: [DeliveryTypeComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

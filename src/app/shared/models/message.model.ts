@@ -1,18 +1,18 @@
 import { IPublicUser } from './user.model';
-export interface IMessagesGroup {
-    user: IPublicUser;
-    messages: IMessage[];
+export interface IConversation {
+  user: IPublicUser;
+  messages: IMessage[];
 
-    viewDate?: number;
+  viewDate?: number;
 }
 
 export interface IMessage {
-    creationDate: number;
-    updateDate?: number;
-    readDate?: number;
+  creationDate: number;
+  updateDate?: number;
+  readDate?: number;
 
-    isResponse?: boolean;
-    isOffer?: boolean;
+  isResponse?: boolean;
+  isOffer?: boolean;
 
-    content: string;
+  content: string;
 }

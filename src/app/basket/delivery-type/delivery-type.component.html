@@ -1,8 +1,13 @@
-<app-modal
-    headerTitle="Wybierz sposob dostawy"
-    cancelBtnName="Wroc do koszyka"
-    (cancel)="closeSelf()"
->
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button [defaultHref]="''" (click)="closeSelf()"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Wybierz sposob dostawy</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
     <ion-list lines="none">
         <ion-item *ngFor="let deliveryType of deliveryTypes" (click)="closeSelf(deliveryType)">
             <ion-label>
@@ -11,4 +16,10 @@
             </ion-label>
         </ion-item>
     </ion-list>
-</app-modal>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-button expand="block" (click)="closeSelf()">Wroc do koszyka</ion-button>
+    </ion-toolbar>
+</ion-footer>

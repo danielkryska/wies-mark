@@ -7,6 +7,6 @@ const routes: Routes = [{ path: '', component: BasketComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class BasketRoutingModule { }
+export class BasketRoutingModule {}

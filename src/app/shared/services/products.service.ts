@@ -13,17 +13,12 @@ export class ProductsService {
   constructor(private _http: HttpClient) {}
 
   get products$(): Observable<IProduct[]> {
-    return this._http.get<IProduct[]>(`${environment.API_URL}/products`);
+    return this._http.get<IProduct[]>(`${environment.API_URL}`).pipe(map((data: any) => data.products));
   }
 
   // TODO add items per page and max limit of returning products
-  public getBy$ = (
-    filters: Partial<IProduct>,
-    sortType: string = null
-  ): Observable<IProduct[]> => this.products$
-    .pipe(
-      map((products: IProduct[]) => _.filter(products, filters))
-    )
+  public getBy$ = (filters: Partial<IProduct>, sortType: string = null): Observable<IProduct[]> =>
+    this.products$.pipe(map((products: IProduct[]) => _.filter(products, filters)));
 
   // TODO to filter service and replace mock
   public countBy$ = (filters: Partial<IProduct>): Observable<number> => of(5);

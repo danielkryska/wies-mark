@@ -6,8 +6,8 @@ import { IntroductionSlidesPage } from './introduction-slides.page';
 const routes: Routes = [
   {
     path: '',
-    component: IntroductionSlidesPage
-  }
+    component: IntroductionSlidesPage,
+  },
 ];
 
 @NgModule({

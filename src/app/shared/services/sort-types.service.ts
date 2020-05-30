@@ -7,11 +7,10 @@ import { environment } from '@environment';
 export class SortTypesService {
   public sortTypes: ISortTypeGroup[] = [];
   public get sortTypes$() {
-    return this._http.get<ISortTypeGroup[]>(`${environment.API_URL}/sortTypes`);
+    return this._http.get<ISortTypeGroup[]>(`${environment.API_URL}`).pipe((data: any) => data.sortTypes);
   }
 
   constructor(private _http: HttpClient) {
-    this.sortTypes$
-      .subscribe((sortTypes: ISortTypeGroup[]) => this.sortTypes = sortTypes);
+    this.sortTypes$.subscribe((sortTypes: ISortTypeGroup[]) => (this.sortTypes = sortTypes));
   }
 }

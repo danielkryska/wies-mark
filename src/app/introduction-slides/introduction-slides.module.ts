@@ -7,11 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { IntroductionSlidesPage } from './introduction-slides.page';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule
-  ],
-  declarations: [IntroductionSlidesPage]
+  imports: [CommonModule, FormsModule, IonicModule],
+  declarations: [IntroductionSlidesPage],
 })
 export class IntroductionSlidesPageModule {}

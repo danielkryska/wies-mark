@@ -6,7 +6,7 @@ describe('SortTypesService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: SortTypesService = TestBed.get(SortTypesService);
+    const service: SortTypesService = TestBed.inject(SortTypesService);
     expect(service).toBeTruthy();
   });
 });

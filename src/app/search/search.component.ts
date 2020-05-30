@@ -9,43 +9,50 @@ import { FiltersComponent } from './filters/filters.component';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ModalController, IonSearchbar } from '@ionic/angular';
 import { untilDestroyed } from 'ngx-take-until-destroy';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { IProduct } from '@shared/models/product.model';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit, OnDestroy {
   @ViewChild('searchbar') searchbar: IonSearchbar;
 
+  get hasFilters() {
+    return !!this._searchService.filters && Object.keys(this._searchService.filters).length > 0;
+  }
+
   public products: IProduct[];
 
   public parentCategoryTree: ICategoryTree;
-  public actualCategoryTree: ICategoryTree = {ID: '', label: 'test', value: 'test'};
+  public actualCategoryTree: ICategoryTree = {
+    ID: '',
+    label: 'test',
+    value: 'test',
+  };
 
   public proposedCategories: ICategory[] = [];
 
   constructor(
     private _searchService: SearchService,
     private _categoriesService: CategoriesService,
-    private _modalController: ModalController,
-    private _activatedRoute: ActivatedRoute
+    private _modalController: ModalController
   ) {}
 
   ngOnInit() {
     this._searchService.products$
       .pipe(untilDestroyed(this))
-      .subscribe((products: IProduct[]) => this.products = products);
+      .subscribe((products: IProduct[]) => (this.products = products));
+  }
 
-    // TODO queryParams to params /:filters/:sortType
-    this._activatedRoute.paramMap
-      .pipe(untilDestroyed(this))
-      .subscribe((params) => {
-        this._updateFiltersBy(params);
-        this._updateSortTypeBy(params);
-      });
+  clearFilters = () => (this._searchService.filters = {});
+
+  searchIn(categoryTree) {
+    this._searchService.filters = {
+      category: categoryTree,
+    };
   }
 
   get categoriesTrees(): ICategoryTree[] {
@@ -56,19 +63,20 @@ export class SearchComponent implements OnInit, OnDestroy {
     const isEmptyValue = !searchValue || searchValue.trim() === '';
     isEmptyValue
       ? this.clearProposedCategories()
-      : this.proposedCategories = this._categoriesService.getCategoriesBy(searchValue);
+      : (this.proposedCategories = this._categoriesService.getCategoriesBy(searchValue));
   }
 
-  ionViewDidEnter = () => setTimeout(() => {
-    if (this.searchbar) {
-      this.searchbar.setFocus();
-    }
-  });
-  clearProposedCategories = () => this.proposedCategories = [];
+  ionViewDidEnter = () =>
+    setTimeout(() => {
+      if (this.searchbar) {
+        this.searchbar.setFocus();
+      }
+    });
+  clearProposedCategories = () => (this.proposedCategories = []);
 
   async openFilters(): Promise<void> {
     const modal = await this._modalController.create({
-      component: FiltersComponent
+      component: FiltersComponent,
     });
     return await modal.present();
   }
@@ -78,19 +86,18 @@ export class SearchComponent implements OnInit, OnDestroy {
       component: CategoriesComponent,
       componentProps: {
         actualCategoryTree: this.parentCategoryTree,
-        categories: this.categoriesTrees
-      }
+        categories: this.categoriesTrees,
+      },
     });
     return await modal.present();
   }
 
   async openSortBy(): Promise<void> {
     const modal = await this._modalController.create({
-      component: SortByComponent
+      component: SortByComponent,
     });
 
-    modal.onDidDismiss()
-      .then(data => !!data.data ? this._searchService.sortType = data.data : null);
+    modal.onDidDismiss().then((data) => (!!data.data ? (this._searchService.sortType = data.data) : null));
 
     return await modal.present();
   }
@@ -99,15 +106,13 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   protected _updateSortTypeBy(params: ParamMap) {
     const sortType: ISortTypeValue | null = !!params.get('sortType')
-      ? params.get('sortType') as ISortTypeValue
+      ? (params.get('sortType') as ISortTypeValue)
       : DEFAULT_SORT_TYPE;
     this._searchService.sortType = sortType;
   }
 
   protected _updateFiltersBy(params: ParamMap) {
-    const filters: Partial<IProduct> = !!params.get('filters')
-      ? JSON.parse(params.get('filters'))
-      : {};
+    const filters: Partial<IProduct> = !!params.get('filters') ? JSON.parse(params.get('filters')) : {};
     this._searchService.filters = filters;
 
     if (filters.category) {

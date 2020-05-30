@@ -4,16 +4,6 @@
     }
 
     ion-list {
-        padding: 0px;
-        ion-avatar {
-            width: 85px;
-            height: 85px;
-        
-            img {
-                border-radius: 0px;
-            }
-        }
-
         ion-item:nth-child(odd) {
             --ion-background-color: rgba(0, 0, 0, 0.03) !important;
         }

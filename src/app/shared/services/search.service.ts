@@ -7,9 +7,22 @@ import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class SearchService {
   public products$: Observable<IProduct[]>;
+
+  get filters() {
+    return this._filters;
+  }
+  set filters(filters: Partial<IProduct | any>) {
+    this._filters = filters;
+    if (Object.keys(this._filters).length > 0) {
+      this._productsService
+        .getBy$(this._filters, this._sortType)
+        .subscribe((products: IProduct[]) => this._productsSubject$.next(products));
+    }
+  }
+
   private _productsSubject$: BehaviorSubject<IProduct[]>;
 
-  private _filters: Partial<IProduct> = {};
+  private _filters: Partial<IProduct | any> = {};
   private _sortType: ISortTypeValue = DEFAULT_SORT_TYPE;
 
   constructor(private _productsService: ProductsService) {
@@ -19,13 +32,8 @@ export class SearchService {
 
   set sortType(sortType: ISortTypeValue) {
     this._sortType = sortType;
-    this._productsService.getBy$(this._filters, this._sortType)
-      .subscribe((products: IProduct[]) => this._productsSubject$.next(products));
-  }
-
-  set filters(filters: Partial<IProduct>) {
-    this._filters = filters;
-    this._productsService.getBy$(this._filters, this._sortType)
+    this._productsService
+      .getBy$(this._filters, this._sortType)
       .subscribe((products: IProduct[]) => this._productsSubject$.next(products));
   }
 

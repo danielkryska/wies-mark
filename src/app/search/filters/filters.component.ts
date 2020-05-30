@@ -6,17 +6,13 @@ import { ModalController } from '@ionic/angular';
 @Component({
   selector: 'app-filters',
   templateUrl: './filters.component.html',
-  styleUrls: ['./filters.component.scss']
+  styleUrls: ['./filters.component.scss'],
 })
 export class FiltersComponent {
-
   public filters: Partial<IProduct> = {};
 
-  constructor(
-    private _searchService: SearchService,
-    private _modalController: ModalController
-  ) {}
+  constructor(private _searchService: SearchService, private _modalController: ModalController) {}
 
   applyFilters = () => {};
-  closeSelf = () => this._modalController.dismiss({dismissed: true});
+  closeSelf = () => this._modalController.dismiss({ dismissed: true });
 }

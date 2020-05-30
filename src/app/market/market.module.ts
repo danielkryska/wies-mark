@@ -8,15 +8,7 @@ import { MarketPage } from './market.page';
 import { MarketPageRoutingModule } from './market-routing.module';
 
 @NgModule({
-  imports: [
-    IonicModule,
-    CommonModule,
-    FormsModule,
-    MarketPageRoutingModule,
-    SharedModule
-  ],
-  declarations: [
-    MarketPage
-  ]
+  imports: [IonicModule, CommonModule, FormsModule, MarketPageRoutingModule, SharedModule],
+  declarations: [MarketPage],
 })
 export class MarketPageModule {}

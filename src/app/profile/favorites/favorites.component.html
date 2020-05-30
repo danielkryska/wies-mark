@@ -1,0 +1,17 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="zakladki/profil">Profil</ion-back-button>
+        </ion-buttons>
+        <ion-title>
+            <p>Ulubione</p>
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <app-products-section
+        *ngIf="!!products"
+        [products]="products"
+    ></app-products-section>
+</ion-content>

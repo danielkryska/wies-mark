@@ -1,3 +1,4 @@
+import { map } from 'rxjs/operators';
 import { environment } from '@environment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -20,6 +21,6 @@ export class DeliveryTypesService {
   constructor(private _http: HttpClient) {}
 
   deliveryTypesBy$(supplierName: string) {
-    return this._http.get<IDeliveryType[]>(`${environment.API_URL}/deliveryTypes`);
+    return this._http.get<IDeliveryType[]>(`${environment.API_URL}`).pipe(map((data: any) => data.deliveryTypes));
   }
 }

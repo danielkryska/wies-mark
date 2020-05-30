@@ -5,22 +5,19 @@ import { IDeliveryType, DeliveryTypesService } from '@shared/services/delivery-t
 @Component({
   selector: 'app-delivery-type',
   templateUrl: './delivery-type.component.html',
-  styleUrls: ['./delivery-type.component.scss']
+  styleUrls: ['./delivery-type.component.scss'],
 })
 export class DeliveryTypeComponent {
   @Input()
   set supplierName(supplierName: string) {
-    this._deliveryTypesService.deliveryTypesBy$(supplierName)
-      .subscribe((deliverTypes: IDeliveryType[]) => this.deliveryTypes = deliverTypes);
+    this._deliveryTypesService
+      .deliveryTypesBy$(supplierName)
+      .subscribe((deliverTypes: IDeliveryType[]) => (this.deliveryTypes = deliverTypes));
   }
 
   public deliveryTypes: IDeliveryType[] = [];
 
-  constructor(
-    private _deliveryTypesService: DeliveryTypesService,
-    private _modalController: ModalController
-  ) {}
+  constructor(private _deliveryTypesService: DeliveryTypesService, private _modalController: ModalController) {}
 
   closeSelf = (data = null) => this._modalController.dismiss(data);
-
 }

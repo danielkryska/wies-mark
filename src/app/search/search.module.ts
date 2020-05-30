@@ -8,18 +8,8 @@ import { FiltersComponent } from './filters/filters.component';
 import { SortByComponent } from './sort-by/sort-by.component';
 import { IonicModule } from '@ionic/angular';
 
-
 @NgModule({
-  declarations: [
-    SearchComponent,
-    FiltersComponent,
-    SortByComponent
-  ],
-  imports: [
-    IonicModule,
-    CommonModule,
-    SearchRoutingModule,
-    SharedModule
-  ]
+  declarations: [SearchComponent, FiltersComponent, SortByComponent],
+  imports: [IonicModule, CommonModule, SearchRoutingModule, SharedModule],
 })
-export class SearchModule { }
+export class SearchModule {}

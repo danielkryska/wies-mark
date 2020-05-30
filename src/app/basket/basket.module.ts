@@ -10,20 +10,8 @@ import { BasketProductComponent } from './basket-product/basket-product.componen
 import { DeliveryTypeComponent } from './delivery-type/delivery-type.component';
 import { SupplierProductsComponent } from './supplier-products/supplier-products.component';
 
-
 @NgModule({
-  declarations: [
-    BasketComponent,
-    BasketProductComponent,
-    DeliveryTypeComponent,
-    SupplierProductsComponent
-  ],
-  imports: [
-    IonicModule,
-    CommonModule,
-    BasketRoutingModule,
-    FormsModule,
-    SharedModule
-  ]
+  declarations: [BasketComponent, BasketProductComponent, DeliveryTypeComponent, SupplierProductsComponent],
+  imports: [IonicModule, CommonModule, BasketRoutingModule, FormsModule, SharedModule],
 })
-export class BasketModule { }
+export class BasketModule {}

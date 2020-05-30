@@ -8,5 +8,6 @@ import { environment } from '@environment';
 export class CitiesService {
   constructor(private _http: HttpClient) {}
 
-  searchCitiesBy = (cityPartialName: string): Observable<ICity[]> => this._http.get<ICity[]>(`${environment.API_URL}/cities`);
+  searchCitiesBy = (cityPartialName: string): Observable<ICity[]> =>
+    this._http.get<ICity[]>(`${environment.API_URL}`).pipe((data: any) => data.cities);
 }

@@ -7,11 +7,6 @@ import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [MessagesComponent],
-  imports: [
-    CommonModule,
-    IonicModule,
-    MessagesRoutingModule,
-    SharedModule
-  ]
+  imports: [CommonModule, IonicModule, MessagesRoutingModule, SharedModule],
 })
-export class MessagesModule { }
+export class MessagesModule {}

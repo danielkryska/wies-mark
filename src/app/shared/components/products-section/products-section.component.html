@@ -2,9 +2,9 @@
     <h3 *ngIf="!!title"  class="section-title">{{ title }}</h3>
     <ion-list lines="none">
         <ion-item *ngFor="let product of products" >
-            <ion-avatar slot="start">
-            <img src="{{ product.photos[0].url }}">
-            </ion-avatar>
+            <ion-thumbnail slot="start">
+                <ion-img [src]="product.photos[0].url"></ion-img>
+            </ion-thumbnail>
             <ion-label>
                 <h3>{{ product.title }}</h3>
                 <p><small>od 
@@ -26,7 +26,7 @@
             </div>
             <div 
                 class="floating-btn favorite-floating-btn" 
-                (click)="product.isFavorite = !product.isFavorite"
+                (click)="toggleInFavorites(product)"
             >
               <ion-icon name="{{ product.isFavorite ? 'star' : 'star-outline' }}"></ion-icon>
             </div>

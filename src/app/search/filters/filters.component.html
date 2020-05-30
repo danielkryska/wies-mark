@@ -1,8 +1,25 @@
-<app-modal
-    headerTitle="Filtruj"
-    cancelBtnName="Cofnij"
-    [applyBtnName]="'Filtruj (0)'"
-    (cancel)="closeSelf()"
->
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button [defaultHref]="''" (click)="closeSelf()"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Filtruj</ion-title>
+    </ion-toolbar>
+</ion-header>
 
-</app-modal>
+<ion-content fullscreen>
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-row>
+            <ion-col>
+                <ion-button expand="block" (click)="closeSelf()">Cofnij</ion-button>
+            </ion-col>
+            <ion-col>
+                <ion-button expand="block" [disabled]="false">Filtruj (0)</ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-toolbar>
+</ion-footer>

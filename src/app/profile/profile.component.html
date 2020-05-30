@@ -1,21 +1,19 @@
 <ion-header>
     <ion-toolbar>
-        <ion-label>
-            <b>Moj profil</b>
-        </ion-label>
+        <ion-title>Mój profil</ion-title>
     </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen>
     <!-- User list -->
     <ion-list lines="full">
-        <ion-item>
+        <ion-item routerLink="/zakladki/profil/ulubione">
             <ion-icon name="heart-outline" slot="start"></ion-icon>
             <ion-label>
                 <p>Moje ulubione</p>
             </ion-label>
         </ion-item>
-        <ion-item>
+        <ion-item routerLink="/zakladki/profil/historia-zamowien">
             <ion-icon name="file-tray-full-outline" slot="start"></ion-icon>
             <ion-label>
                 <p>Historia zamowien</p>
@@ -31,7 +29,7 @@
 
     <!-- Supplier list -->
     <ion-list lines="full">
-        <ion-item>
+        <ion-item routerLink="/zakladki/profil/dodaj-produkt">
             <ion-icon name="nutrition-outline" slot="start"></ion-icon>
             <ion-label>
                 <p>Wystaw ogloszenie</p>

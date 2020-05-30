@@ -1,40 +1,4 @@
-<ng-container *ngIf="!actualCategoryTree; else filterSearch">
-  <ion-header no-border>
-    <ion-searchbar
-      #searchbar
-      autocomplete="on"
-      autocorrect="on"
-      inputmode="text"
-      placeholder="Jakiego produktu szukasz?"
-      spellcheck="true"
-      debounce="500"
-      (ionChange)="searchForCategory($event.target.value)"
-      (ionClear)="clearProposedCategories()" 
-    ></ion-searchbar>
-  </ion-header>
-
-  <ion-content>
-    <ion-list lines="none">
-      <a
-        *ngFor="let category of proposedCategories"
-        [routerLink]="['/zakladki/szukaj']" 
-        [queryParams]="{selectedCategory: category.value}"
-      >
-        <ion-item >
-          {{ category.label }}
-        </ion-item>
-      </a>
-    </ion-list>
-  </ion-content>
-
-  <ion-footer no-border transparent>
-    <ion-toolbar>
-      <app-categories-bar></app-categories-bar>
-    </ion-toolbar>
-  </ion-footer>
-</ng-container>
-
-<ng-template #filterSearch>
+<ng-container *ngIf="hasFilters; else search">
   <ion-header>
     <ion-toolbar>
       <ion-row>
@@ -58,12 +22,54 @@
   </ion-header>
   
   <ion-content fullscreen>
-      <!-- TODO Add return to search -->
-      <app-products-section
-        *ngIf="!!products && products.length > 0" 
-        [title]="'Produkty z kategorii: ' + actualCategoryTree.label"
-        [products]="products"
-      ></app-products-section>
-      <!-- TODO Pagination -->
+    <ion-toolbar (click)="clearFilters()">
+      <ion-label>
+        <a href="javascript:void(0)">Szukaj innych produktów</a>
+      </ion-label>
+    </ion-toolbar>
+    <!-- TODO Add return to search -->
+    <app-products-section
+      *ngIf="!!products && products.length > 0" 
+      [title]="'Produkty z kategorii: ' + actualCategoryTree.label"
+      [products]="products"
+    ></app-products-section>
+    <!-- TODO Pagination -->
   </ion-content>
+</ng-container>
+
+<!-- Filter search -->
+<ng-template #search>
+  <ion-header no-border>
+    <ion-searchbar
+      #searchbar
+      autocomplete="on"
+      autocorrect="on"
+      inputmode="text"
+      placeholder="Jakiego produktu szukasz?"
+      spellcheck="true"
+      debounce="500"
+      (ionChange)="searchForCategory($event.target.value)"
+      (ionClear)="clearProposedCategories()" 
+    ></ion-searchbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list lines="none">
+      <a
+        *ngFor="let category of proposedCategories"
+        href="javascript:void(0)"
+        (click)="searchIn(category)"
+      >
+        <ion-item >
+          {{ category.label }}
+        </ion-item>
+      </a>
+    </ion-list>
+  </ion-content>
+
+  <ion-footer no-border transparent>
+    <ion-toolbar>
+      <app-categories-bar></app-categories-bar>
+    </ion-toolbar>
+  </ion-footer>
 </ng-template>

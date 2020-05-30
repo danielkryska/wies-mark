@@ -1,6 +1,7 @@
+import { SearchService } from '@shared/services/search.service';
+import { Router } from '@angular/router';
 import { IProduct } from '@shared/models/product.model';
 import { ProductsService } from '@shared/services/products.service';
-import { ModalController } from '@ionic/angular';
 import { Component, OnDestroy } from '@angular/core';
 import { untilDestroyed } from 'ngx-take-until-destroy';
 
@@ -14,11 +15,17 @@ export class MarketPage implements OnDestroy {
 
   constructor(
     private _productsService: ProductsService,
-    public _modalController: ModalController
+    private _searchService: SearchService,
+    private _router: Router
   ) {
     this._productsService.products$
       .pipe(untilDestroyed(this))
-      .subscribe((products: IProduct[]) => this.products = products);
+      .subscribe((products: IProduct[]) => (this.products = products));
+  }
+
+  searchForProduct() {
+    this._searchService.filters = {};
+    this._router.navigateByUrl('/zakladki/szukaj');
   }
 
   ngOnDestroy() {}
