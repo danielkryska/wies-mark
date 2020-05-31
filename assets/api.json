@@ -218,10 +218,10 @@
            "averageOfRates": 4.5,
            "photos":[
               {
-                 "url":"../../assets/introdution-slides-bg-1.jpg"
+                 "url":"assets/introdution-slides-bg-1.jpg"
               },
               {
-                 "url":"../../assets/introdution-slides-bg-1.jpg"
+                 "url":"assets/introdution-slides-bg-1.jpg"
               }
            ],
            "inBasket": false,
@@ -259,10 +259,10 @@
         },
          "photos":[
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             },
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             }
          ],
          "averageOfRates": 3.5,
@@ -301,10 +301,10 @@
         },
          "photos":[
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             },
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             }
          ],
          "isFavorite":false,
@@ -343,10 +343,10 @@
         },
          "photos":[
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             },
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             }
          ],
          "inBasket": false,
@@ -385,10 +385,10 @@
         },
          "photos":[
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             },
             {
-               "url":"../../assets/introdution-slides-bg-1.jpg"
+               "url":"assets/introdution-slides-bg-1.jpg"
             }
          ],
          "inBasket": true,
