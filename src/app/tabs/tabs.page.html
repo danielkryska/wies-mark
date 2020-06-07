@@ -1,23 +1,28 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="jarmark">
+    <ion-tab-button class="navigate" tab="jarmark">
       <ion-icon name="leaf-outline"></ion-icon>
       <ion-label>Jarmark</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="szukaj">
+    <ion-tab-button class="navigate" tab="szukaj">
       <ion-icon name="search-outline"></ion-icon>
       <ion-label>Szukaj</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="koszyk">
-      <!-- TODO: If has something in basket then shouldn't be outline -->
+    <ion-tab-button class="navigate" tab="koszyk">
       <ion-icon name="basket-outline"></ion-icon>
       <ion-label>Koszyk</ion-label>
+      <ion-badge 
+        *ngIf="hasProducts"
+        color="success"
+      >
+        {{ productsCount }}
+      </ion-badge>
     </ion-tab-button>
 
-    <ion-tab-button tab="wiadomosci">
+    <ion-tab-button class="navigate" tab="wiadomosci">
       <ion-icon name="chatbox-outline">
       </ion-icon>
       <ion-label>Wiadomości</ion-label>
@@ -28,10 +33,9 @@
       </ion-badge>
     </ion-tab-button>
 
-    <ion-tab-button tab="profil">
+    <ion-tab-button class="navigate" tab="profil">
       <ion-icon name="person-circle-outline"></ion-icon>
       <ion-label>Profil</ion-label>
     </ion-tab-button>
   </ion-tab-bar>
-
 </ion-tabs>

@@ -11,8 +11,7 @@ import { IBasketSupplier } from '@shared/services/basket.service';
 
 @Component({
   selector: 'app-supplier-products',
-  templateUrl: './supplier-products.component.html',
-  styleUrls: ['./supplier-products.component.scss'],
+  templateUrl: './supplier-products.component.html'
 })
 export class SupplierProductsComponent {
   @Input() supplier: IBasketSupplier;
@@ -22,10 +21,10 @@ export class SupplierProductsComponent {
     return this.isChecked || this.allProductsInBasket;
   }
   get anyProductInBasket() {
-    return this.supplier.products.some((product) => product.product.inBasket);
+    return this.supplier.products.some(product => product.product.inBasket);
   }
   get allProductsInBasket() {
-    return !this.supplier.products.some((product) => !product.product.inBasket);
+    return !this.supplier.products.some(product => !product.product.inBasket);
   }
 
   constructor(
@@ -44,7 +43,7 @@ export class SupplierProductsComponent {
     const conversation = this._messagesService.getConversationBy(this.supplier.name);
     const modal = await this._modalController.create({
       component: MessageComponent,
-      componentProps: { conversation },
+      componentProps: { conversation }
     });
     this._messagesService.markAsRead(conversation);
 
@@ -52,20 +51,22 @@ export class SupplierProductsComponent {
   };
   public toggleProducts = (isChecked: boolean) => {
     if (!isChecked && this.anyProductInBasket) {
-      this.supplier.products.forEach((basketProduct) => (basketProduct.product.inBasket = false));
+      this.supplier.products.forEach(basketProduct => (basketProduct.product.inBasket = false));
     }
 
     if (isChecked && !this.anyProductInBasket) {
-      this.supplier.products.forEach((basketProduct) => (basketProduct.product.inBasket = true));
+      this.supplier.products.forEach(basketProduct => (basketProduct.product.inBasket = true));
     }
   };
   public async chooseDeliveryType() {
     const modal = await this._modalController.create({
       component: DeliveryTypeComponent,
-      componentProps: { supplierName: this.supplier.name },
+      componentProps: { supplierName: this.supplier.name }
     });
 
-    modal.onDidDismiss().then((data) => (!!data.data ? (this.supplier.deliveryType = data.data) : null));
+    modal
+      .onDidDismiss()
+      .then(data => (!!data.data ? (this.supplier.deliveryType = data.data) : null));
 
     return await modal.present();
   }

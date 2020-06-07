@@ -40,17 +40,19 @@
 <!-- Filter search -->
 <ng-template #search>
   <ion-header no-border>
-    <ion-searchbar
-      #searchbar
-      autocomplete="on"
-      autocorrect="on"
-      inputmode="text"
-      placeholder="Jakiego produktu szukasz?"
-      spellcheck="true"
-      debounce="500"
-      (ionChange)="searchForCategory($event.target.value)"
-      (ionClear)="clearProposedCategories()" 
-    ></ion-searchbar>
+    <ion-toolbar>
+      <ion-searchbar
+        #searchbar
+        autocomplete="on"
+        autocorrect="on"
+        inputmode="text"
+        placeholder="Jakiego produktu szukasz?"
+        spellcheck="true"
+        debounce="500"
+        (ionChange)="searchForCategory($event.target.value)"
+        (ionClear)="clearProposedCategories()" 
+      ></ion-searchbar>
+    </ion-toolbar>
   </ion-header>
 
   <ion-content>
@@ -65,11 +67,7 @@
         </ion-item>
       </a>
     </ion-list>
+    <app-categories-list>
+    </app-categories-list>
   </ion-content>
-
-  <ion-footer no-border transparent>
-    <ion-toolbar>
-      <app-categories-bar></app-categories-bar>
-    </ion-toolbar>
-  </ion-footer>
 </ng-template>

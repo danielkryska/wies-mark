@@ -10,6 +10,6 @@ import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [SearchComponent, FiltersComponent, SortByComponent],
-  imports: [IonicModule, CommonModule, SearchRoutingModule, SharedModule],
+  imports: [IonicModule, CommonModule, SearchRoutingModule, SharedModule]
 })
 export class SearchModule {}

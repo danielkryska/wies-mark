@@ -1,0 +1,12 @@
+/* Fix for slides component */
+.swiper-container {
+    width: 100%;
+
+    .swiper-slide {
+        display: block;
+    }
+
+    ion-slide {
+        width: 100% !important;
+    }
+}

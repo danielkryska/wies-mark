@@ -5,14 +5,15 @@ import { CategoriesService } from '@shared/services/categories.service';
 
 @Component({
   selector: 'app-categories-list',
-  templateUrl: './categories-list.component.html',
-  styleUrls: ['./categories-list.component.scss'],
+  templateUrl: './categories-list.component.html'
 })
 export class CategoriesListComponent {
   @Input() actualCategoryTree: ICategoryTree;
   @Input() maxInput = 0;
 
-  @Output() actualCategoryTreeChange: EventEmitter<ICategoryTree> = new EventEmitter<ICategoryTree>();
+  @Output() actualCategoryTreeChange: EventEmitter<ICategoryTree> = new EventEmitter<
+    ICategoryTree
+  >();
   @Output() selectCategoryLeaf: EventEmitter<ICategoryTree> = new EventEmitter<ICategoryTree>();
 
   get categoriesTrees(): ICategoryTree[] {

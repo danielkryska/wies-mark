@@ -4,8 +4,7 @@ import { IDeliveryType, DeliveryTypesService } from '@shared/services/delivery-t
 
 @Component({
   selector: 'app-delivery-type',
-  templateUrl: './delivery-type.component.html',
-  styleUrls: ['./delivery-type.component.scss'],
+  templateUrl: './delivery-type.component.html'
 })
 export class DeliveryTypeComponent {
   @Input()
@@ -17,7 +16,10 @@ export class DeliveryTypeComponent {
 
   public deliveryTypes: IDeliveryType[] = [];
 
-  constructor(private _deliveryTypesService: DeliveryTypesService, private _modalController: ModalController) {}
+  constructor(
+    private _deliveryTypesService: DeliveryTypesService,
+    private _modalController: ModalController
+  ) {}
 
   closeSelf = (data = null) => this._modalController.dismiss(data);
 }

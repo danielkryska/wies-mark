@@ -1,10 +1,31 @@
 <div class="container">
-    <h3 *ngIf="!!title"  class="section-title">{{ title }}</h3>
+    <ion-title *ngIf="!!title">
+        {{ title }}
+    </ion-title>
     <ion-list lines="none">
-        <ion-item *ngFor="let product of products" >
-            <ion-thumbnail slot="start">
+        <ion-item 
+            *ngFor="let product of products"
+            class="list-product"
+        >
+            <ion-thumbnail class="navigate" slot="start">
                 <ion-img [src]="product.photos[0].url"></ion-img>
             </ion-thumbnail>
+            <div class="product-actions">
+                <ion-button
+                    class="star"
+                    [ngClass]="{'active': product.isFavorite}"
+                    (click)="toggleInFavorites(product)"
+                >
+                    <ion-icon name="{{ product.isFavorite ? 'star' : 'star-outline' }}"></ion-icon>
+                </ion-button>
+                <ion-button
+                    class="basket" 
+                    [ngClass]="{'active': product.inBasket}"
+                    (click)="toggleInBasket(product)"
+                >
+                    <ion-icon name="{{ product.inBasket ? 'basket' : 'basket-outline' }}"></ion-icon>
+                </ion-button>
+            </div>
             <ion-label>
                 <h3>{{ product.title }}</h3>
                 <p><small>od 
@@ -16,20 +37,8 @@
                     {{ product.price | currency:product.currency:'symbol-narrow':'1.2' }}
                     / {{ product.unit }}
                 </h2>
+                <br><br>
             </ion-label>
-
-            <div 
-                class="floating-btn basket-floating-btn" 
-                (click)="toggleInBasket(product)"
-            >
-              <ion-icon name="{{ product.inBasket ? 'basket' : 'basket-outline' }}"></ion-icon>
-            </div>
-            <div 
-                class="floating-btn favorite-floating-btn" 
-                (click)="toggleInFavorites(product)"
-            >
-              <ion-icon name="{{ product.isFavorite ? 'star' : 'star-outline' }}"></ion-icon>
-            </div>
         </ion-item>
     </ion-list>
 </div>

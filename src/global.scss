@@ -25,23 +25,192 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-/* Ngx stars theme */
-@import '~ngx-bar-rating/themes/br-default-theme.css';
+/* Theme SCSS files */
+@import "./theme/variables.scss";
+// @import "./theme/fixes";
+// @import "./theme/categories-bar";
+// @import "./theme/categories";
+// @import "./theme/message";
+// @import "./theme/products-section";
 
+/* General */
+ion-header, ion-tabs {
+    --ion-background-color: var(--ion-color-shadow);
+    ion-title {
+        color: var(--ion-color-shadow-contrast);
+    }
+}
+ion-content {
+    --ion-background-color: var(--ion-color-mid-tone);
+    ion-title, ion-label > * {
+        color: var(--ion-color-mid-tone-contrast);
+    }
+}
 a {
-    text-decoration: none;
-    color: green;
+    text-decoration:none;
+}
+.searchbar-input {
+    box-shadow: none !important;
 }
 
-/* Fix for slides component */
-.swiper-container {
-    width: 100%;
+/** Action elements **/
+ion-button {
+    --box-shadow: none;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    margin: 0;
+}
+ion-button.secondary {
+    --background: transparent;
+    --background-hover: transparent;
+    // --color: #cc3e40;
+}
+ion-button.tertiary {
+    --background: transparent;
+    --background-hover: transparent;
+    // --color: rgba(215, 214, 213, 0.5);
+}
+ion-button.navigate, ion-tab-button.navigate {
+    --background: transparent;
+    --background-hover: transparent;
+    --color: var(--ion-color-navigate);
+}
+*.navigate {
+    border-bottom: 2px solid var(--ion-color-navigate);
+    cursor: pointer;
+}
+ion-button.simple {
+    --background: transparent;
+    --background-hover: transparent;
+}
 
-    .swiper-slide {
-        display: block;
+/** Special action buttons **/
+ion-button.basket {
+    --background: transparent;
+    --background-hover: transparent;
+
+    color: var(--ion-color-not-active);
+    &.active {
+        color: var(--ion-color-basket);
+    }
+}
+
+ion-button.star {
+    --background: transparent;
+    --background-hover: transparent;
+
+    color: var(--ion-color-not-active);
+    &.active {
+        color: var(--ion-color-star);
+    }
+}
+
+/** Products **/
+app-products-section {
+    ion-title {
+        padding-inline-start: 15px;
+        padding-top: 15px;
     }
 
-    ion-slide {
-        width: 100% !important;
+    ion-list {
+        &.list-md {
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        ion-item.list-product {
+            margin-bottom: 8px;
+            ion-thumbnail {
+                margin: 4px 0 0 0;
+                margin-inline-end: 0;
+    
+                width: 101px;
+                height: 101px;
+            }
+
+            .product-actions {
+                width: 48px;
+                ion-button {
+                    height: 48px;
+                    width: 100%;
+                    margin: 0;
+    
+                    --padding-start: 0;
+                    --padding-end: 0;
+    
+                    ion-icon {
+                        font-size: 32px;
+                    }
+                }
+            }
+
+            ion-label {
+                margin: 0;
+                padding-left: 5px;
+                cursor: pointer;
+                
+                h3, h2 {
+                    color: var(--ion-color-navigate)
+                }
+            }
+        }
+    }
+}
+
+/* Categories */
+
+.categories-bar {
+    #categories-scroll {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        
+    
+        &::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        ion-button {
+            margin-inline-end: 10px;
+            margin-bottom: 8px;
+        }
+    
+        .scroll-item {
+            cursor: pointer;
+            flex: 0 0 auto;
+        }
+    }
+}
+
+/* Messages */
+.message {
+    width: 90%;
+    min-width: 300px;
+    margin-bottom: 5px;
+
+    border: 1px solid lightgray;
+    border-radius: 2px;
+
+    // --ion-background-color: rgba(0, 0, 0, 0.03);
+}
+
+.user-message {
+    float: right;
+    // --ion-background-color: transparent;
+}
+
+ion-footer {
+    padding: 0px 15px;
+    ion-textarea {
+        background: rgba(0, 0, 0, 0.03);
+        width: 100%;
+        border-radius: 2px;
+        margin: 5px auto;
+    }
+
+    .send-btn {
+        text-align: center;
+        font-size: x-large;
+        padding-top: 65px;
     }
 }

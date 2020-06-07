@@ -8,13 +8,16 @@ import { USER_CITY_FIELD } from '@shared/models/user.model';
 
 @Component({
   selector: 'app-introduction-slides',
-  templateUrl: './introduction-slides.page.html',
-  styleUrls: ['./introduction-slides.page.scss'],
+  templateUrl: './introduction-slides.page.html'
 })
 export class IntroductionSlidesPage {
   public searchedCities: ICity[] = [];
 
-  constructor(private _storage: Storage, private _router: Router, private _citiesService: CitiesService) {
+  constructor(
+    private _storage: Storage,
+    private _router: Router,
+    private _citiesService: CitiesService
+  ) {
     this._redirectOnKnownCity();
   }
 

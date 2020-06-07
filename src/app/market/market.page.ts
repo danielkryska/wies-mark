@@ -7,8 +7,7 @@ import { untilDestroyed } from 'ngx-take-until-destroy';
 
 @Component({
   selector: 'app-market',
-  templateUrl: 'market.page.html',
-  styleUrls: ['market.page.scss']
+  templateUrl: 'market.page.html'
 })
 export class MarketPage implements OnDestroy {
   public products: IProduct[] = [];

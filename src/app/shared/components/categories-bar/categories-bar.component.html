@@ -1,18 +1,16 @@
-<div class="container">
-    <div class="scroll" scrollX="true">
-        <a 
-            class="scroll-item"
-            *ngFor="let categoryTree of categoriesTrees" 
-            (click)="searchIn(categoryTree)"
-        >
-            <span>
+<ion-toolbar class="categories-bar">
+    <div id="categories-scroll" scrollX="true">
+        <div class="scroll-item">
+            <ion-button 
+                class="navigate"
+                *ngFor="let categoryTree of categoriesTrees" 
+                (click)="searchIn(categoryTree)"
+            >
                 {{ categoryTree.label }}
-            </span>
-        </a>
+            </ion-button>
+        </div>    
     </div>
-    <div class="all-categories">
-        <button class="all-categories-btn" (click)="openCategories()">
-            <a href="javascript:void(0)">Wszystkie kategorie</a>
-        </button>
-    </div>
-</div>
+    <ion-button expand="full" class="navigate" routerLink="/zakladki/szukaj">
+        <small>Szukaj kategorii</small>
+    </ion-button>
+</ion-toolbar>

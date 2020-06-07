@@ -3,9 +3,7 @@
     <ion-buttons *ngIf="isSummary" slot="start">
       <ion-back-button [defaultHref]="''" (click)="isSummary = false"></ion-back-button>
     </ion-buttons>
-    <ion-title>
-      <p>{{ isSummary ? 'Podsumowanie' : 'Mój koszyk' }}</p>
-    </ion-title>
+    <ion-title>{{ isSummary ? 'Podsumowanie' : 'Mój koszyk' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 

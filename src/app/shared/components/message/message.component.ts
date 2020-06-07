@@ -7,8 +7,7 @@ import * as _ from 'lodash';
 
 @Component({
   selector: 'app-message',
-  templateUrl: './message.component.html',
-  styleUrls: ['./message.component.scss'],
+  templateUrl: './message.component.html'
 })
 export class MessageComponent {
   @Input() conversation: IConversation;
@@ -16,17 +15,25 @@ export class MessageComponent {
   public messageValue = '';
   get isLastMessageOffer() {
     const lastMessage =
-      (!!this.conversation.messages && this.conversation.messages[this.conversation.messages.length - 1]) || null;
+      (!!this.conversation.messages &&
+        this.conversation.messages[this.conversation.messages.length - 1]) ||
+      null;
     return !!lastMessage && !!lastMessage.isOffer;
   }
 
-  constructor(private _messagesService: MessagesService, private _modalController: ModalController) {}
+  constructor(
+    private _messagesService: MessagesService,
+    private _modalController: ModalController
+  ) {}
 
   accept = () => {
     this._messagesService.addMessage('Z przyjemnością spełnie P. zamówienie', this.conversation);
   };
   reject = () => {
-    this._messagesService.addMessage('Nie jestem w stanie przyjąć P. zamówienia', this.conversation);
+    this._messagesService.addMessage(
+      'Nie jestem w stanie przyjąć P. zamówienia',
+      this.conversation
+    );
   };
   addNew = () => {
     if (this.messageValue.trim() === '') {

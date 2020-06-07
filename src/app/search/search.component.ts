@@ -1,6 +1,6 @@
 import { ICategoryTree } from '@shared/models/category.model';
 import { SearchService } from '@shared/services/search.service';
-import { CategoriesComponent } from '@shared/components/categories/categories.component';
+import { CategoriesModalComponent } from '@shared/components/categories-modal/categories-modal.component';
 import { DEFAULT_SORT_TYPE, ISortTypeValue } from './../shared/models/sort-type.model';
 import { CategoriesService } from '@shared/services/categories.service';
 import { ICategory } from '@shared/models/category.model';
@@ -15,7 +15,7 @@ import { IProduct } from '@shared/models/product.model';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss'],
+  styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit, OnDestroy {
   @ViewChild('searchbar') searchbar: IonSearchbar;
@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   public actualCategoryTree: ICategoryTree = {
     ID: '',
     label: 'test',
-    value: 'test',
+    value: 'test'
   };
 
   public proposedCategories: ICategory[] = [];
@@ -51,7 +51,7 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   searchIn(categoryTree) {
     this._searchService.filters = {
-      category: categoryTree,
+      category: categoryTree
     };
   }
 
@@ -76,28 +76,30 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   async openFilters(): Promise<void> {
     const modal = await this._modalController.create({
-      component: FiltersComponent,
+      component: FiltersComponent
     });
     return await modal.present();
   }
 
   async openCategories(): Promise<void> {
     const modal = await this._modalController.create({
-      component: CategoriesComponent,
+      component: CategoriesModalComponent,
       componentProps: {
         actualCategoryTree: this.parentCategoryTree,
-        categories: this.categoriesTrees,
-      },
+        categories: this.categoriesTrees
+      }
     });
     return await modal.present();
   }
 
   async openSortBy(): Promise<void> {
     const modal = await this._modalController.create({
-      component: SortByComponent,
+      component: SortByComponent
     });
 
-    modal.onDidDismiss().then((data) => (!!data.data ? (this._searchService.sortType = data.data) : null));
+    modal
+      .onDidDismiss()
+      .then(data => (!!data.data ? (this._searchService.sortType = data.data) : null));
 
     return await modal.present();
   }
@@ -112,7 +114,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   protected _updateFiltersBy(params: ParamMap) {
-    const filters: Partial<IProduct> = !!params.get('filters') ? JSON.parse(params.get('filters')) : {};
+    const filters: Partial<IProduct> = !!params.get('filters')
+      ? JSON.parse(params.get('filters'))
+      : {};
     this._searchService.filters = filters;
 
     if (filters.category) {

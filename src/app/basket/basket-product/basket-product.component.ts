@@ -3,8 +3,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-basket-product',
-  templateUrl: './basket-product.component.html',
-  styleUrls: ['./basket-product.component.scss'],
+  templateUrl: './basket-product.component.html'
 })
 export class BasketProductComponent {
   @Input() product: IBasketProduct;

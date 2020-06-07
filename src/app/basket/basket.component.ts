@@ -8,8 +8,7 @@ import { MessagesService } from '@shared/services/messages.service';
 
 @Component({
   selector: 'app-basket',
-  templateUrl: './basket.component.html',
-  styleUrls: ['./basket.component.scss'],
+  templateUrl: './basket.component.html'
 })
 export class BasketComponent {
   get suppliers() {
@@ -28,7 +27,7 @@ export class BasketComponent {
     return this._basketService.allSuppliersHasSetDeliveries;
   }
   get anyProduct() {
-    return this.suppliers.some((supplier) => supplier.products.length > 0);
+    return this.suppliers.some(supplier => supplier.products.length > 0);
   }
 
   constructor(
@@ -45,16 +44,17 @@ export class BasketComponent {
     });
   }
 
-  anyProductOF = (supplier: IBasketSupplier) => supplier.products.some((product) => product.product.inBasket);
+  anyProductOF = (supplier: IBasketSupplier) =>
+    supplier.products.some(product => product.product.inBasket);
 
   order = () => {
     this._basketService.removeOutOfBasket();
-    this._basketService.basketSuppliers.forEach((basketSupplier) => {
+    this._basketService.basketSuppliers.forEach(basketSupplier => {
       const conversation = this._messagesService.getConversationBy(basketSupplier.name);
       this._messagesService.addMessage(this._orderAsMessage(basketSupplier), conversation);
     });
     this._orderHistoryService.add(
-      ...this._basketService.productsInBasket.map((basketProduct) => basketProduct.product)
+      ...this._basketService.productsInBasket.map(basketProduct => basketProduct.product)
     );
     this._basketService.order();
     this._basketService.clear();
@@ -70,9 +70,9 @@ export class BasketComponent {
     let sum = supplier.deliveryType.price;
     supplier.products.forEach((product: IBasketProduct) => {
       message += `
-          ${product.product.title} x ${product.multiplication}, ${product.product.price * product.multiplication} ${
-        product.product.currency
-      }
+          ${product.product.title} x ${product.multiplication}, ${
+        product.product.price * product.multiplication
+      } ${product.product.currency}
         `;
       sum += product.product.price * product.multiplication;
     });

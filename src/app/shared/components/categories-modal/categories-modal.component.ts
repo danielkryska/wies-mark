@@ -6,10 +6,9 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories',
-  templateUrl: './categories.component.html',
-  styleUrls: ['./categories.component.scss'],
+  templateUrl: './categories-modal.component.html'
 })
-export class CategoriesComponent {
+export class CategoriesModalComponent {
   @Input() actualCategoryTree: ICategoryTree;
 
   constructor(

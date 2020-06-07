@@ -1,6 +1,6 @@
 import { RouterModule } from '@angular/router';
 import { BarRatingModule } from 'ngx-bar-rating';
-import { CategoriesComponent } from './components/categories/categories.component';
+import { CategoriesModalComponent } from './components/categories-modal/categories-modal.component';
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -13,10 +13,16 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutosizeModule } from 'ngx-autosize';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 
-const COMPONENTS = [CategoriesBarComponent, CategoriesComponent, ProductsSectionComponent, MessageComponent];
+const COMPONENTS = [
+  CategoriesBarComponent,
+  CategoriesModalComponent,
+  ProductsSectionComponent,
+  CategoriesListComponent,
+  MessageComponent
+];
 
 @NgModule({
-  declarations: [...COMPONENTS, CategoriesListComponent],
+  declarations: [...COMPONENTS],
   entryComponents: [...COMPONENTS],
   imports: [
     IonicModule,
@@ -26,8 +32,8 @@ const COMPONENTS = [CategoriesBarComponent, CategoriesComponent, ProductsSection
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    AutosizeModule,
+    AutosizeModule
   ],
-  exports: [...COMPONENTS],
+  exports: [...COMPONENTS]
 })
 export class SharedModule {}

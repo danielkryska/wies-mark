@@ -1,13 +1,7 @@
-<ion-header>
-  <a href="javascript:void(0)" (click)="searchForProduct()">
-    <ion-searchbar 
-      placeholder="Jakiego produktu szukasz?"
-      disabled="true"
-    ></ion-searchbar>
-  </a>
+<ion-header class="ion-no-border">
   <app-categories-bar></app-categories-bar>
 </ion-header>
-<ion-content>
+<ion-content fullscreen>
   <app-products-section
     *ngIf="!!products && products.length > 1" 
     title="Popularne"

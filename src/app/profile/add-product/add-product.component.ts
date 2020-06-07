@@ -4,8 +4,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 
 @Component({
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss'],
+  templateUrl: './add-product.component.html'
 })
 export class AddProductComponent {
   public images: string[] = [];
@@ -14,7 +13,7 @@ export class AddProductComponent {
     width: 300,
     height: 300,
     allow_video: false,
-    quality: 50,
+    quality: 50
   };
 
   constructor(private _camera: Camera, private _imagePicker: ImagePicker, private _file: File) {}
@@ -36,14 +35,14 @@ export class AddProductComponent {
       quality: 100,
       destinationType: this._camera.DestinationType.DATA_URL,
       encodingType: this._camera.EncodingType.JPEG,
-      mediaType: this._camera.MediaType.PICTURE,
+      mediaType: this._camera.MediaType.PICTURE
     };
 
     this._camera.getPicture(options).then(
-      (imageData) => {
+      imageData => {
         // Do something with the new photo
       },
-      (err) => {
+      err => {
         // Handle error
         console.log('Camera issue: ' + err);
       }
