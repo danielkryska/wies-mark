@@ -20,7 +20,7 @@
 
     <ng-container *ngIf="isSummary; else otherOfSupplier">
         <ion-item *ngIf="!!supplier.deliveryType" class="delivery-type">
-            <p>{{ supplier.deliveryType.label }}</p>
+            <p><small>{{ supplier.deliveryType.label }}</small></p>
             <ion-label>
                 <h2>
                     {{ 

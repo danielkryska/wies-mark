@@ -6,8 +6,8 @@ import { OrderHistoryService } from '@shared/services/order-history.service';
   templateUrl: './order-history.component.html'
 })
 export class OrderHistoryComponent {
-  get products() {
-    return this._orderHistoryService.products;
+  get dateProducts() {
+    return this._orderHistoryService.dateProducts;
   }
 
   constructor(private _orderHistoryService: OrderHistoryService) {}

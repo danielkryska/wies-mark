@@ -27,11 +27,20 @@ export class MessageComponent {
   ) {}
 
   accept = () => {
-    this._messagesService.addMessage('Z przyjemnością spełnie P. zamówienie', this.conversation);
+    this._messagesService.addMessage(
+      `
+        Dziękujemy za zainteresowanie naszymi produktami.
+        Dołożymy  wszelkich starań aby dostarczyć je Państwu we wskazane miejsce.
+      `,
+      this.conversation
+    );
   };
   reject = () => {
     this._messagesService.addMessage(
-      'Nie jestem w stanie przyjąć P. zamówienia',
+      `
+        Z przykrością informujemy o braku możliwości przyjęcia zamówienia.
+        Przepraszamy za utrudnienia i życzymy miłych zakupów.
+      `,
       this.conversation
     );
   };

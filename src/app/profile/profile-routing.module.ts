@@ -6,24 +6,29 @@ import { ProfileComponent } from './profile.component';
 const routes: Routes = [
   {
     path: '',
-    component: ProfileComponent,
+    component: ProfileComponent
   },
   {
     path: 'ulubione',
-    loadChildren: () => import('./favorites/favorites.module').then((m) => m.FavoritesModule),
+    loadChildren: () => import('./favorites/favorites.module').then(m => m.FavoritesModule)
   },
   {
     path: 'historia-zamowien',
-    loadChildren: () => import('./order-history/order-history.module').then((m) => m.OrderHistoryModule),
+    loadChildren: () =>
+      import('./order-history/order-history.module').then(m => m.OrderHistoryModule)
   },
   {
     path: 'dodaj-produkt',
-    loadChildren: () => import('./add-product/add-product.module').then((m) => m.AddProductModule),
+    loadChildren: () => import('./add-product/add-product.module').then(m => m.AddProductModule)
   },
+  {
+    path: 'ustawienia',
+    loadChildren: () => import('./settings/settings.module').then(m => m.SettingsModule)
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class ProfileRoutingModule {}

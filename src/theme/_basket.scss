@@ -23,54 +23,65 @@ app-basket {
         }
     }
 
-    ion-item {
-        margin-bottom: 8px;
-        &.supplier {
-            margin: 0;
+    ion-list {
+        .list-md {
+            padding: 0;
         }
-        &.supplier-action-btn:not(.summary) {
-            padding-left: 47px;
-        }
-        &.supplier-action-btn {
-            ion-col:first-child {
-                padding-inline-start: 0;
-            }
-            ion-col:nth-child(2) {
-                padding-inline-start: 11px;
-            }
-        }
-        &.delivery-type {
-            margin: 0;
-            p {
-                width: 101px;
+        ion-item {
+            margin-bottom: 8px;
+            &.supplier {
                 margin: 0;
             }
-            ion-label {
-                padding-left: 15px;
-                margin: 0;
+            &.supplier-action-btn:not(.summary) {
+                padding-left: 47px;
             }
-        }
-
-        ion-checkbox {
-            --background-checked: var(--ion-color-non-navigate);
-            --border-color-checked: var(--ion-color-non-navigate);
-            --border-color: var(--ion-color-non-navigate);
+            &.supplier-action-btn {
+                ion-col:first-child {
+                    padding-inline-start: 0;
+                }
+                ion-col:nth-child(2) {
+                    padding-inline-start: 11px;
+                }
+            }
+            &.delivery-type {
+                margin: 0;
+                p {
+                    width: 158px;
+                    margin: 0;
     
-            margin-inline-end: 25px;
-        }
-
-        ion-thumbnail {
-            margin: 4px 0 0 0;
-            margin-inline-end: 0;
-
-            width: 101px;
-            height: 101px;
-        }
-
-        a {
-            width: 100%;
-            height: 100%;
-            vertical-align: middle;
+                    color: var(--ion-color-mid-tone-contrast);
+                }
+                ion-label {
+                    padding-left: 16px;
+                    margin: 0;
+                }
+            }
+    
+            ion-label > * {
+                color: var(--ion-color-mid-tone-contrast);
+            }
+    
+            ion-checkbox {
+                --background-checked: var(--ion-color-non-navigate);
+                --border-color-checked: var(--ion-color-non-navigate);
+                --border-color: var(--ion-color-non-navigate);
+        
+                margin-inline-end: 25px;
+            }
+    
+            ion-thumbnail {
+                margin: 4px 0 0 0;
+                margin-inline-end: 0;
+    
+                width: 101px;
+                height: 101px;
+            }
+    
+            a {
+                width: 100%;
+                height: 100%;
+                vertical-align: middle;
+            }
         }
     }
 

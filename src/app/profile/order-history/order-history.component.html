@@ -10,8 +10,13 @@
 </ion-header>
 
 <ion-content>
-    <app-products-section
-        [products]="products"
-    >
-    </app-products-section>
+    <ng-container *ngFor="let dateProduct of dateProducts | keyvalue" >
+        <ion-label>
+            <h3>{{ dateProduct.key }}</h3>
+        </ion-label>
+        <app-products-section
+            [products]="dateProduct.value"
+        >
+        </app-products-section>
+    </ng-container>
 </ion-content>

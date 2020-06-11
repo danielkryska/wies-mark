@@ -12,11 +12,11 @@
             </ion-thumbnail>
             <div class="product-actions">
                 <ion-button
-                    class="star"
+                    class="favorite"
                     [ngClass]="{'active': product.isFavorite}"
                     (click)="toggleInFavorites(product)"
                 >
-                    <ion-icon name="{{ product.isFavorite ? 'star' : 'star-outline' }}"></ion-icon>
+                    <ion-icon name="{{ product.isFavorite ? 'heart' : 'heart-outline' }}"></ion-icon>
                 </ion-button>
                 <ion-button
                     class="basket" 

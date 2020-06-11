@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="zakladki/profil/ustawienia"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <p>Edytuj profil</p>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>;
+
+<ion-content fullscreen>
+    <ion-title>Edytuj nick</ion-title>
+    <form [formGroup]="nickForm">
+        <ion-input type="text" [formControl]="nickForm.controls.nick">
+        </ion-input>
+        <ion-button type="submit" expand="full"></ion-button>
+    </form>
+
+    <ion-title>Edytuj e-mail</ion-title>
+    <form [formGroup]="emailForm">
+        <ion-input type="email" [formControl]="emailForm.controls.email"></ion-input>
+        <ion-button type="submit" expand="full"></ion-button>
+    </form>
+
+    <ion-title>Zmień hasło</ion-title>
+    <form [formGroup]="passwordChangeForm">
+        <ion-input type="password" [formControl]="passwordChangeForm.controls.old"></ion-input>
+        <ion-input type="password" [formControl]="passwordChangeForm.controls.new"></ion-input>
+        <ion-button type="submit" expand="full"></ion-button>
+    </form>
+</ion-content>

@@ -8,12 +8,12 @@ ion-button.basket {
     }
 }
 
-ion-button.star {
+ion-button.favorite {
     --background: transparent;
     --background-hover: transparent;
 
     color: var(--ion-color-not-active);
     &.active {
-        color: var(--ion-color-star);
+        color: var(--ion-color-non-navigate);
     }
 }

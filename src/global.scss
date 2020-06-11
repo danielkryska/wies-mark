@@ -47,9 +47,6 @@ ion-header, ion-tabs {
 }
 ion-content {
     --ion-background-color: var(--ion-color-mid-tone);
-    ion-title, ion-label > *, p {
-        color: var(--ion-color-mid-tone-contrast);
-    }
 }
 ion-back-button {
     --color: var(--ion-color-navigate);
@@ -82,12 +79,48 @@ ion-button.navigate, ion-tab-button.navigate {
     --color: var(--ion-color-navigate);
 }
 *.navigate {
-    border-bottom: 2px solid var(--ion-color-navigate);
+    border-bottom: 4px solid var(--ion-color-navigate);
     cursor: pointer;
+}
+*.navigate-color {
+    color: var(--ion-color-navigate) !important;
+}
+*.non-navigate-color {
+    color: var(--ion-color-non-navigate) !important;
 }
 ion-button.simple {
     --background: transparent;
     --background-hover: transparent;
+}
+
+/** Profile **/
+app-profile {
+    ion-list {
+        &.list-md {
+            margin-bottom: 20px;
+        }
+        ion-item {
+            ion-toggle {
+                --background: rgba(0, 0, 0, 0.2);
+                --handle-background: var(--ion-color-mid-tone-contrast);
+                --background-checked: rgba(0, 0, 0, 0.2);
+                --handle-background-checked: var(--ion-color-non-navigate);
+            }
+        }
+    }
+}
+
+/** Order history **/
+
+app-order-history {
+    ion-label {
+        h3 {
+            padding-left: 16px;
+            padding-top: 11px;
+
+            color: var(--ion-color-mid-tone-contrast);
+        }
+    }
 }
 
 /** Search **/
@@ -122,12 +155,13 @@ app-categories-list {
         ion-label {
             span {
                 font-size: 14px;
+                color: var(--ion-color-mid-tone-contrast);
             }
         }
     }
 }
 
-/** **/
+/** Conversation **/
 app-message {
     .message {
         width: calc(80% - 16px);

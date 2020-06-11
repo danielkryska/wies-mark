@@ -2,6 +2,8 @@ app-products-section {
     ion-title {
         padding-inline-start: 15px;
         padding-top: 15px;
+
+        color: var(--ion-color-mid-tone-contrast) !important;
     }
 
     ion-list {
