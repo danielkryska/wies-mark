@@ -27,11 +27,11 @@
 
 /* Theme SCSS files */
 @import "./theme/variables.scss";
-// @import "./theme/fixes";
-// @import "./theme/categories-bar";
-// @import "./theme/categories";
-// @import "./theme/message";
-// @import "./theme/products-section";
+@import "./theme/action-buttons";
+@import "./theme/fixes";
+@import "./theme/categories-bar";
+@import "./theme/basket";
+@import "./theme/products-section";
 
 /* General */
 ion-header, ion-tabs {
@@ -39,18 +39,24 @@ ion-header, ion-tabs {
     ion-title {
         color: var(--ion-color-shadow-contrast);
     }
+    ion-searchbar {
+        --color: var(--ion-color-shadow-contrast) !important;
+        --icon-color: var(--ion-color-shadow-contrast) !important;
+        --box-shadow: none !important;
+    }
 }
 ion-content {
     --ion-background-color: var(--ion-color-mid-tone);
-    ion-title, ion-label > * {
+    ion-title, ion-label > *, p {
         color: var(--ion-color-mid-tone-contrast);
     }
 }
-a {
-    text-decoration:none;
+ion-back-button {
+    --color: var(--ion-color-navigate);
 }
-.searchbar-input {
-    box-shadow: none !important;
+a {
+    color: var(--ion-color-navigate) !important;
+    text-decoration:none;
 }
 
 /** Action elements **/
@@ -84,133 +90,65 @@ ion-button.simple {
     --background-hover: transparent;
 }
 
-/** Special action buttons **/
-ion-button.basket {
-    --background: transparent;
-    --background-hover: transparent;
-
-    color: var(--ion-color-not-active);
-    &.active {
-        color: var(--ion-color-basket);
-    }
-}
-
-ion-button.star {
-    --background: transparent;
-    --background-hover: transparent;
-
-    color: var(--ion-color-not-active);
-    &.active {
-        color: var(--ion-color-star);
-    }
-}
-
-/** Products **/
-app-products-section {
-    ion-title {
-        padding-inline-start: 15px;
-        padding-top: 15px;
-    }
-
+/** Search **/
+app-categories-list {
     ion-list {
         &.list-md {
             padding-top: 5px;
             padding-bottom: 5px;
         }
-        ion-item.list-product {
-            margin-bottom: 8px;
-            ion-thumbnail {
-                margin: 4px 0 0 0;
-                margin-inline-end: 0;
-    
-                width: 101px;
-                height: 101px;
-            }
 
-            .product-actions {
-                width: 48px;
-                ion-button {
-                    height: 48px;
-                    width: 100%;
-                    margin: 0;
+        ion-label {
+            padding-left: 7px;
+        }
+        ion-list-header {
+            padding-left: 23px;
     
-                    --padding-start: 0;
-                    --padding-end: 0;
-    
-                    ion-icon {
-                        font-size: 32px;
-                    }
-                }
-            }
-
-            ion-label {
+            h4 {
                 margin: 0;
-                padding-left: 5px;
-                cursor: pointer;
-                
-                h3, h2 {
-                    color: var(--ion-color-navigate)
-                }
             }
         }
     }
 }
 
-/* Categories */
-
-.categories-bar {
-    #categories-scroll {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        
-    
-        &::-webkit-scrollbar {
-            width: 0px;
-            background: transparent;
+/* Conversations */
+.conversations-list {
+    ion-item.conversation {
+        .no-messages {
+            --background: transparent;
+            --color: var(--ion-color-mid-tone-contrast);
         }
 
-        ion-button {
-            margin-inline-end: 10px;
-            margin-bottom: 8px;
-        }
-    
-        .scroll-item {
-            cursor: pointer;
-            flex: 0 0 auto;
+        ion-label {
+            span {
+                font-size: 14px;
+            }
         }
     }
 }
 
-/* Messages */
-.message {
-    width: 90%;
-    min-width: 300px;
-    margin-bottom: 5px;
-
-    border: 1px solid lightgray;
-    border-radius: 2px;
-
-    // --ion-background-color: rgba(0, 0, 0, 0.03);
-}
-
-.user-message {
-    float: right;
-    // --ion-background-color: transparent;
-}
-
-ion-footer {
-    padding: 0px 15px;
-    ion-textarea {
-        background: rgba(0, 0, 0, 0.03);
-        width: 100%;
-        border-radius: 2px;
-        margin: 5px auto;
+/** **/
+app-message {
+    .message {
+        width: calc(80% - 16px);
+        min-width: 300px;
+        margin-bottom: 5px;
+        margin-left: 16px;
+    
+        --ion-background-color: var(--ion-color-high-light);
     }
-
-    .send-btn {
-        text-align: center;
-        font-size: x-large;
-        padding-top: 65px;
+    
+    .user-message {
+        float: right;
+        margin-right: 16px;
+        // --ion-background-color: transparent;
+    }
+    
+    ion-footer {
+        ion-textarea {
+            background: var(--ion-color-high-light);
+            width: 100%;
+            border-radius: 2px;
+        }
     }
 }

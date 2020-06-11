@@ -1,15 +1,12 @@
 <ion-list lines="none">
-    <ion-list-header *ngIf="!!actualCategoryTree" >
-        <h4>{{ actualCategoryTree.label }}</h4>
-    </ion-list-header>
-    <ion-item *ngFor="let category of categoriesTrees" >
-        <a href="javascript:void(0)" (click)="chooseChild(category)">
-            <ion-label>{{ category.label }}</ion-label>
-        </a>
-    </ion-item>
-    <ion-item *ngIf="maxInput > 0" (click)="maxInput = 0">
+    <ion-list-header *ngIf="!!actualTree" (click)="actualTree = null">
         <a href="javascript:void(0)">
-            <ion-label>Pokaż wszystkie</ion-label>
+            <h4>{{ actualTree.label }}</h4>
+        </a>
+    </ion-list-header>
+    <ion-item *ngFor="let category of categoriesTrees" (click)="chooseChild(category)">
+        <a href="javascript:void(0)">
+            <ion-label>{{ category.label }}</ion-label>
         </a>
     </ion-item>
 </ion-list>

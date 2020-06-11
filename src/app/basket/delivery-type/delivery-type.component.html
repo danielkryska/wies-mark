@@ -11,15 +11,15 @@
     <ion-list lines="none">
         <ion-item *ngFor="let deliveryType of deliveryTypes" (click)="closeSelf(deliveryType)">
             <ion-label>
-                <span>{{ deliveryType.label }}</span>
-                <p>{{ deliveryType.price | currency:deliveryType.currency:'symbol-narrow':'1.2' }}</p>
+                <a href="javascript:void(0)">
+                    <span>{{ deliveryType.label }}</span>
+                    <p>{{ deliveryType.price | currency:deliveryType.currency:'symbol-narrow':'1.2' }}</p>
+                </a>
             </ion-label>
         </ion-item>
     </ion-list>
 </ion-content>
 
 <ion-footer>
-    <ion-toolbar>
-        <ion-button expand="block" (click)="closeSelf()">Wroc do koszyka</ion-button>
-    </ion-toolbar>
+    <ion-button expand="full" (click)="closeSelf()">Wroc do koszyka</ion-button>
 </ion-footer>

@@ -8,20 +8,23 @@ import { CategoriesService } from '@shared/services/categories.service';
   templateUrl: './categories-list.component.html'
 })
 export class CategoriesListComponent {
-  @Input() actualCategoryTree: ICategoryTree;
-  @Input() maxInput = 0;
+  @Input() actualTree: ICategoryTree;
+  @Input() filterContain: string;
+  @Input() exclude: ICategoryTree[] = [];
 
-  @Output() actualCategoryTreeChange: EventEmitter<ICategoryTree> = new EventEmitter<
-    ICategoryTree
-  >();
-  @Output() selectCategoryLeaf: EventEmitter<ICategoryTree> = new EventEmitter<ICategoryTree>();
+  @Output() actualTreeChange: EventEmitter<ICategoryTree> = new EventEmitter<ICategoryTree>();
+  @Output() selectLeaf: EventEmitter<ICategoryTree> = new EventEmitter<ICategoryTree>();
 
   get categoriesTrees(): ICategoryTree[] {
-    const actualCategoryChildren = !!this.actualCategoryTree && this.actualCategoryTree.children;
+    const actualCategoryChildren = !!this.actualTree && this.actualTree.children;
     const topLevelCategories = this._categoriesService.categoriesTrees;
     const categoriesToDisplay = actualCategoryChildren || topLevelCategories;
 
-    return this.maxInput > 0 ? categoriesToDisplay.splice(0, this.maxInput) : categoriesToDisplay;
+    return categoriesToDisplay.filter(
+      tree =>
+        this.filterContain === '' ||
+        tree.label.toLowerCase().indexOf(this.filterContain.toLowerCase()) > -1
+    );
   }
 
   protected _children: ICategoryTree[] = [];
@@ -30,11 +33,11 @@ export class CategoriesListComponent {
 
   chooseChild(category: ICategoryTree) {
     if (!hasChildren(category)) {
-      this.selectCategoryLeaf.emit(category);
+      this.selectLeaf.emit(category);
       return;
     }
 
-    this.actualCategoryTree = category;
-    this.actualCategoryTreeChange.emit(this.actualCategoryTree);
+    this.actualTree = category;
+    this.actualTreeChange.emit(this.actualTree);
   }
 }

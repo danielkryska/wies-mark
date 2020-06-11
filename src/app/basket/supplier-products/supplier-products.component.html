@@ -1,6 +1,6 @@
 <ion-list lines="none">
     <ion-item class="supplier">
-        <ion-label><p><small>{{ supplier.name }}</small></p></ion-label>
+        <ion-label><small>{{ supplier.name }}</small></ion-label>
         <ion-checkbox 
             *ngIf="!isSummary" 
             checked 
@@ -19,21 +19,30 @@
     </ng-container>
 
     <ng-container *ngIf="isSummary; else otherOfSupplier">
-        <ion-item class="supplier-action-btn">
-            <a href="javascript:void(0)" (click)="openMessageDialog()">
-                <small>Wyślij wiadomość (opcjonalne)</small>
-            </a>
-        </ion-item>
-        <ion-item *ngIf="!!supplier.deliveryType" class="supplier-action-btn">
+        <ion-item *ngIf="!!supplier.deliveryType" class="delivery-type">
+            <p>{{ supplier.deliveryType.label }}</p>
             <ion-label>
-                <span>{{ supplier.deliveryType.label }}</span>
-                <p>{{ supplier.deliveryType.price | currency:supplier.deliveryType.currency:'symbol-narrow':'1.2' }}</p>
+                <h2>
+                    {{ 
+                        supplier.deliveryType.price 
+                        | currency:supplier.deliveryType.currency:'symbol-narrow':'1.2' 
+                    }}
+                </h2>
             </ion-label>
         </ion-item>
-        <ion-item class="supplier-action-btn" (click)="chooseDeliveryType()">
-            <a href="javascript:void(0)">
-                <small>Wybierz typ dostawy</small>
-            </a>
+        <ion-item class="summary supplier-action-btn">
+            <ion-row>
+                <ion-col>
+                    <ion-button expand="full" (click)="chooseDeliveryType()">
+                        <small>Wybierz typ dostawy</small>
+                    </ion-button>
+                </ion-col>
+                <ion-col>
+                    <a href="javascript:void(0)" (click)="openMessageDialog()">
+                        <small>Wyślij wiadomość</small>
+                    </a>
+                </ion-col>
+            </ion-row>
         </ion-item>
     </ng-container>
 

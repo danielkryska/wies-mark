@@ -18,41 +18,40 @@
     </ng-container>
   </ion-content>
 </ng-container>
+
 <ng-template #emptyBasket>
   <ion-content>
     <div class="empty-basket-message">
-      <ion-icon name="basket"></ion-icon>
-      <p>Twój koszyk jest pusty</p>
-      <small>
+      <h2>Twój koszyk jest pusty</h2>
+      <p>
         <a routerLink="/zakladki/jarmark"><b>Odwiedź jarmark</b></a>
-        <span> lub </span>
+        <small> lub </small>
         <a routerLink="/zakladki/szukaj"><b>Znajdź produkt</b></a>
-      </small>
+      </p>
     </div>
   </ion-content>
 </ng-template>
 
 <ion-footer>
-  <ion-toolbar>
-    <ion-row>
-      <ion-col size-xs="4">
-        <p>{{ payment | currency: 'PLN':'symbol-narrow':'1.2' }}</p>
-      </ion-col>
-      <ion-col size-xs="8">
-        <ion-button
-          *ngIf="isSummary; else toSummary"
-          expand="block"
-          (click)="order()"
-          [disabled]="!allSuppliersHasSetDeliveries"
-        >
-          Złóż zamówienie
+  <ion-row>
+    <ion-col size="3">
+      <p>{{ payment | currency: 'PLN':'symbol-narrow':'1.2' }}</p>
+    </ion-col>
+    <ion-col size="9">
+      <ion-button
+        *ngIf="isSummary; else toSummary"
+        expand="full"
+        (click)="order()"
+      >
+      <!-- TODO Set deliveries message on click -->
+        Złóż zamówienie
+      </ion-button>
+      <ng-template #toSummary>
+        <ion-button expand="full" (click)="isSummary = payment > 0">
+          <!-- TODO Add products to basket message -->
+          Podsumowanie
         </ion-button>
-        <ng-template #toSummary>
-          <ion-button expand="block" (click)="isSummary = true" [disabled]="payment === 0">
-            Podsumowanie
-          </ion-button>
-        </ng-template>
-      </ion-col>
-    </ion-row>
-  </ion-toolbar>
+      </ng-template>
+    </ion-col>
+  </ion-row>
 </ion-footer>

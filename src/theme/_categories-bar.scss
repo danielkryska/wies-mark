@@ -1,0 +1,23 @@
+.categories-bar {
+    #categories-scroll {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        
+    
+        &::-webkit-scrollbar {
+            width: 0px;
+            background: transparent;
+        }
+
+        ion-button {
+            margin-inline-end: 10px;
+            margin-bottom: 8px;
+        }
+    
+        .scroll-item {
+            cursor: pointer;
+            flex: 0 0 auto;
+        }
+    }
+}

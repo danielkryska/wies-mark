@@ -11,11 +11,15 @@ $light-font-color: rgba(215, 214, 213, 0.7);
 
   /** Mid-tone **/
   --ion-color-mid-tone: #FAFAB3;
-  --ion-color-mid-tone-contrast: #5C5C5C;
+  --ion-color-mid-tone-contrast: rgb(109, 108, 108);
+
+  /** High light **/
+  --ion-color-high-light: #FFFAFF;
+  --ion-color-high-light-contrast: rgb(109, 108, 108);
 
   /** Accent **/
   --ion-color-navigate: #6FCE3B;
-  --ion-color-basket: #37DE2B;
+  --ion-color-non-navigate: #F42C04;
   --ion-color-star: #FDBE49;
   
   --ion-color-not-active: #97a5a1;

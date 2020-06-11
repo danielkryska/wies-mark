@@ -1,0 +1,19 @@
+ion-button.basket {
+    --background: transparent;
+    --background-hover: transparent;
+
+    color: var(--ion-color-not-active);
+    &.active {
+        color: var(--ion-color-non-navigate);
+    }
+}
+
+ion-button.star {
+    --background: transparent;
+    --background-hover: transparent;
+
+    color: var(--ion-color-not-active);
+    &.active {
+        color: var(--ion-color-star);
+    }
+}

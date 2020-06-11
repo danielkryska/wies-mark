@@ -1,4 +1,4 @@
-import { BasketService, IBasketProduct } from '@shared/services/basket.service';
+import { IBasketProduct } from '@shared/services/basket.service';
 import { Component, Input } from '@angular/core';
 
 @Component({

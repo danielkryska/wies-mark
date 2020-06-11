@@ -30,7 +30,7 @@
     <!-- TODO Add return to search -->
     <app-products-section
       *ngIf="!!products && products.length > 0" 
-      [title]="'Produkty z kategorii: ' + actualCategoryTree.label"
+      [title]="'Produkty z kategorii: ' + actualTree.label"
       [products]="products"
     ></app-products-section>
     <!-- TODO Pagination -->
@@ -48,26 +48,23 @@
         inputmode="text"
         placeholder="Jakiego produktu szukasz?"
         spellcheck="true"
-        debounce="500"
+        debounce="300"
         (ionChange)="searchForCategory($event.target.value)"
-        (ionClear)="clearProposedCategories()" 
+        (ionClear)="proposedCategories = [];" 
       ></ion-searchbar>
     </ion-toolbar>
   </ion-header>
 
   <ion-content>
-    <ion-list lines="none">
-      <a
-        *ngFor="let category of proposedCategories"
-        href="javascript:void(0)"
-        (click)="searchIn(category)"
-      >
-        <ion-item >
-          {{ category.label }}
-        </ion-item>
-      </a>
-    </ion-list>
-    <app-categories-list>
+    <app-categories-list
+      [filterContain]="!!searchbar.value && searchbar.value.trim() !== '' && searchbar.value.trim() || ''"
+      (selectLeaf)="searchIn($event)"
+    >
     </app-categories-list>
+    <ng-container *ngIf="!!searchbar.value && searchbar.value.trim() !== '' && proposedCategories.length === 0">
+      <ion-label class="non-found-description">
+        <p>Nie znaleziono szukanej kategorii</p>
+      </ion-label>
+    </ng-container>
   </ion-content>
 </ng-template>

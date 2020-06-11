@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './categories-modal.component.html'
 })
 export class CategoriesModalComponent {
-  @Input() actualCategoryTree: ICategoryTree;
+  @Input() actualTree: ICategoryTree;
 
   constructor(
     private _router: Router,

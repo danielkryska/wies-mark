@@ -9,13 +9,12 @@ import { FiltersComponent } from './filters/filters.component';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ModalController, IonSearchbar } from '@ionic/angular';
 import { untilDestroyed } from 'ngx-take-until-destroy';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
+import { ParamMap } from '@angular/router';
 import { IProduct } from '@shared/models/product.model';
 
 @Component({
   selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  templateUrl: './search.component.html'
 })
 export class SearchComponent implements OnInit, OnDestroy {
   @ViewChild('searchbar') searchbar: IonSearchbar;
@@ -27,7 +26,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   public products: IProduct[];
 
   public parentCategoryTree: ICategoryTree;
-  public actualCategoryTree: ICategoryTree = {
+  public actualTree: ICategoryTree = {
     ID: '',
     label: 'test',
     value: 'test'
@@ -62,7 +61,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   searchForCategory(searchValue: string): void {
     const isEmptyValue = !searchValue || searchValue.trim() === '';
     isEmptyValue
-      ? this.clearProposedCategories()
+      ? (this.proposedCategories = [])
       : (this.proposedCategories = this._categoriesService.getCategoriesBy(searchValue));
   }
 
@@ -72,8 +71,6 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.searchbar.setFocus();
       }
     });
-  clearProposedCategories = () => (this.proposedCategories = []);
-
   async openFilters(): Promise<void> {
     const modal = await this._modalController.create({
       component: FiltersComponent
@@ -85,7 +82,7 @@ export class SearchComponent implements OnInit, OnDestroy {
     const modal = await this._modalController.create({
       component: CategoriesModalComponent,
       componentProps: {
-        actualCategoryTree: this.parentCategoryTree,
+        actualTree: this.parentCategoryTree,
         categories: this.categoriesTrees
       }
     });
@@ -129,6 +126,6 @@ export class SearchComponent implements OnInit, OnDestroy {
     const categoryTree = this._categoriesService.findCategoryTreeBy(categoryValue);
     const rootCategory = null;
     this.parentCategoryTree = !!parentCategoryTree ? parentCategoryTree : categoryTree;
-    this.actualCategoryTree = !!parentCategoryTree ? categoryTree : rootCategory;
+    this.actualTree = !!parentCategoryTree ? categoryTree : rootCategory;
   }
 }
