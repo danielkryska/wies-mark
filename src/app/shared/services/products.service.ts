@@ -18,6 +18,14 @@ export class ProductsService {
       .pipe(map((data: any) => data.products));
   }
 
+  public find$(ID: string) {
+    return !!ID && ID !== ''
+      ? this._http
+          .get<IProduct[]>(`${environment.API_URL}`)
+          .pipe(map((data: any) => data.products.find((product: IProduct) => product.ID === ID)))
+      : of(null);
+  }
+
   // TODO add items per page and max limit of returning products
   public getBy$ = (filters: Partial<IProduct>, sortType: string = null): Observable<IProduct[]> =>
     this.products$.pipe(

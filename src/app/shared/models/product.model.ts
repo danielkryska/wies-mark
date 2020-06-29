@@ -1,8 +1,10 @@
 import { IPublicSupplier } from './supplier.model';
-import { IOpinion } from './opinion.model';
+import { IComment } from './opinion.model';
 import { IPhoto } from './photo.model';
 
 export interface IProduct {
+  ID: string;
+
   // Information's
   title: string;
   price: number;
@@ -18,7 +20,7 @@ export interface IProduct {
   averageOfRates: number;
   opinionsCount: number;
   isAvailable: boolean;
-  opinions?: IOpinion[];
+  opinions?: IComment[];
 
   // For this specific user
   isFavorite: boolean; // TODO Add isFavoriteSelectionDate to sort by it

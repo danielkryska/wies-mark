@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TabsPage } from './tabs.page';
+import { ProductComponent } from '@shared/components/product/product.component';
 
 const routes: Routes = [
   {
@@ -10,39 +11,43 @@ const routes: Routes = [
       {
         path: '',
         redirectTo: 'jarmark',
-        pathMatch: 'full',
+        pathMatch: 'full'
       },
       {
         path: 'jarmark',
-        loadChildren: () => import('../market/market.module').then((m) => m.MarketPageModule),
+        loadChildren: () => import('../market/market.module').then(m => m.MarketPageModule)
       },
       {
         path: 'koszyk',
-        loadChildren: () => import('../basket/basket.module').then((m) => m.BasketModule),
+        loadChildren: () => import('../basket/basket.module').then(m => m.BasketModule)
       },
       {
         path: 'szukaj',
-        loadChildren: () => import('../search/search.module').then((m) => m.SearchModule),
+        loadChildren: () => import('../search/search.module').then(m => m.SearchModule)
       },
       {
         path: 'profil',
-        loadChildren: () => import('../profile/profile.module').then((m) => m.ProfileModule),
+        loadChildren: () => import('../profile/profile.module').then(m => m.ProfileModule)
       },
       {
         path: 'wiadomosci',
-        loadChildren: () => import('../messages/messages.module').then((m) => m.MessagesModule),
+        loadChildren: () => import('../messages/messages.module').then(m => m.MessagesModule)
       },
-    ],
+      {
+        path: 'product/:ID',
+        component: ProductComponent
+      }
+    ]
   },
   {
     path: '',
     redirectTo: 'zakladki/jarmark',
-    pathMatch: 'full',
-  },
+    pathMatch: 'full'
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class TabsPageRoutingModule {}

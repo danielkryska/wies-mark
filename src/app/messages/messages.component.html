@@ -26,7 +26,7 @@
             </ion-badge>
             <ion-label>
                 <span><b>{{ conversation.user.name }}</b></span>
-                <p><small>
+                <p *ngIf="lastMessage(conversation).creationDate" ><small>
                     Ostatnia wiadomosc z: {{ 
                         lastMessageTimeInMs(conversation) 
                             | date:'M/d/yy, hh:mm:ss' 

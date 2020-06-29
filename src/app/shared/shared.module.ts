@@ -12,13 +12,16 @@ import { MessageComponent } from './components/message/message.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AutosizeModule } from 'ngx-autosize';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
+import { ProductComponent } from './components/product/product.component';
+import { NgxStarsModule } from 'ngx-stars';
 
 const COMPONENTS = [
   CategoriesBarComponent,
   CategoriesModalComponent,
   ProductsSectionComponent,
   CategoriesListComponent,
-  MessageComponent
+  MessageComponent,
+  ProductComponent
 ];
 
 @NgModule({
@@ -32,7 +35,8 @@ const COMPONENTS = [
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
-    AutosizeModule
+    AutosizeModule,
+    NgxStarsModule
   ],
   exports: [...COMPONENTS]
 })

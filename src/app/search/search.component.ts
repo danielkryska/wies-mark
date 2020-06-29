@@ -22,17 +22,21 @@ export class SearchComponent implements OnInit, OnDestroy {
   get hasFilters() {
     return !!this._searchService.filters && Object.keys(this._searchService.filters).length > 0;
   }
+  get actualTree() {
+    return (
+      (!!this._actualTree && this._actualTree) ||
+      (this.hasFilters && this._searchService.filters.category)
+    );
+  }
+  set actualTree(category: ICategoryTree) {
+    this._actualTree = category;
+  }
 
   public products: IProduct[];
-
   public parentCategoryTree: ICategoryTree;
-  public actualTree: ICategoryTree = {
-    ID: '',
-    label: 'test',
-    value: 'test'
-  };
-
   public proposedCategories: ICategory[] = [];
+
+  protected _actualTree: ICategoryTree;
 
   constructor(
     private _searchService: SearchService,

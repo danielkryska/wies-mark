@@ -2,12 +2,13 @@
     <ion-title *ngIf="!!title">
         {{ title }}
     </ion-title>
-    <ion-list lines="none">
+    <ng-content select="[subtitle]"></ng-content>
+    <ion-list lines="none" *ngIf="!!products && products.length > 0; else emptyMessage">
         <ion-item 
             *ngFor="let product of products"
             class="list-product"
         >
-            <ion-thumbnail class="navigate" slot="start">
+            <ion-thumbnail class="navigate" slot="start" [routerLink]="['/zakladki/product', product.ID]">
                 <ion-img [src]="product.photos[0].url"></ion-img>
             </ion-thumbnail>
             <div class="product-actions">
@@ -26,19 +27,23 @@
                     <ion-icon name="{{ product.inBasket ? 'basket' : 'basket-outline' }}"></ion-icon>
                 </ion-button>
             </div>
-            <ion-label>
+            <ion-label [routerLink]="['/zakladki/product', product.ID]">
                 <h2>{{ product.title }}</h2>
                 <p><small>od 
                     {{ 
                         product.supplier.name + ' ' + product.supplier.forename 
                     }}
                 </small></p>
+                <ngx-stars max="5" [initialStars]="product.averageOfRates" [readonly]="true"></ngx-stars>
                 <h2>
                     {{ product.price | currency:product.currency:'symbol-narrow':'1.2' }}
                     / {{ product.unit }}
                 </h2>
-                <br><br>
+                <br>
             </ion-label>
         </ion-item>
     </ion-list>
+    <ng-template #emptyMessage>
+        <ng-content select="[empty-message]"></ng-content>
+    </ng-template>
 </div>

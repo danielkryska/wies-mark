@@ -1,0 +1,58 @@
+<ng-container *ngIf="!!product">
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-back-button [defaultHref]="''" (click)="goBack()"></ion-back-button>
+            </ion-buttons>
+            <ion-title>{{ product.title }}</ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content fullscreen>
+        <ion-slides pager="true" [options]="{}">
+            <ion-slide *ngFor="let photo of product.photos">
+              <ion-img [src]="photo.url"></ion-img>
+            </ion-slide>
+        </ion-slides>
+    
+        <ion-label class="user">
+            <p>
+                <span class="user__name">{{ product.supplier.name }}</span>
+            <ngx-stars max="5" [initialStars]="product.averageOfRates" [readonly]="true"></ngx-stars>
+            </p>
+        </ion-label>
+    
+        <ion-label id="product">
+            <h2>{{ product.title }}</h2>
+            <h2>
+                {{ product.price | currency:product.currency:'symbol-narrow':'1.2' }}
+                / {{ product.unit }}
+            </h2>
+        </ion-label>
+    
+        <ion-segment value="description" #segment>
+            <ion-segment-button value="description">
+                <ion-label>Opis</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="opinions">
+                <ion-label>Opinie</ion-label>
+            </ion-segment-button>
+        </ion-segment>
+    
+        <ion-label *ngIf="segment.value === 'description'" id="description">
+            <p>{{ !!product.description ? product.description : 'Brak opisu' }}</p>
+        </ion-label>
+        
+        <div *ngIf="segment.value === 'opinions'" id="opinions">
+            <ion-label *ngFor="let opinion of product.opinions" class="user">
+                <p>
+                    <span class="user__name">{{ opinion.user.nick }}</span>
+                <ngx-stars max="5" [initialStars]="opinion.rate" [readonly]="true"></ngx-stars>
+                </p>
+                <span>{{ !!opinion.comment && opinion.comment || '' }}</span>
+            </ion-label>
+        </div>
+    </ion-content>
+    <ion-footer>
+        <ion-button expand="full" class="navigate">Dodaj opinie</ion-button>
+    </ion-footer>
+</ng-container>

@@ -3,36 +3,45 @@
     <ion-toolbar>
       <ion-row>
         <ion-col>
-          <button class="header-btn" >
-            <a href="javascript:void(0)" (click)="openCategories()">Kategorie</a>
-          </button>    
+          <ion-button expand="full" class="navigate" (click)="openCategories()">
+            Kategorie
+          </ion-button>    
         </ion-col>
         <ion-col>
-          <button class="header-btn" (click)="openFilters()">
-            <a href="javascript:void(0)">Filtry</a>
-          </button>
+          <ion-button expand="full" class="navigate" (click)="openFilters()">
+            Filtry
+          </ion-button>
         </ion-col>
         <ion-col>
-          <button class="header-btn" (click)="openSortBy()">
-            <a href="javascript:void(0)">Sortuj</a>
-          </button>
+          <ion-button expand="full" class="navigate" (click)="openSortBy()">
+            Sortuj
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-toolbar>
   </ion-header>
   
   <ion-content fullscreen>
-    <ion-toolbar (click)="clearFilters()">
-      <ion-label>
-        <a href="javascript:void(0)">Szukaj innych produktów</a>
-      </ion-label>
-    </ion-toolbar>
-    <!-- TODO Add return to search -->
     <app-products-section
-      *ngIf="!!products && products.length > 0" 
-      [title]="'Produkty z kategorii: ' + actualTree.label"
+      [title]="actualTree.label"
       [products]="products"
-    ></app-products-section>
+    >
+      <ion-title>
+        <ion-button size="small" class="navigate" (click)="clearFilters()" subtitle>
+          Szukaj innych produktów
+        </ion-button>
+      </ion-title>
+      <div empty-message>
+        <ion-title>
+          <small>Nie ma znaleziono żadnego produktu</small>
+        </ion-title>
+        <ion-title><small>
+          <span class="navigate-color" (click)="openFilters()">Zmień filtry </span>
+          lub
+          <span class="navigate-color" (click)="clearFilters()">Wyszukaj nową kategorię</span>
+        </small></ion-title>
+      </div>
+    </app-products-section>
     <!-- TODO Pagination -->
   </ion-content>
 </ng-container>

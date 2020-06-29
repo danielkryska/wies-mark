@@ -6,6 +6,7 @@ export interface IPublicUser extends Partial<IUser> {
   // TODO name and forenam replace with nick
   name: string;
   forename: string;
+  nick: string;
 }
 
 export const USER_CITY_FIELD = 'userCityField';

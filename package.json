@@ -52,6 +52,7 @@
     "moment": "^2.26.0",
     "ngx-autosize": "^1.8.0",
     "ngx-bar-rating": "^1.1.0",
+    "ngx-stars": "^1.4.3",
     "ngx-take-until-destroy": "^5.4.0",
     "rxjs": "~6.5.1",
     "tslib": "^1.13.0",

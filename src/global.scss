@@ -47,6 +47,10 @@ ion-header, ion-tabs {
 }
 ion-content {
     --ion-background-color: var(--ion-color-mid-tone);
+    overflow-y: auto;
+}
+ion-footer {
+    background: var(--ion-color-mid-tone);
 }
 ion-back-button {
     --color: var(--ion-color-navigate);
@@ -57,6 +61,11 @@ a {
 }
 
 /** Action elements **/
+ion-segment-button {
+    --border-color: var(--ion-color-non-navigate);
+    --color: var(--ion-color-non-navigate);
+    --color-checked: var(--ion-color-non-navigate);
+}
 ion-button {
     --box-shadow: none;
     margin-inline-start: 0;
@@ -79,8 +88,10 @@ ion-button.navigate, ion-tab-button.navigate {
     --color: var(--ion-color-navigate);
 }
 *.navigate {
-    border-bottom: 4px solid var(--ion-color-navigate);
     cursor: pointer;
+}
+ion-thumbnail.navigate {
+    border-bottom: 4px solid var(--ion-color-navigate);
 }
 *.navigate-color {
     color: var(--ion-color-navigate) !important;
@@ -91,6 +102,57 @@ ion-button.navigate, ion-tab-button.navigate {
 ion-button.simple {
     --background: transparent;
     --background-hover: transparent;
+}
+ngx-stars[ng-reflect-readonly="true"] {
+    .star-full, .star-half, .star-empty {
+        background-color: var(--ion-color-non-navigate-readonly) !important;
+    }
+}
+
+/** Product **/
+app-product {
+    ion-content {
+        --padding-top: 16px;
+        --padding-bottom: 16px;
+        --padding-end: 16px;
+        --padding-start: 16px;
+    }
+
+    ion-label {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .user {
+        &__name {
+            display: inline-block;
+            margin: 5px 13px 5px 0px;
+        }
+        ngx-stars {
+            max-width: 50%;
+            display: inline-block;
+        }
+    }
+    #description {
+        p {
+            margin: 10px 0px;
+        }
+    }
+    #opinions {
+        .user {
+            &__name {
+                margin-top: 15px !important;
+            }
+            p {
+                margin-bottom: 13px;
+            }
+        }
+
+        ion-textarea {
+            --padding-start: 0;
+            --background: rgba(255, 255, 255, 0.4);
+        }
+    }
 }
 
 /** Profile **/

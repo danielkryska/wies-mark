@@ -5,12 +5,12 @@ import { MarketPage } from './market.page';
 const routes: Routes = [
   {
     path: '',
-    component: MarketPage,
-  },
+    component: MarketPage
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class MarketPageRoutingModule {}
