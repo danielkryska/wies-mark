@@ -194,6 +194,7 @@
   ],
    "products": [
         {
+           "ID": "fafaafafaafa",
            "title":"Jajca 1",
            "price":4.6,
            "unit":"szt",
@@ -224,6 +225,17 @@
                  "url":"assets/introdution-slides-bg-1.jpg"
               }
            ],
+           "opinions": [
+              {
+               "user": {
+                  "ID": "dad23r3tyhrgar",
+                  "nick": "Ziomowa32"
+               },
+               "rate": 3,
+               "creationDate": 1355501900,
+               "comment": "Twoje jajca są niefajne"
+              }
+           ],
            "inBasket": false,
            "isFavorite":true,
            "opinionsCount": 2,
@@ -236,6 +248,7 @@
            }
         },
         {
+         "ID": "fafaafdadadwaqrqrr4y",
          "title":"Jajca 5",
          "price":3.0,
          "unit":"szt",
@@ -265,6 +278,17 @@
                "url":"assets/introdution-slides-bg-1.jpg"
             }
          ],
+         "opinions": [
+            {
+             "user": {
+                "ID": "dad23r3tyhrgar",
+                "nick": "Ziomowa32"
+             },
+             "rate": 3,
+             "creationDate": 1355501900,
+             "comment": "Twoje jajca są niefajne"
+            }
+         ],
          "averageOfRates": 3.5,
          "isFavorite":true,
          "inBasket": false,
@@ -278,6 +302,7 @@
          }
       },
       {
+         "ID": "fafaafafaaf09q034094982",
          "title":"Jajca 7",
          "price":3.9,
          "unit":"szt",
@@ -307,6 +332,17 @@
                "url":"assets/introdution-slides-bg-1.jpg"
             }
          ],
+         "opinions": [
+            {
+             "user": {
+                "ID": "dad23r3tyhrgar",
+                "nick": "Ziomowa32"
+             },
+             "rate": 3,
+             "creationDate": 1355501900,
+             "comment": "Twoje jajca są niefajne"
+            }
+         ],
          "isFavorite":false,
          "inBasket": true,
          "opinionsCount": 12,
@@ -320,6 +356,7 @@
          }
       },
       {
+         "ID": "fafaafafa5345305036",
          "title":"Dorodne winogrona",
          "price":3.9,
          "unit":"szt",
@@ -349,6 +386,17 @@
                "url":"assets/introdution-slides-bg-1.jpg"
             }
          ],
+         "opinions": [
+            {
+             "user": {
+                "ID": "dad23r3tyhrgar",
+                "nick": "Ziomowa32"
+             },
+             "rate": 3,
+             "creationDate": 1355501900,
+             "comment": "Twoje jajca są niefajne"
+            }
+         ],
          "inBasket": false,
          "isFavorite":false,
          "opinionsCount": 12,
@@ -362,6 +410,7 @@
          }
       },
       {
+         "ID": "fafaaf5093486803670a",
          "title":"Cytryny",
          "price":3.9,
          "unit":"szt",
@@ -389,6 +438,17 @@
             },
             {
                "url":"assets/introdution-slides-bg-1.jpg"
+            }
+         ],
+         "opinions": [
+            {
+             "user": {
+                "ID": "dad23r3tyhrgar",
+                "nick": "Ziomowa32"
+             },
+             "rate": 3,
+             "creationDate": 1355501900,
+             "comment": "Twoje jajca są niefajne"
             }
          ],
          "inBasket": true,
